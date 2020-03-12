@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import CashOut
 
-# Register your models here.
+@admin.register(CashOut)
+
+class CashOutAdmin(admin.ModelAdmin):
+  list_display = ['expense', 'value', 'account', 'due']
