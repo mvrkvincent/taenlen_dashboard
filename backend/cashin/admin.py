@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import CashIn
 
-# Register your models here.
+class CashInAdmin(admin.ModelAdmin):
+  list_display = ['source', 'value']
