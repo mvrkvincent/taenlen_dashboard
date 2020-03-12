@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include              
 from rest_framework import routers
-from cashout import views                 
+from cashout import views as cashoutviews
+from cashin import views as cashinviews               
                       
 
 router = routers.DefaultRouter()        
-router.register(r'cashouts', views.CashOutView, 'cashout')           
+router.register(r'cashouts', cashoutviews.CashOutView, 'cashout')
+router.register(r'cashins', cashinviews.CashInView, 'cashin')            
 
 
 urlpatterns = [

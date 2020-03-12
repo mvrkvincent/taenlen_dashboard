@@ -6,3 +6,6 @@ from .models import CashIn
 class CashInView(viewsets.ModelViewSet):
   serializer_class = CashInSerializer
   queryset = CashIn.objects.all()
+
+  def __str__(self):
+    return self.source
