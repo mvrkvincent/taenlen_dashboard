@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'taenlen',
+        'USER': 'markvincent',
+        'PASSWORD': '<MVE>us2120',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -123,7 +127,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000/'
+    'http://localhost:3000'
 ]
+
     
 
