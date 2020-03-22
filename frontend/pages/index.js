@@ -1,7 +1,7 @@
-import Template from '../components/Template';
+import PageTemplate from '../components/PageTemplate';
 
 const Splash = () => (
-  <Template>
+  <PageTemplate>
 
       <h1 className="title">
         This is T&#230;nlen<sup>[1]</sup>.
@@ -11,7 +11,7 @@ const Splash = () => (
         Coming April 2020
       </p>
 
-  </Template>
+  </PageTemplate>
 )
 
 export default Splash;

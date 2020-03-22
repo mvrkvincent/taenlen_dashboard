@@ -1,9 +1,9 @@
-import Template from '../components/Template';
+import PageTemplate from '../components/PageTemplate';
 
 const About = () => {
 
   return (
-    <Template>
+    <PageTemplate>
       <h1 className="title">
         About the Developer.
       </h1>
@@ -15,7 +15,7 @@ const About = () => {
       {/* <div className="grid">
 
       </div> */}
-    </Template>
+    </PageTemplate>
   );
 };
 

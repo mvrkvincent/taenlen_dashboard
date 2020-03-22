@@ -1,0 +1,28 @@
+#login
+.button {
+  margin: .5rem;
+}
+
+#login
+.title {
+  text-align: left;
+}
+
+form {
+  margin-top: 2rem;
+}
+
+form
+.footnote {
+  margin: 0 auto;
+  padding: .5rem;
+}
+
+input {
+  font: inherit;
+  margin: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}

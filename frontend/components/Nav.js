@@ -1,27 +1,24 @@
-import React, { useState } from 'react';
+import Router from 'next/router';
 
 const Nav = () => {
-  const [style, setStyle] = useState();
 
-  const handleClick = () => {
-    setStyle({ borderColor: 'red' });
+  const handleRedirect = () => {
+    Router.push(`/login`);
   };
 
   return (
 
     <nav>
-      <div className="section">
-        <a href="/" className="logo">&#230;<sup>[1]</sup></a> 
-        <a href="/ledger">Sheets</a>
+      <div className="row">
+        <a href="/" className="logo">T&#230;nlen<sup>[1]</sup></a> 
+        <a href="/sheets">Sheets</a>
         <a href="/blog">Blog</a>
         <a href="/about">About</a>
       </div>
-      <div className="section">
-        <a className="auth" onClick={() => handleClick()} style={style}>Log In</a>
-        <a className="auth" onClick={() => handleClick()} style={style}>Sign Up</a>
+      <div className="row">
+        <a onClick={handleRedirect} className="button">Dashboard</a>
       </div>
     </nav>
-
   );
 };
 

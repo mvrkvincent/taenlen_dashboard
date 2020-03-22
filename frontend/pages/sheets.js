@@ -1,9 +1,9 @@
-import Template from '../components/Template';
+import PageTemplate from '../components/PageTemplate';
 
-const Ledger = () => {
+const Sheets = () => {
 
   return(
-    <Template>
+    <PageTemplate>
       <h1 className="title">
         Get your s*** together.
       </h1>
@@ -11,8 +11,8 @@ const Ledger = () => {
       <p className="subtitle">
         We can help
       </p>
-    </Template>
+    </PageTemplate>
   );
 };
 
-export default Ledger;
+export default Sheets;
