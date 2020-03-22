@@ -14,7 +14,9 @@ const Template = page => (
     <main>
       {page.children}
     </main>
-    
+
+    <span className="footnote">1.  <i>noun, welsh [taen·llen]</i>: A spreadsheet.</span>
+
     <Footer />
   </div>
 );

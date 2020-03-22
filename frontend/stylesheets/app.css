@@ -47,6 +47,14 @@ nav a {
   font-weight: 600;
 }
 
+.footnote {
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 0.75rem;
+  color: #696969;
+  text-align: right;
+}
+
 nav
 .section {
   display: flex;

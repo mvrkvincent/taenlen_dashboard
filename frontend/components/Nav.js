@@ -7,7 +7,7 @@ const Nav = () => {
 
     <nav>
       <div className="section">
-        <a href="/" className="logo">&#230;.</a> 
+        <a href="/" className="logo">&#230;<sup>[1]</sup></a> 
         <a href="/ledger">Ledger</a>
         <a href="/blog">Blog</a>
         <a href="/about">About</a>
