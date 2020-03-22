@@ -10,7 +10,7 @@ const Nav = () => {
         <a href="/" className="logo">&#230;</a> 
         <a href="/ledger">Ledger</a>
         <a href="/blog">Blog</a>
-        <a href="/blog">About</a>
+        <a href="/about">About</a>
       </div>
       <div className="section">
         <a className="auth" onClick={() => setStyle({borderColor: 'red'})} style={style}>Log In</a>

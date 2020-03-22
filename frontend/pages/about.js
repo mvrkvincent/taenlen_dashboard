@@ -1,18 +1,18 @@
 import Template from '../components/Template';
 
-const Ledger = () => {
+const About = () => {
 
-  return(
+  return (
     <Template>
       <h1 className="title">
-        Your Ledger
+        About the Developer
       </h1>
 
       <p className="subtitle">
-        Coming April 2020
+        Check back soon to learn more
       </p>
     </Template>
   );
 };
 
-export default Ledger;
+export default About;
