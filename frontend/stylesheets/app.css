@@ -88,17 +88,6 @@ a {
   text-decoration: none;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
 .title {
   margin: 0;
   line-height: 1.15;
@@ -115,13 +104,25 @@ a {
   font-size: 1.5rem;
 }
 
-code {
+.code {
   background: #fafafa;
   border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
     DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.code:hover,
+.code:focus,
+.code:active {
+  color: #2ED9EB;
+}
+
+.subtitle
+.code {
+  font-size: 1.4rem;
 }
 
 .grid {
@@ -142,13 +143,7 @@ code {
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.module:hover,
-.module:focus,
-.module:active {
-  border-color: #2ED9EB;
+  
 }
 
 .module h3 {

@@ -5,7 +5,7 @@ const Blog = () => {
   return (
     <Template>
       <h1 className="title">
-        T<logo>&#230;</logo>nlen Blog
+        Finance and Future x T<logo>&#230;</logo>nlen.
       </h1>
 
       <p className="subtitle">
