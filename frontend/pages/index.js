@@ -2,9 +2,7 @@ import Template from '../components/Template';
 
 const Splash = () => (
   <Template>
-      <h1 className="title">
-        This is T<logo>&#230;</logo>nlen
-      </h1>
+      <h1 className="title">This is T&#230;nlen</h1>
 
       <p className="subtitle">
         Coming Spring 2020
