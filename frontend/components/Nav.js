@@ -20,7 +20,7 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
       </div>
       <div className="row">
         {logOut}
-        <a href="/dashboard" className="button">Dashboard</a>
+        {/* <a href="/dashboard" className="button">Dashboard</a> */}
       </div>
     </nav>
   );
