@@ -1,4 +1,4 @@
-"""backend URL Configuration
+"""api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -14,21 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include              
-from rest_framework import routers
+from django.urls import path, include
 from rest_framework_simplejwt import views as jwt_views
-from cashout import views as cashoutviews
-from cashin import views as cashinviews               
-                      
-
-router = routers.DefaultRouter()        
-router.register(r'cashouts', cashoutviews.CashOutView, 'cashout')
-router.register(r'cashins', cashinviews.CashInView, 'cashin')            
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('token/obtain/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),
-    path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/', include(router.urls)),
+    path('token-auth/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),
+    # path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 ]
