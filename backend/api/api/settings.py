@@ -78,6 +78,10 @@ SIMPLE_JWT = {
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
 
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'api.utils.taenlen_token_response_handler'
+}
+
 ROOT_URLCONF = 'api.urls'
 
 TEMPLATES = [
