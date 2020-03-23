@@ -22,11 +22,11 @@ body {
 
 .container {
   min-height: 100vh;
-  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-top: 3px solid #2ED9EB;
 }
 
 main {
@@ -118,7 +118,7 @@ nav
 
 .footnote {
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   font-size: 0.75rem;
   color: #696969;
   text-align: right;

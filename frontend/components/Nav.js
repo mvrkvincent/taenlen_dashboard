@@ -1,10 +1,13 @@
-import Router from 'next/router';
 
-const Nav = () => {
+const Nav = ({ loggedIn, setLoggedIn }) => {
 
-  const handleRedirect = () => {
-    Router.push(`/login`);
+  const handleLogOut = e => {
+    e.preventDefault();
+    localStorage.removeItem('token');
+    setLoggedIn(false);
   };
+  
+  const logOut = loggedIn ? <a onClick={handleLogOut} className="button">Log Out</a> : ''
 
   return (
 
@@ -16,7 +19,8 @@ const Nav = () => {
         <a href="/about">About</a>
       </div>
       <div className="row">
-        <a onClick={handleRedirect} className="button">Dashboard</a>
+        {logOut}
+        <a href="/dashboard" className="button">Dashboard</a>
       </div>
     </nav>
   );

@@ -9,7 +9,7 @@ const Template = page => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <Nav />
+    <Nav loggedIn={page.loggedIn} setLoggedIn={page.setLoggedIn}/>
     
     <main>
       {page.children}
