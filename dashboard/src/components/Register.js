@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { register, handleErrors } from '../actions/auth_actions';
 
-const Register = ({ setPage, setLoggedIn }) => {
+const Register = ({ setForm, setLoggedIn }) => {
 
   const development = true;
 
@@ -86,7 +86,7 @@ const Register = ({ setPage, setLoggedIn }) => {
               onChange={handleChange}
             />
             <div className="row">
-              <a onClick={() => setPage('login')} className="button" >Return to Log In</a>
+              <a onClick={() => setForm('login')} className="button" >Return to Log In</a>
               <a className="button" onClick={handleSubmit} style={error.style}>Register &rarr;</a>
             </div>
             <div className="footnote">{error.text}</div>

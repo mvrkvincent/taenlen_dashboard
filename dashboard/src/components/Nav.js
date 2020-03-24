@@ -1,3 +1,4 @@
+import React from 'react';
 import { logout } from '../actions/auth_actions';
 
 const Nav = ({ loggedIn, setLoggedIn }) => {
@@ -14,14 +15,14 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
 
     <nav>
       <div className="row">
-        <a href="/" className="logo">T&#230;nlen<sup>[1]</sup></a> 
-        <a href="/sheets">Sheets</a>
-        <a href="/blog">Blog</a>
-        <a href="/about">About</a>
+        <a href="https://taenlen.com/" className="logo">T&#230;nlen<sup>[1]</sup></a> 
+        <a href="https://taenlen.com/sheets">Sheets</a>
+        <a href="https://taenlen.com/blog">Blog</a>
+        <a href="https://taenlen.com/about">About</a>
       </div>
       <div className="row">
         {logOut}
-        <a href="https://dashboard.taenlen.com" className="button">Dashboard</a>
+        <a href="/dashboard" className="button">Dashboard</a>
       </div>
     </nav>
   );
