@@ -13,7 +13,7 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
     setLoggedIn(false);
   };
   
-  const logOut = loggedIn ? <a onClick={handleLogOut} className="button">Log Out</a> : '';
+  const logOut = loggedIn ? <button onClick={handleLogOut} className="button">Log Out</button> : '';
 
   return (
 
@@ -26,7 +26,7 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
       </div>
       <div className="row">
         {logOut}
-        <a className="button" style={style}>Dashboard</a>
+        <button className="button" style={style}>Dashboard</button>
       </div>
     </nav>
   );

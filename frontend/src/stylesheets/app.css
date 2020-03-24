@@ -71,6 +71,7 @@ main {
 }
 
 .button {
+  font: inherit;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -79,6 +80,9 @@ main {
   border: 1px solid #eaeaea;
   border-radius: 5px;
     transition: color 0.15s ease, border-color 0.15s ease;
+}
+.button:hover {
+  border-color: #2ED9EB;
 }
 
 nav {
