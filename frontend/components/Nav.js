@@ -1,14 +1,15 @@
+import { useState, useEffect } from 'react';
+import { logout } from '../actions/auth_actions';
 
 const Nav = ({ loggedIn, setLoggedIn }) => {
 
   const handleLogOut = e => {
     e.preventDefault();
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
+    logout();
     setLoggedIn(false);
   };
   
-  const logOut = loggedIn ? <a onClick={handleLogOut} className="button">Log Out</a> : ''
+  const logOut = loggedIn ? <a onClick={handleLogOut} className="button">Log Out</a> : '';
 
   return (
 

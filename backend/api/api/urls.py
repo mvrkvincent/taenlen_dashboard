@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from rest_framework_simplejwt import views as jwt_views
 from income import views as income_views
 from expense import views as expense_views
 
@@ -26,8 +25,6 @@ router.register(r'expenses', expense_views.ExpenseView, 'expense')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/obtain-token/', jwt_views.TokenObtainPairView.as_view(), name='create_token'),
-    # path('api/refresh-token/', jwt_views.TokenRefreshView.as_view(), name='refresh_token'),
-    path('api/', include('authentication.urls')),
+    path('api/', include('authenticate.urls')),
     path('api/', include(router.urls)),
 ]

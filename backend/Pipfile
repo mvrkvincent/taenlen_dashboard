@@ -13,6 +13,8 @@ djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 django-cors-headers = "*"
 psycopg2 = "*"
+django-rest-auth = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.7"

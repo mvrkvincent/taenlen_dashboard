@@ -1,22 +1,19 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { register } from '../actions/auth_actions';
 
-const Login = ({ setPage, setLoggedIn }) => {
+const Register = ({ setPage, setLoggedIn }) => {
   const [style, setStyle] = useState();
   const [error, setError] = useState('');
-  const [confirmation, setConfirmation] = useState('');
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
     username: '',
     email: '',
-    password: '',
+    password1: '',
+    password2: '',
   });
 
   const handleChange = e => {
-    if (e.target.name === 'confirmation') {
-      setConfirmation(e.target.value);
-    }
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -24,16 +21,8 @@ const Login = ({ setPage, setLoggedIn }) => {
   };
 
   const handleSubmit = e => {
-    if (confirmation === formData.password) {
-      e.preventDefault();
-      axios.post('http://localhost:8000/api/user/create/', formData)
-        .then(res => {
-          setLoggedIn(true);
-          console.log(res);
-        });
-    } else {
-      setError('2. Passwords must match');
-    }
+    e.preventDefault();
+    register({ formData, setLoggedIn });
   };
 
 
@@ -71,7 +60,7 @@ const Login = ({ setPage, setLoggedIn }) => {
               style={style}
               onChange={handleChange} />
             <input
-              name="password"
+              name="password1"
               type="password"
               placeholder="Password"
               value={formData.password}
@@ -79,10 +68,10 @@ const Login = ({ setPage, setLoggedIn }) => {
               onChange={handleChange}
             />
             <input
-              name="confirmation"
+              name="password2"
               type="password"
               placeholder="Confirm Password"
-              value={confirmation}
+              value={formData.password2}
               style={style}
               onChange={handleChange}
             />
@@ -97,4 +86,4 @@ const Login = ({ setPage, setLoggedIn }) => {
   );
 };
 
-export default Login;
+export default Register;

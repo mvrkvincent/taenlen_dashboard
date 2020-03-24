@@ -28,8 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = "authentication.TaenlenUser"
-
 
 # Application definition
 
@@ -40,12 +38,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
+
     'corsheaders',
-    'authentication',
+    'authenticate',
     'income',
     'expense',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -59,31 +71,10 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),  
-}
-
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
-    'ROTATE_REFRESH_TOKENS': True,
-    'BLACKLIST_AFTER_ROTATION': False,
-    'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
-    'VERIFYING_KEY': None,
-    'AUTH_HEADER_TYPES': ('JWT',),
-    'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM': 'user_id',
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_TYPE_CLAIM': 'token_type',
-}
-
-JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'api.utils.taenlen_token_response_handler'
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 ROOT_URLCONF = 'api.urls'
@@ -159,6 +150,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD= 'username'
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'

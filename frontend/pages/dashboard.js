@@ -4,6 +4,7 @@ import Login from '../components/Login';
 import Register from '../components/Register';
 import PageTemplate from '../components/PageTemplate';
 import Widgets from '../components/Widgets';
+import { fetchUser } from '../actions/auth_actions';
 
 const Dashboard = () => {
   const [page, setPage] = useState('login');
@@ -37,24 +38,10 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem('access_token')) {
+    if (localStorage.getItem('token')) {
       setLoggedIn(true);
     }
-  }, []);
-
-  useEffect(() => {
-    if (loggedIn) {
-      axios.get('http://localhost:8000/api/current_user/', {
-        headers: {
-          Authorization: 'JWT ' + localStorage.getItem('access_token'),
-        }
-      })
-        .then(res => {
-          setUser(res.data.username);
-          console.log(res);
-        });
-    }
-  }, [loggedIn]);
+  });
 
 
   return (

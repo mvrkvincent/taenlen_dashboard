@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { login, fetchUser } from '../actions/auth_actions';
 
 const Login = ({ setPage, setLoggedIn }) => {
   const [style, setStyle] = useState();
@@ -19,13 +19,7 @@ const Login = ({ setPage, setLoggedIn }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('http://localhost:8000/api/token/obtain/', formData)
-      .then(res => {
-        localStorage.setItem('access_token', res.data.access);
-        localStorage.setItem('refresh_token', res.data.refresh);
-        setLoggedIn(true);
-        console.log(res);
-      });
+    login({formData, setLoggedIn});
   };
   
   return (
