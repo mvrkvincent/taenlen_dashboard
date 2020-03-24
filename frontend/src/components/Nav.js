@@ -3,6 +3,10 @@ import { logout } from '../actions/auth_actions';
 
 const Nav = ({ loggedIn, setLoggedIn }) => {
 
+  const style = {
+    borderColor: '#2ED9EB'
+  };
+
   const handleLogOut = e => {
     e.preventDefault();
     logout();
@@ -22,7 +26,7 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
       </div>
       <div className="row">
         {logOut}
-        <a href="/dashboard" className="button">Dashboard</a>
+        <a className="button" style={style}>Dashboard</a>
       </div>
     </nav>
   );
