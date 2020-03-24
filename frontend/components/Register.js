@@ -1,18 +1,22 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 const Login = ({ setPage, setLoggedIn }) => {
   const [style, setStyle] = useState();
   const [error, setError] = useState('');
+  const [confirmation, setConfirmation] = useState('');
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
     username: '',
     email: '',
     password: '',
-    confirmation: ''
   });
 
   const handleChange = e => {
+    if (e.target.name === 'confirmation') {
+      setConfirmation(e.target.value);
+    }
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -20,20 +24,18 @@ const Login = ({ setPage, setLoggedIn }) => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
-    fetch('http://localhost:8000/api/user/create/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-      .then(res => res.json())
-      .then(json => {
-        localStorage.setItem('token', json.token);
-        setLoggedIn(true);
-      });
+    if (confirmation === formData.password) {
+      e.preventDefault();
+      axios.post('http://localhost:8000/api/user/create/', formData)
+        .then(res => {
+          setLoggedIn(true);
+          console.log(res);
+        });
+    } else {
+      setError('2. Passwords must match');
+    }
   };
+
 
   return (
       <div className="grid">
@@ -80,7 +82,7 @@ const Login = ({ setPage, setLoggedIn }) => {
               name="confirmation"
               type="password"
               placeholder="Confirm Password"
-              value={formData.confirmation}
+              value={confirmation}
               style={style}
               onChange={handleChange}
             />

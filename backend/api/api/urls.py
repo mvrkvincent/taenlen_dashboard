@@ -26,8 +26,8 @@ router.register(r'expenses', expense_views.ExpenseView, 'expense')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/obtain-token/', jwt_views.TokenObtainPairView.as_view(), name='create_token'),
-    path('api/refresh-token/', jwt_views.TokenRefreshView.as_view(), name='refresh_token'),
+    # path('api/obtain-token/', jwt_views.TokenObtainPairView.as_view(), name='create_token'),
+    # path('api/refresh-token/', jwt_views.TokenRefreshView.as_view(), name='refresh_token'),
     path('api/', include('authentication.urls')),
     path('api/', include(router.urls)),
 ]

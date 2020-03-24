@@ -3,7 +3,8 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
 
   const handleLogOut = e => {
     e.preventDefault();
-    localStorage.removeItem('token');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
     setLoggedIn(false);
   };
   
@@ -20,7 +21,7 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
       </div>
       <div className="row">
         {logOut}
-        {/* <a href="/dashboard" className="button">Dashboard</a> */}
+        <a href="/dashboard" className="button">Dashboard</a>
       </div>
     </nav>
   );

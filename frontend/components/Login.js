@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Login = ({ setPage, setLoggedIn }) => {
   const [style, setStyle] = useState();
@@ -16,23 +17,16 @@ const Login = ({ setPage, setLoggedIn }) => {
     });
   };
 
-
   const handleSubmit = e => {
     e.preventDefault();
-    fetch('http://localhost:8000/api/obtain-token/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-      .then(res => res.json())
-      .then(json => {
-        localStorage.setItem('token', json.access);
+    axios.post('http://localhost:8000/api/token/obtain/', formData)
+      .then(res => {
+        localStorage.setItem('access_token', res.data.access);
+        localStorage.setItem('refresh_token', res.data.refresh);
         setLoggedIn(true);
+        console.log(res);
       });
   };
-
   
   return (
       <div className="grid">

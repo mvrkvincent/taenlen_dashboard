@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import PageTemplate from '../components/PageTemplate';
@@ -36,21 +37,21 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('access_token')) {
       setLoggedIn(true);
     }
   }, []);
 
   useEffect(() => {
     if (loggedIn) {
-      fetch('http://localhost:8000/api/current_user/', {
+      axios.get('http://localhost:8000/api/current_user/', {
         headers: {
-          Authorization: 'JWT ' + localStorage.getItem('token'),
+          Authorization: 'JWT ' + localStorage.getItem('access_token'),
         }
       })
-        .then(res => res.json())
-        .then(data => {
-          setUser(data.username);
+        .then(res => {
+          setUser(res.data.username);
+          console.log(res);
         });
     }
   }, [loggedIn]);
