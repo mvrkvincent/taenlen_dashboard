@@ -1,7 +1,7 @@
 import React from 'react';
 import { logout } from '../actions/auth_actions';
 
-const Nav = ({ loggedIn, setLoggedIn }) => {
+const Nav = ({ loggedIn }) => {
 
   const style = {
     borderColor: '#2ED9EB'
@@ -10,7 +10,6 @@ const Nav = ({ loggedIn, setLoggedIn }) => {
   const handleLogOut = e => {
     e.preventDefault();
     logout();
-    setLoggedIn(false);
   };
   
   const logOut = loggedIn ? <button onClick={handleLogOut} className="button">Log Out</button> : '';

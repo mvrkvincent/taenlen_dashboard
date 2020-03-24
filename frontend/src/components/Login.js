@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { login, handleErrors } from '../actions/auth_actions';
 
 const Login = ({ setForm, setLoggedIn }) => {
@@ -53,8 +53,8 @@ const Login = ({ setForm, setLoggedIn }) => {
             onChange={handleChange}
             />
           <div className="row">
-            <a onClick={() => setForm('register')} className="button" >Create Account</a>
-              <a className="button" onClick={handleSubmit} style={error.style}>Submit &rarr;</a>
+            <button type="button" onClick={() => setForm('register')} className="button" >Create Account</button>
+              <button className="button" onClick={handleSubmit} style={error.style}>Submit &rarr;</button>
           </div>
           <div className="footnote">{error.text}</div>
           </form>

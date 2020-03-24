@@ -86,8 +86,8 @@ const Register = ({ setForm, setLoggedIn }) => {
               onChange={handleChange}
             />
             <div className="row">
-              <a onClick={() => setForm('login')} className="button" >Return to Log In</a>
-              <a className="button" onClick={handleSubmit} style={error.style}>Register &rarr;</a>
+              <button type="button" onClick={() => setForm('login')} className="button" >Return to Log In</button>
+              <button className="button" onClick={handleSubmit} style={error.style}>Register &rarr;</button>
             </div>
             <div className="footnote">{error.text}</div>
           </form>

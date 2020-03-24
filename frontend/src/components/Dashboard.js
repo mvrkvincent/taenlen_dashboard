@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Footer from './Footer';
 import Nav from './Nav';
 import Login from './Login';
@@ -7,15 +7,15 @@ import Widgets from './Widgets';
 
 const Dashboard = () => {
   const [form, setForm] = useState('login');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const loggedIn = localStorage.getItem('token') ? true : false;
   
   const generateForms = () => {
     switch (form) {
       case 'login':
-        return <Login setForm={setForm} setLoggedIn={setLoggedIn} />;
+        return <Login setForm={setForm} />;
 
       case 'register':
-        return <Register setForm={setForm} setLoggedIn={setLoggedIn} />;
+        return <Register setForm={setForm} />;
 
       default:
         return <Login />;
@@ -35,17 +35,10 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setLoggedIn(true);
-    }
-  });
-
-
   return (
     <div className="container">
 
-      <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Nav loggedIn={loggedIn} />
 
       <main>
         {generateContent()} 
