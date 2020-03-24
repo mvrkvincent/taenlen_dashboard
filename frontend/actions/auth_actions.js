@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export const handleErrors = setError => {
+  setError({
+    text: '1. Dashboard Coming April 2020',
+    style: {borderColor: 'red'}
+  });
+};
+
 export const checkAuthTimeout = expirationTime => {
   setTimeout(() => {
     logout();
@@ -32,9 +39,3 @@ export const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('expirationDate');
 };
-
-// export const fetchUser = userName => {
-//   axios.get('http://localhost:8000/api/user/', userName)
-//   .then(res => console.log(res))
-//   .catch(err => console.log(err));
-// };

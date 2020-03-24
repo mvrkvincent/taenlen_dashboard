@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react';
-import { login, fetchUser } from '../actions/auth_actions';
+import { login, handleErrors } from '../actions/auth_actions';
 
 const Login = ({ setPage, setLoggedIn }) => {
-  const [style, setStyle] = useState();
-  const [error, setError] = useState('');
+
+  const development = true;
+
+  const [error, setError] = useState({
+    text: '',
+    style: null,
+  });
+  
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -19,7 +25,11 @@ const Login = ({ setPage, setLoggedIn }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    login({formData, setLoggedIn});
+    if (development) {
+      handleErrors(setError);
+    } else {
+      login({ formData, setLoggedIn });
+    }
   };
   
   return (
@@ -32,21 +42,21 @@ const Login = ({ setPage, setLoggedIn }) => {
             type="text"
             placeholder="Username"
             value={formData.username}
-            style={style}
+            style={error.style}
             onChange={handleChange} />
           <input 
             name="password"
             type="password" 
             placeholder="Password"
             value={formData.password}
-            style={style}
+            style={error.style}
             onChange={handleChange}
             />
           <div className="row">
             <a onClick={() => setPage('register')} className="button" >Create Account</a>
-              <a className="button" onClick={handleSubmit}>Submit &rarr;</a>
+              <a className="button" onClick={handleSubmit} style={error.style}>Submit &rarr;</a>
           </div>
-          <div className="footnote">{error}</div>
+          <div className="footnote">{error.text}</div>
           </form>
         </div>
       </div>

@@ -1,9 +1,15 @@
 import { useState } from 'react';
-import { register } from '../actions/auth_actions';
+import { register, handleErrors } from '../actions/auth_actions';
 
 const Register = ({ setPage, setLoggedIn }) => {
-  const [style, setStyle] = useState();
-  const [error, setError] = useState('');
+
+  const development = true;
+
+  const [error, setError] = useState({
+    text: '',
+    style: null,
+  });
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -20,11 +26,15 @@ const Register = ({ setPage, setLoggedIn }) => {
     });
   };
 
+
   const handleSubmit = e => {
     e.preventDefault();
-    register({ formData, setLoggedIn });
+    if (development) {
+      handleErrors(setError);
+    } else {
+      register({ formData, setLoggedIn });
+    }
   };
-
 
   return (
       <div className="grid">
@@ -36,35 +46,35 @@ const Register = ({ setPage, setLoggedIn }) => {
               type="text"
               placeholder="First Name"
               value={formData.first_name}
-              style={style}
+              style={error.style}
               onChange={handleChange} />
             <input
               name="last_name"
               type="text"
               placeholder="Last Name"
               value={formData.last_name}
-              style={style}
+              style={error.style}
               onChange={handleChange} />
             <input
               name="username"
               type="text"
               placeholder="Username"
               value={formData.username}
-              style={style}
+              style={error.style}
               onChange={handleChange} />
             <input
               name="email"
               type="email"
               placeholder="Email"
               value={formData.email}
-              style={style}
+              style={error.style}
               onChange={handleChange} />
             <input
               name="password1"
               type="password"
               placeholder="Password"
               value={formData.password}
-              style={style}
+              style={error.style}
               onChange={handleChange}
             />
             <input
@@ -72,14 +82,14 @@ const Register = ({ setPage, setLoggedIn }) => {
               type="password"
               placeholder="Confirm Password"
               value={formData.password2}
-              style={style}
+              style={error.style}
               onChange={handleChange}
             />
             <div className="row">
               <a onClick={() => setPage('login')} className="button" >Return to Log In</a>
-              <a className="button" onClick={handleSubmit} style={style}>Register &rarr;</a>
+              <a className="button" onClick={handleSubmit} style={error.style}>Register &rarr;</a>
             </div>
-            <div className="footnote">{error}</div>
+            <div className="footnote">{error.text}</div>
           </form>
         </div>
       </div>
