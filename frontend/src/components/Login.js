@@ -4,7 +4,7 @@ import { login, handleErrors } from '../actions/session_actions';
 
 const Login = props => {
   const { setForm, login } = props;
-  const development = false;
+  const development = true;
 
   const [error, setError] = useState({
     text: '',
