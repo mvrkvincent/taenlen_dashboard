@@ -1,15 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../actions/auth_actions';
+import { logout } from '../actions/session_actions';
 
 const Nav = ({ loggedIn, logout }) => {
 
-  const style = {
-    borderColor: '#2ED9EB'
-  };
-
-
-  const logoutButton = loggedIn ? <button onClick={logout} className="button">Log Out</button> : '';
+  const logoutButton = loggedIn ? <button className="logout_button" onClick={logout}>Log Out</button> : '';
 
   return (
 
@@ -22,7 +17,7 @@ const Nav = ({ loggedIn, logout }) => {
       </div>
       <div className="row">
         {logoutButton}
-        <button className="button" style={style}>Dashboard</button>
+        <button className="dash_button">Dashboard</button>
       </div>
     </nav>
   );
@@ -33,9 +28,7 @@ const msp = state => ({
 })
 
 const mdp = dispatch => ({
-
   logout: () => dispatch(logout())
-
 });
 
 export default connect(msp, mdp)(Nav);

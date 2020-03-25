@@ -1,39 +1,37 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { register, handleErrors } from '../actions/session_actions';
+import { register } from '../actions/session_actions';
 
-const Register = ({ setForm, register }) => {
-  const development = false;
-
-  const [error, setError] = useState({
-    text: '',
-    style: null,
-  });
-
+const Register = ({ setForm, register, errorList }) => {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
     username: '',
     email: '',
-    password: '',
-    // password2: '',
+    password: '', 
   });
 
-  const handleChange = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const { firstNameError, lastNameError, emailError, usernameError, passwordError, generalError } = errorList;
+  const errorStyle = { borderColor: 'red' };
+
+  const style = {
+    firstNameError: (firstNameError || generalError) ? errorStyle : null,
+    lastNameError: (lastNameError || generalError) ? errorStyle : null,
+    emailError: (emailError || generalError) ? errorStyle : null,
+    usernameError: (usernameError || generalError) ? errorStyle : null,
+    passwordError: (passwordError || generalError) ? errorStyle : null
   };
 
+  const handleChange = e => {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+      });
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (development) {
-      handleErrors(setError);
-    } else {
       register(formData);
-    }
   };
 
   return (
@@ -45,65 +43,66 @@ const Register = ({ setForm, register }) => {
               name="first_name"
               type="text"
               placeholder="First Name"
+              style={style.firstNameError}
               value={formData.first_name}
-              style={error.style}
               onChange={handleChange} />
+            < div className="error">{firstNameError}</div>
             <input
               name="last_name"
               type="text"
               placeholder="Last Name"
+              style={style.lastNameError}
               value={formData.last_name}
-              style={error.style}
               onChange={handleChange} />
+            < div className="error">{lastNameError}</div>
             <input
               name="username"
               type="text"
               placeholder="Username"
+              style={style.usernameError}
               value={formData.username}
-              style={error.style}
               onChange={handleChange} />
+            <div className="error">{usernameError}</div>
             <input
               name="email"
               type="email"
               placeholder="Email"
+              style={style.emailError}
               value={formData.email}
-              style={error.style}
               onChange={handleChange} />
+            <div className="error">{emailError}</div>
             <input
               name="password"
               type="password"
               placeholder="Password"
+              style={style.passwordError}
               value={formData.password}
-              style={error.style}
-              onChange={handleChange}
-            />
-            {/* <input
-              name="password2"
-              type="password"
-              placeholder="Confirm Password"
-              value={formData.password2}
-              style={error.style}
-              onChange={handleChange}
-            /> */}
+              onChange={handleChange} />
+            < div className="error">{passwordError}</div>
             <div className="row">
               <button type="button" onClick={() => setForm('login')} className="button" >Return to Log In</button>
-              <button className="button" onClick={handleSubmit} style={error.style}>Register &rarr;</button>
+              <button className="button" onClick={handleSubmit} >Register &rarr;</button>
             </div>
-            <div className="footnote">{error.text}</div>
+            <div className="error">{generalError}</div>
           </form>
         </div>
       </div>
   );
 };
 
-const msp = state => ({
-  state: state
-})
+const msp = ({ errors }) => ({
+  errorList: {
+    firstNameError: errors.first_name,
+    lastNameError: errors.last_name,
+    emailError: errors.email,
+    usernameError: errors.username,
+    passwordError: errors.password,
+    generalError: errors.non_field_errors
+  }
+});
 
 const mdp = dispatch => ({
-
   register: user => dispatch(register(user))
-
 });
 
 export default connect(msp, mdp)(Register);

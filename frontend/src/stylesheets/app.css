@@ -70,6 +70,8 @@ main {
   line-height: 1.5;
 }
 
+.logout_button,
+.dash_button,
 .button {
   font: inherit;
   display: flex;
@@ -81,8 +83,24 @@ main {
   border-radius: 5px;
     transition: color 0.15s ease, border-color 0.15s ease;
 }
+
+.logout_button:hover {
+  border-color: red;
+}
+
+.dash_button {
+  border-color: #2ED9EB;
+}
+
 .button:hover {
   border-color: #2ED9EB;
+}
+
+nav .button,
+nav .dash_button,
+nav .logout_button {
+  margin-left: 1.5rem;
+  margin-top: 1rem;
 }
 
 nav {
@@ -105,12 +123,6 @@ nav
 nav a {
   padding-left: 1.5rem;
   padding-top: 1rem;
-}
-
-nav
-.button {
-  margin-left: 1.5rem;
-  margin-top: 1rem;
 }
 
 .logo {

@@ -9,13 +9,6 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
-export const handleErrors = setError => {
-  setError({
-    text: '1. Dashboard Coming April 2020',
-    style: { borderColor: 'red' }
-  });
-};
-
 const receiveUser = payload => ({
   type: USER_RECEIVED,
   payload

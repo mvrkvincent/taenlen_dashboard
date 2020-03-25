@@ -13,12 +13,9 @@ const Dashboard = ({ loggedIn, firstName }) => {
     
     switch (form) {
       case 'login':
-        
         return <Login setForm={setForm} />;
-
       case 'register':
-        return <Register setForm={setForm} />;
-
+        return <Register setForm={setForm} />
       default:
         return <Login />;
     }
@@ -29,11 +26,8 @@ const Dashboard = ({ loggedIn, firstName }) => {
     switch (loggedIn) {
       case true:
         return <Widgets firstName={firstName} />;
-
       case false:
-        
         return generateForms();
-
       default:
         generateForms();
     }
@@ -57,10 +51,8 @@ const Dashboard = ({ loggedIn, firstName }) => {
 };
 
 const msp = ({ session }) => ({
-
   loggedIn: session.isAuthenticated,
   firstName: session.user ? session.user.first_name : ''
-
 })
 
 
