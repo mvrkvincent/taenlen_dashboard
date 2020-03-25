@@ -40,19 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'rest_framework',
-    'rest_framework.authtoken',
-    'rest_auth',
-
-    'allauth',
-    'allauth.account',
-    'rest_auth.registration',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitter',
-
     'corsheaders',
-    'authentication',
+    'knox',
+
+    'accounts',
 ]
+
 
 SITE_ID = 1
 
@@ -102,6 +95,14 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (  
+        'knox.auth.TokenAuthentication',
+    ),
+    'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -140,9 +141,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'

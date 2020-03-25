@@ -12,8 +12,7 @@ django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 psycopg2 = "*"
-django-rest-auth = "*"
-django-allauth = "*"
+django-rest-knox = "*"
 
 [requires]
 python_version = "3.7"
