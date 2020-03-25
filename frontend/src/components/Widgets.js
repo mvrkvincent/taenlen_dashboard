@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Widgets = ({ user }) => {
+const Widgets = ({ firstName }) => {
 
 
   return (
-    <h1 className='title'>{user} Dashboard.</h1>
+    <h1 className='title'>Welcome {firstName}</h1>
   );
 };
 

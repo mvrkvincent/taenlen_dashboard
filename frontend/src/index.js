@@ -8,18 +8,17 @@ import './stylesheets/app.css';
 import './stylesheets/auth.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  let store;
-  if (window.currentUser) {
-    const preloadedState = {
-      session: { id: window.currentUser.id }
-    };
-    store = configureStore(preloadedState);
-    delete window.currentUser;
-  } else {
-    store = configureStore();
-  }
-
+  // let token = localStorage.getItem('token');
+  // let store;
+  // if (token) {
+  //   const preloadedState = {
+  //     session: { token: token }
+  //   };
+  //   store = configureStore(preloadedState);
+  // } else {
+  //   store = configureStore();
+  // }
+  let store = configureStore();
   window.getState = store.getState;
 
   const root = document.getElementById('root');

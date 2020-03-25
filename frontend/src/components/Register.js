@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { register, handleErrors } from '../actions/session_actions';
 
-const Register = ({ setForm, setLoggedIn }) => {
-
-  const development = true;
+const Register = ({ setForm, register }) => {
+  const development = false;
 
   const [error, setError] = useState({
     text: '',
@@ -15,8 +15,8 @@ const Register = ({ setForm, setLoggedIn }) => {
     last_name: '',
     username: '',
     email: '',
-    password1: '',
-    password2: '',
+    password: '',
+    // password2: '',
   });
 
   const handleChange = e => {
@@ -32,7 +32,7 @@ const Register = ({ setForm, setLoggedIn }) => {
     if (development) {
       handleErrors(setError);
     } else {
-      register({ formData, setLoggedIn });
+      register(formData);
     }
   };
 
@@ -70,21 +70,21 @@ const Register = ({ setForm, setLoggedIn }) => {
               style={error.style}
               onChange={handleChange} />
             <input
-              name="password1"
+              name="password"
               type="password"
               placeholder="Password"
               value={formData.password}
               style={error.style}
               onChange={handleChange}
             />
-            <input
+            {/* <input
               name="password2"
               type="password"
               placeholder="Confirm Password"
               value={formData.password2}
               style={error.style}
               onChange={handleChange}
-            />
+            /> */}
             <div className="row">
               <button type="button" onClick={() => setForm('login')} className="button" >Return to Log In</button>
               <button className="button" onClick={handleSubmit} style={error.style}>Register &rarr;</button>
@@ -96,4 +96,14 @@ const Register = ({ setForm, setLoggedIn }) => {
   );
 };
 
-export default Register;
+const msp = state => ({
+  state: state
+})
+
+const mdp = dispatch => ({
+
+  register: user => dispatch(register(user))
+
+});
+
+export default connect(msp, mdp)(Register);

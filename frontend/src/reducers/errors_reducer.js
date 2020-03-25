@@ -2,7 +2,6 @@ import {
   USER_ERROR,
   REGISTER_ERROR,
   LOGIN_ERROR,
-  LOGOUT_SUCCESS
 } from '../actions/session_actions';
 
 export default (state = [], action) => {
@@ -11,8 +10,7 @@ export default (state = [], action) => {
   switch (action.type) {
     case USER_ERROR: 
     case LOGIN_ERROR: 
-    case REGISTER_ERROR:
-    case LOGOUT_SUCCESS: {
+    case REGISTER_ERROR: {
       return action.payload;
     }
     default: 

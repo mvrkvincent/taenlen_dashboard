@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { login, handleErrors } from '../actions/session_actions';
 
-const Login = props => {
-  const { setForm, login } = props;
-  const development = true;
+const Login = ({ setForm, login }) => {
+  const development = false;
 
   const [error, setError] = useState({
     text: '',

@@ -6,7 +6,7 @@ import Login from './Login';
 import Register from './Register';
 import Widgets from './Widgets';
 
-const Dashboard = ({ loggedIn }) => {
+const Dashboard = ({ loggedIn, firstName }) => {
   const [form, setForm] = useState('login');
   
   const generateForms = () => {
@@ -28,7 +28,7 @@ const Dashboard = ({ loggedIn }) => {
     
     switch (loggedIn) {
       case true:
-        return <Widgets />;
+        return <Widgets firstName={firstName} />;
 
       case false:
         
@@ -56,9 +56,10 @@ const Dashboard = ({ loggedIn }) => {
   );
 };
 
-const msp = state => ({
+const msp = ({ session }) => ({
 
-  loggedIn: state.session.isAuthenticated
+  loggedIn: session.isAuthenticated,
+  firstName: session.user ? session.user.first_name : ''
 
 })
 

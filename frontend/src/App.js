@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import Dashboard from './components/Dashboard';
+import { fetchUser } from './actions/session_actions';
 
-const App = ({ store }) => {
+const App = ({ store }) => { 
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      store.dispatch(fetchUser());
+    }
+  });
+
   return (
     <Provider store={store}>
       <Dashboard />
