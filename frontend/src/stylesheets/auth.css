@@ -39,3 +39,7 @@ input:focus {
   color: #696969;
   text-align: right;
 }
+
+.button_row {
+  margin-top: 1rem;
+}
