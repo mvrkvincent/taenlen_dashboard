@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import Footer from './Footer';
 import Nav from './Nav';
 import Login from './Login';
 import Register from './Register';
 import Widgets from './Widgets';
 
-const Dashboard = () => {
+const Dashboard = ({ loggedIn }) => {
   const [form, setForm] = useState('login');
-  const loggedIn = localStorage.getItem('token') ? true : false;
   
   const generateForms = () => {
+    
     switch (form) {
       case 'login':
+        
         return <Login setForm={setForm} />;
 
       case 'register':
@@ -23,11 +25,13 @@ const Dashboard = () => {
   };
 
   const generateContent = () => {
+    
     switch (loggedIn) {
       case true:
         return <Widgets />;
 
       case false:
+        
         return generateForms();
 
       default:
@@ -38,7 +42,7 @@ const Dashboard = () => {
   return (
     <div className="container">
 
-      <Nav loggedIn={loggedIn} />
+      <Nav />
 
       <main>
         {generateContent()} 
@@ -52,5 +56,12 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+const msp = state => ({
+
+  loggedIn: state.session.isAuthenticated
+
+})
+
+
+export default connect(msp)(Dashboard);
 

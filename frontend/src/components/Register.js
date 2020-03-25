@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { register, handleErrors } from '../actions/auth_actions';
+import { register, handleErrors } from '../actions/session_actions';
 
 const Register = ({ setForm, setLoggedIn }) => {
 

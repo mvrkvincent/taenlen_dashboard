@@ -1,11 +1,12 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import Dashboard from './components/Dashboard';
 
-const App = () => {
+const App = ({ store }) => {
   return (
-    <div className="App">
+    <Provider store={store}>
       <Dashboard />
-    </div>
+    </Provider>
   );
 };
 

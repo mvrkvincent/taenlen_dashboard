@@ -1,11 +1,6 @@
 import axios from "axios";
 
-export const handleErrors = setError => {
-  setError({
-    text: '1. Dashboard Coming April 2020',
-    style: {borderColor: 'red'}
-  });
-};
+
 
 export const checkAuthTimeout = expirationTime => {
   setTimeout(() => {

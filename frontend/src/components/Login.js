@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { login, handleErrors } from '../actions/auth_actions';
+import { connect } from 'react-redux';
+import { login, handleErrors } from '../actions/session_actions';
 
-const Login = ({ setForm, setLoggedIn }) => {
-
-  const development = true;
+const Login = props => {
+  const { setForm, login } = props;
+  const development = false;
 
   const [error, setError] = useState({
     text: '',
@@ -26,9 +27,11 @@ const Login = ({ setForm, setLoggedIn }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (development) {
+      
       handleErrors(setError);
     } else {
-      login({ formData, setLoggedIn });
+      
+      login(formData);
     }
   };
   
@@ -63,5 +66,15 @@ const Login = ({ setForm, setLoggedIn }) => {
   );
 };
 
-export default Login;
+const msp = state => ({
+  state: state
+})
+
+const mdp = dispatch => ({
+
+  login: user => dispatch(login(user))
+
+});
+
+export default connect(msp, mdp)(Login);
 
