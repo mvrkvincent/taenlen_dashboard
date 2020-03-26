@@ -50,7 +50,7 @@ const Login = ({ setForm, login, errorList }) => {
             onChange={handleChange}
             />
           <div className="error">{passwordError}</div>
-          <div className="row button_row">
+          <div className="row submit_row">
             <button type="button" onClick={() => setForm('register')} className="button" >Create Account</button>
               <button className="button" onClick={handleSubmit} >Submit &rarr;</button>
           </div>

@@ -4,14 +4,14 @@ import Footer from './Footer';
 import Nav from './Nav';
 import Login from './Login';
 import Register from './Register';
-import Widgets from './Widgets';
+import Tabs from './Tabs';
 import DevPlaceholder from './DevPlaceholder';
 
 const Dashboard = ({ loggedIn }) => {
   const dev = false;
 
   const [form, setForm] = useState('login');
-  const dashboard = dev ? <DevPlaceholder /> : <Widgets />;
+  const Dashboard = dev ? <DevPlaceholder /> : <Tabs />;
   
   const generateForms = () => {
     
@@ -29,7 +29,7 @@ const Dashboard = ({ loggedIn }) => {
     
     switch (loggedIn) {
       case true:
-        return dashboard;
+        return Dashboard;
       case false:
         return generateForms();
       default:

@@ -79,7 +79,7 @@ const Register = ({ setForm, register, errorList }) => {
               value={formData.password}
               onChange={handleChange} />
             < div className="error">{passwordError}</div>
-            <div className="row button_row">
+            <div className="row submit_row">
               <button type="button" onClick={() => setForm('login')} className="button" >Return to Log In</button>
               <button className="button" onClick={handleSubmit} >Register &rarr;</button>
             </div>

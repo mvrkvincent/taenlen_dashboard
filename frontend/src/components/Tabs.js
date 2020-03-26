@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Widgets = () => {
+const Tabs = () => {
 
 
   return (
@@ -10,5 +10,5 @@ const Widgets = () => {
   );
 };
 
-export default Widgets;
+export default Tabs;
 
