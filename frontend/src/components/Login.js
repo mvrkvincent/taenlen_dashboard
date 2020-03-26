@@ -9,7 +9,7 @@ const Login = ({ setForm, login, errorList }) => {
   });
 
   const { usernameError, passwordError, generalError } = errorList;
-  const errorStyle = { borderColor: 'red' };
+  const errorStyle = { borderColor: '#EC407A4' };
 
   const style = {
     usernameError: (usernameError || generalError) ? errorStyle : null,

@@ -2,29 +2,43 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../actions/session_actions';
 
-const Nav = ({ loggedIn, logout }) => {
+const Nav = ({ firstName, loggedIn, logout }) => {
 
-  const logoutButton = loggedIn ? <button className="logout_button" onClick={logout}>Log Out</button> : '';
+  const generateButtons = () => {
+    switch (loggedIn) {
+      case true: 
+        return( 
+          <div className="row">
+            <div className="welcome">{`${firstName}'s Dashboard`}</div>
+            <button className="logout_button" onClick={logout}>Log Out</button>
+          </div>
+        )
+      default: 
+        return( 
+          <div className="row">
+            <button className="dash_button">Dashboard</button>
+          </div>
+        )
+    }
+  }
 
   return (
 
     <nav>
       <div className="row">
         <a href="https://taenlen.com/" className="logo">T&#230;nlen<sup>[1]</sup></a> 
-        <a href="https://taenlen.com/sheets">Sheets</a>
+        <a href="https://taenlen.com/tabs">Tabs</a>
         <a href="https://taenlen.com/blog">Blog</a>
         <a href="https://taenlen.com/about">About</a>
       </div>
-      <div className="row">
-        {logoutButton}
-        <button className="dash_button">Dashboard</button>
-      </div>
+        {generateButtons()}
     </nav>
   );
 };
 
-const msp = state => ({
-  loggedIn: state.session.isAuthenticated
+const msp = ({ session }) => ({
+  loggedIn: session.isAuthenticated,
+  firstName: session.user ? session.user.first_name : ''
 })
 
 const mdp = dispatch => ({

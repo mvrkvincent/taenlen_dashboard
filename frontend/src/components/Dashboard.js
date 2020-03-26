@@ -5,9 +5,13 @@ import Nav from './Nav';
 import Login from './Login';
 import Register from './Register';
 import Widgets from './Widgets';
+import DevPlaceholder from './DevPlaceholder';
 
-const Dashboard = ({ loggedIn, firstName }) => {
+const Dashboard = ({ loggedIn }) => {
+  const dev = false;
+
   const [form, setForm] = useState('login');
+  const dashboard = dev ? <DevPlaceholder /> : <Widgets />;
   
   const generateForms = () => {
     
@@ -25,7 +29,7 @@ const Dashboard = ({ loggedIn, firstName }) => {
     
     switch (loggedIn) {
       case true:
-        return <Widgets firstName={firstName} />;
+        return dashboard;
       case false:
         return generateForms();
       default:
@@ -51,8 +55,7 @@ const Dashboard = ({ loggedIn, firstName }) => {
 };
 
 const msp = ({ session }) => ({
-  loggedIn: session.isAuthenticated,
-  firstName: session.user ? session.user.first_name : ''
+  loggedIn: session.isAuthenticated
 })
 
 

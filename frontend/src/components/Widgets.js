@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Widgets = ({ firstName }) => {
+const Widgets = () => {
 
 
   return (
-    <h1 className='title'>Welcome {firstName}</h1>
+    <main>
+      <h1 className='title'>TABS GO HERE</h1>
+    </main>
   );
 };
 

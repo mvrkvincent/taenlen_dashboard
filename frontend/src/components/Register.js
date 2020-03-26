@@ -12,7 +12,7 @@ const Register = ({ setForm, register, errorList }) => {
   });
 
   const { firstNameError, lastNameError, emailError, usernameError, passwordError, generalError } = errorList;
-  const errorStyle = { borderColor: 'red' };
+  const errorStyle = { borderColor: '#EC407A' };
 
   const style = {
     firstNameError: (firstNameError || generalError) ? errorStyle : null,
