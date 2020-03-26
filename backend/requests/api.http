@@ -1,2 +1,8 @@
-POST http://127.0.0.1:8000/api/auth/logout
-Authorization: Token 3e557c26f3e05d927fbaad3398f78d7e3c898774104331e98e963eab40a9c7d2
+POST http://127.0.0.1:8000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "John",
+    "email": "john@example.com",
+    "password": "1234"
+}
