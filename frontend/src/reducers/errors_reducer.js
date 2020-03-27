@@ -2,7 +2,7 @@ import {
   USER_ERROR,
   REGISTER_ERROR,
   LOGIN_ERROR,
-} from '../actions/session_actions';
+} from '../actions/auth_actions';
 
 export default (state = [], action) => {
   Object.freeze(state);

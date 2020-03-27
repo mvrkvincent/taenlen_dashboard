@@ -1,0 +1,67 @@
+
+
+#tab
+input:focus {
+  outline: 2px;
+}
+
+.tabs-head {
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.tabs-head h1 {
+  margin: 0;
+}
+
+.tabs-head
+.module {
+  cursor: pointer;
+  flex-basis: 30%;
+  /* border: 0; */
+  box-shadow: none;
+}
+
+.tabs-head-amount {
+  padding-bottom: 1rem;
+  font-size: 2.5rem; 
+  text-align: center;
+}
+
+.tabs-head-lable {
+  padding-top: 1rem;
+  border-top: 1px solid;
+  text-align: center;
+  font-size: 2rem; 
+}
+
+.time {
+  border-color: #26C6DA;
+}
+
+.time i {
+  color: #26C6DA;
+}
+
+.cash {
+  border-color: #9CCC65;
+}
+.cash i {
+  color: #9CCC65;
+}
+
+.expenses {
+  border-color: #D32F2F;
+}
+.expenses i {
+  color: #D32F2F;
+}
+
+.tab-title {
+  padding: 0;
+  border: none;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+

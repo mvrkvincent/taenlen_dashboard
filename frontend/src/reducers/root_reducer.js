@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import sessionReducer from './session_reducer';
+import authReducer from './auth_reducer';
 import errorsReducer from './errors_reducer';
+import tabsReducer from './tabs_reducer';
 
 export default combineReducers({
   errors: errorsReducer,
-  session: sessionReducer
+  auth: authReducer,
+  tabs: tabsReducer
 });

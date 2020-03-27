@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { register } from '../actions/session_actions';
+import { register } from '../../actions/auth_actions';
 
-const Register = ({ setForm, register, errorList }) => {
+const Register = ({ errorList, setForm, register }) => {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -35,8 +35,7 @@ const Register = ({ setForm, register, errorList }) => {
   };
 
   return (
-      <div className="grid">
-        <div id="login" className="module">
+        <div id="auth" className="module">
           <h1 className="title">Register.</h1>
           <form className="column">
             <input
@@ -79,14 +78,13 @@ const Register = ({ setForm, register, errorList }) => {
               value={formData.password}
               onChange={handleChange} />
             < div className="error">{passwordError}</div>
-            <div className="row submit_row">
+            <div className="row submit-row">
               <button type="button" onClick={() => setForm('login')} className="button" >Return to Log In</button>
               <button className="button" onClick={handleSubmit} >Register &rarr;</button>
             </div>
             <div className="error">{generalError}</div>
           </form>
         </div>
-      </div>
   );
 };
 

@@ -7,7 +7,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_ERROR
-} from '../actions/session_actions';
+} from '../actions/auth_actions';
 
 const initialState = {
   isLoading: false,

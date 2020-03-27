@@ -88,7 +88,7 @@ export const logout = () => async (dispatch, getState) => {
 
 export const tokenConfig = getState => {
   
-  const token = getState().session.token;
+  const token = getState().auth.token;
 
   const config = {
     headers: {

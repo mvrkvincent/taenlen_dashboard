@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import Dashboard from './components/Dashboard';
-import { fetchUser } from './actions/session_actions';
+import { fetchUser } from './actions/auth_actions';
 
 const App = ({ store }) => { 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../actions/session_actions';
+import { logout } from '../actions/auth_actions';
 
 const Nav = ({ firstName, loggedIn, logout }) => {
 
@@ -10,7 +10,7 @@ const Nav = ({ firstName, loggedIn, logout }) => {
         return( 
           <div className="row">
             <div className="welcome">{`${firstName}'s`} Dashboard</div>
-            <button className="logout_button" onClick={logout}>Log Out</button>
+            <button className="llogout-button" onClick={logout}>Log Out</button>
           </div>
         )
       default: 
@@ -36,9 +36,9 @@ const Nav = ({ firstName, loggedIn, logout }) => {
   );
 };
 
-const msp = ({ session }) => ({
-  loggedIn: session.isAuthenticated,
-  firstName: session.user ? session.user.first_name : ''
+const msp = ({ auth }) => ({
+  loggedIn: auth.isAuthenticated,
+  firstName: auth.user ? auth.user.first_name : ''
 })
 
 const mdp = dispatch => ({

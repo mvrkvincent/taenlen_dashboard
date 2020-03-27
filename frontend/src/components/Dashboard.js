@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Footer from './Footer';
 import Nav from './Nav';
-import Login from './Login';
-import Register from './Register';
-import Tabs from './Tabs';
+import Login from './auth/Login';
+import Register from './auth/Register';
+import Tabs from './tabs/Tabs';
 import DevPlaceholder from './DevPlaceholder';
 
 const Dashboard = ({ loggedIn }) => {
@@ -54,8 +54,8 @@ const Dashboard = ({ loggedIn }) => {
   );
 };
 
-const msp = ({ session }) => ({
-  loggedIn: session.isAuthenticated
+const msp = ({ auth }) => ({
+  loggedIn: auth.isAuthenticated
 })
 
 

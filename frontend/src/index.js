@@ -5,14 +5,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './stylesheets/_css_reset.css';
 import './stylesheets/app.css';
+import './stylesheets/nav.css';
 import './stylesheets/auth.css';
+import './stylesheets/tab.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   let token = localStorage.getItem('token');
   let store;
   if (token) {
     const preloadedState = {
-      session: { token: token }
+      auth: { token: token }
     };
     store = configureStore(preloadedState);
   } else {
