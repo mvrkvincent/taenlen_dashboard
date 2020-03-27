@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Footer from './Footer';
 import Nav from './Nav';
@@ -7,25 +7,24 @@ import Register from './auth/Register';
 import Tabs from './tabs/Tabs';
 import DevPlaceholder from './DevPlaceholder';
 
-const Dashboard = ({ loggedIn }) => {
+const Dashboard = ({ loggedIn, view }) => {
   const dev = false;
 
-  const [form, setForm] = useState('login');
   const Dashboard = dev ? <DevPlaceholder /> : <Tabs />;
   
   const generateForms = () => {
     
-    switch (form) {
+    switch (view) {
       case 'login':
-        return <Login setForm={setForm} />;
+        return <Login />;
       case 'register':
-        return <Register setForm={setForm} />
+        return <Register />
       default:
         return <Login />;
     }
   };
 
-  const generateContent = () => {
+  const generateView = () => {
     
     switch (loggedIn) {
       case true:
@@ -43,7 +42,7 @@ const Dashboard = ({ loggedIn }) => {
       <Nav />
 
       <main>
-        {generateContent()} 
+        {generateView()} 
       </main>
 
       <span className="footnote">1.  <i>noun, welsh [taen·llen]</i>: A spreadsheet.</span>
@@ -54,8 +53,9 @@ const Dashboard = ({ loggedIn }) => {
   );
 };
 
-const msp = ({ auth }) => ({
-  loggedIn: auth.isAuthenticated
+const msp = ({ auth, ui }) => ({
+  loggedIn: auth.isAuthenticated,
+  view: ui.view
 })
 
 

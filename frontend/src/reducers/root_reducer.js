@@ -2,9 +2,11 @@ import { combineReducers } from 'redux';
 import authReducer from './auth_reducer';
 import errorsReducer from './errors_reducer';
 import tabsReducer from './tabs_reducer';
+import uiReducer from './ui_reducer';
 
 export default combineReducers({
-  errors: errorsReducer,
+  tabs: tabsReducer,
   auth: authReducer,
-  tabs: tabsReducer
+  ui: uiReducer,
+  errors: errorsReducer,
 });

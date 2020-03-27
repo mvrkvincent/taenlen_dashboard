@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth_actions';
+import { toggleView } from '../../actions/ui_actions';
 
-const Login = ({ errorList, setForm, login }) => {
+const Login = ({ errorList, toggleView, login }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -49,7 +50,7 @@ const Login = ({ errorList, setForm, login }) => {
             onChange={handleChange}/>
           <div className="error">{passwordError}</div>
           <div className="row submit-row">
-            <button type="button" onClick={() => setForm('register')} className="button" >Create Account</button>
+            <button type="button" onClick={() => toggleView('register')} className="button" >Create Account</button>
               <button className="button" onClick={handleSubmit} >Submit &rarr;</button>
           </div>
           <div className="error">{generalError}</div>
@@ -68,7 +69,8 @@ const msp = ({ errors }) => ({
 
 
 const mdp = dispatch => ({
-  login: user => dispatch(login(user))
+  login: user => dispatch(login(user)),
+  toggleView: view => dispatch(toggleView(view))
 });
 
 export default connect(msp, mdp)(Login);

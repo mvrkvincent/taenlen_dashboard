@@ -2,7 +2,7 @@ import {
   RECEIVE_TAB 
 } from '../actions/tab_actions';
 
-export default (state = [], action) => {
+export default (state = {}, action) => {
   Object.freeze(state);
   let key = Math.random(2);
   switch (action.type) {

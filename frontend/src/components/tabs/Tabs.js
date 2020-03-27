@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createTab } from '../../actions/tab_actions';
+import { toggleView } from '../../actions/ui_actions';
 import FinTab from './FinTab';
 
-const Tabs = ({ tabs, createTab }) => {
+const Tabs = ({ view, tabs, toggleView, createTab}) => {
   let cash = 2400;
   let expenses = 1000;
   
@@ -27,8 +28,20 @@ const Tabs = ({ tabs, createTab }) => {
     });
   };
 
+  const handleView = () => {
+    switch(view) {
+      case('month'):
+        toggleView('week');
+        break;
+      case('week'):
+        toggleView('month');
+        break;
+      default:
+        toggleView('month');
+    }
+  };
+
   const displayTabs = () => {
-    
     return tabs.map((tab, i) => <FinTab key={i} tab={tab} /> ) 
   };
 
@@ -41,7 +54,7 @@ const Tabs = ({ tabs, createTab }) => {
           </h1>
           <h1 className="tabs-head-lable cash"><i className="fas fa-arrow-down"></i></h1>
         </div>
-        <div id="time" className='module time'>
+        <div id="time" onClick={() => handleView()} className='module time'>
           <h1 className="tabs-head-amount">
             {formatDate()}
           </h1>
@@ -54,18 +67,22 @@ const Tabs = ({ tabs, createTab }) => {
           <h1 className="tabs-head-lable expenses"><i className="fas fa-arrow-up"></i></h1>
         </div>
       </div>
+
       <div id="tabs" className="grid">
         {displayTabs()}
       </div>
+
     </>
   );
 };
 
-const msp = ({ tabs }) => ({
+const msp = ({ tabs, ui }) => ({
+  view: ui.view,
   tabs: Object.values(tabs)
 });
 
 const mdp = dispatch => ({
+  toggleView: view => dispatch(toggleView(view)),
   createTab: tab => dispatch(createTab(tab))
 })
 
