@@ -4,13 +4,13 @@ import Footer from './Footer';
 import Nav from './Nav';
 import Login from './auth/Login';
 import Register from './auth/Register';
-import Tabs from './tabs/Tabs';
+import Cells from './cells/Cells';
 import DevPlaceholder from './DevPlaceholder';
 
 const Dashboard = ({ loggedIn, view }) => {
   const dev = false;
 
-  const Dashboard = dev ? <DevPlaceholder /> : <Tabs />;
+  const Dashboard = dev ? <DevPlaceholder /> : <Cells />;
   
   const generateForms = () => {
     

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createTab } from '../../actions/tab_actions';
+import { createCell } from '../../actions/cell_actions';
 import { toggleView } from '../../actions/ui_actions';
-import FinTab from './FinTab';
+import Cell from './Cell';
 
-const Tabs = ({ view, tabs, toggleView, createTab}) => {
+const Cells = ({ view, cells, toggleView, createCell}) => {
   let cash = 2400;
   let expenses = 1000;
   
@@ -22,8 +22,8 @@ const Tabs = ({ view, tabs, toggleView, createTab}) => {
     return today;
   };
 
-  const generateTab = type => {
-    createTab({
+  const generateCell = type => {
+    createCell({
       type: type
     });
   };
@@ -41,50 +41,50 @@ const Tabs = ({ view, tabs, toggleView, createTab}) => {
     }
   };
 
-  const displayTabs = () => {
-    return tabs.map((tab, i) => <FinTab key={i} tab={tab} /> ) 
+  const displayCells = () => {
+    return cells.map((cell, i) => <Cell key={i} cell={cell} /> ) 
   };
 
   return (
     <>
-      <div className="row tabs-head">
-        <div id="cash" onClick={() => generateTab('cash')} className='module cash'>
-          <h1 className="tabs-head-amount">
+      <div className="row cells-head">
+        <div id="cash" onClick={() => generateCell('cash')} className='module cash'>
+          <h1 className="cells-head-amount">
             {formatMoney(cash)}
           </h1>
-          <h1 className="tabs-head-lable cash"><i className="fas fa-arrow-down"></i></h1>
+          <h1 className="cells-head-lable cash"><i className="fas fa-arrow-down"></i></h1>
         </div>
         <div id="time" onClick={() => handleView()} className='module time'>
-          <h1 className="tabs-head-amount">
+          <h1 className="cells-head-amount">
             {formatDate()}
           </h1>
-          <h1 className="tabs-head-lable time"><i className="far fa-clock"></i></h1>
+          <h1 className="cells-head-lable time"><i className="far fa-clock"></i></h1>
         </div>
-        <div id="expenses" onClick={() => generateTab('expenses')} className='module expenses'>
-          <h1 className="tabs-head-amount">
+        <div id="expenses" onClick={() => generateCell('expenses')} className='module expenses'>
+          <h1 className="cells-head-amount">
             {formatMoney(expenses)}
           </h1>
-          <h1 className="tabs-head-lable expenses"><i className="fas fa-arrow-up"></i></h1>
+          <h1 className="cells-head-lable expenses"><i className="fas fa-arrow-up"></i></h1>
         </div>
       </div>
 
-      <div id="tabs" className="grid">
-        {displayTabs()}
+      <div id="cells" className="grid">
+        {displayCells()}
       </div>
 
     </>
   );
 };
 
-const msp = ({ tabs, ui }) => ({
+const msp = ({ cells, ui }) => ({
   view: ui.view,
-  tabs: Object.values(tabs)
+  cells: Object.values(cells)
 });
 
 const mdp = dispatch => ({
   toggleView: view => dispatch(toggleView(view)),
-  createTab: tab => dispatch(createTab(tab))
+  createCell: cell => dispatch(createCell(cell))
 })
 
-export default connect(msp, mdp)(Tabs);
+export default connect(msp, mdp)(Cells);
 

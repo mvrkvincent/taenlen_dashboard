@@ -27,7 +27,7 @@ const Nav = ({ firstName, loggedIn, logout }) => {
     <nav>
       <div className="row">
         <a href="https://taenlen.com/" className="logo">T&#230;nlen<sup>[1]</sup></a> 
-        <a href="https://taenlen.com/tabs">Tabs</a>
+        <a href="https://taenlen.com/cells">Cells</a>
         <a href="https://taenlen.com/blog">Blog</a>
         <a href="https://taenlen.com/about">About</a>
       </div>

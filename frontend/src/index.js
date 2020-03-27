@@ -7,7 +7,7 @@ import './stylesheets/_css_reset.css';
 import './stylesheets/app.css';
 import './stylesheets/nav.css';
 import './stylesheets/auth.css';
-import './stylesheets/tab.css';
+import './stylesheets/cells.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   let token = localStorage.getItem('token');

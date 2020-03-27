@@ -1,20 +1,18 @@
-
-
-#tab
+#cell
 input:focus {
   outline: 2px;
 }
 
-.tabs-head {
+.cells-head {
   width: 100%;
   justify-content: space-evenly;
 }
 
-.tabs-head h1 {
+.cells-head h1 {
   margin: 0;
 }
 
-.tabs-head
+.cells-head
 .module {
   cursor: pointer;
   flex-basis: 30%;
@@ -22,13 +20,13 @@ input:focus {
   box-shadow: none;
 }
 
-.tabs-head-amount {
+.cells-head-amount {
   padding-bottom: 1rem;
   font-size: 2.5rem; 
   text-align: center;
 }
 
-.tabs-head-lable {
+.cells-head-lable {
   padding-top: 1rem;
   border-top: 1px solid;
   text-align: center;
@@ -57,7 +55,7 @@ input:focus {
   color: #D32F2F;
 }
 
-.tab-title {
+.cell-title {
   padding: 0;
   border: none;
   line-height: 1.5;

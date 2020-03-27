@@ -5,7 +5,7 @@ const DevPlaceholder = () => {
 
   return (
     <main>
-      <h1 className='title'>Dashboard + Tabs.</h1>
+      <h1 className='title'>Dashboard + Cells.</h1>
       <p className="subtitle">
         Coming April 2020
     </p>

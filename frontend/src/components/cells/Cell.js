@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
-const FinTab = ({ tab }) => {
-  const [tabData, setTabData] = useState({
-    type: tab.type,
-    title: tab.title || '',
-    amount: tab.amount || ''
+const Cell = ({ cell }) => {
+  const [cellData, setCellData] = useState({
+    type: cell.type,
+    title: cell.title || '',
+    amount: cell.amount || ''
   });
 
   const placeholder = () => {
-    switch(tabData.type) {
+    switch(cellData.type) {
       case('cash'):
         return 'Income source...';
       case('expenses'):
@@ -27,8 +27,8 @@ const FinTab = ({ tab }) => {
     const regex = /^[0-9]+$/;
     if (number.match(regex)) {
       const money = formatMoney(number);
-      setTabData({
-        ...tabData,
+      setCellData({
+        ...cellData,
         [name]: money
       });
     }
@@ -42,30 +42,30 @@ const FinTab = ({ tab }) => {
     if (name === 'amount' && value !== '') {
       validateNumber(name, number);
     } else {
-      setTabData({
-        ...tabData,
+      setCellData({
+        ...cellData,
         [name]: value
       });
     }
   };
   
   return (
-    <div id="tab" className="module">
+    <div id="cell" className="module">
       <div className="row">
-        <input className="tab-title"
+        <input className="cell-title"
           name="title"
           type="text"
           placeholder={placeholder()}
-          value={tabData.title}
+          value={cellData.title}
           onChange={handleChange}
         />
         <input
           name="amount"
           type="text"
           placeholder="1,000"
-          value={tabData.amount}
+          value={cellData.amount}
           onChange={handleChange}
-          className={tabData.type}
+          className={cellData.type}
           />
       </div>
       <div className="column">
@@ -75,4 +75,4 @@ const FinTab = ({ tab }) => {
   );
 };
 
-export default FinTab;
+export default Cell;
