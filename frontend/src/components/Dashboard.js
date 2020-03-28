@@ -7,32 +7,19 @@ import Register from './auth/Register';
 import Cells from './cells/Cells';
 import DevPlaceholder from './DevPlaceholder';
 
-const Dashboard = ({ loggedIn, view }) => {
+const Dashboard = ({ view }) => {
   const dev = false;
 
   const Dashboard = dev ? <DevPlaceholder /> : <Cells />;
   
-  const generateForms = () => {
-    
+  const generateView = () => {  
     switch (view) {
       case 'login':
         return <Login />;
       case 'register':
         return <Register />
       default:
-        return <Login />;
-    }
-  };
-
-  const generateView = () => {
-    
-    switch (loggedIn) {
-      case true:
         return Dashboard;
-      case false:
-        return generateForms();
-      default:
-        generateForms();
     }
   };
 
@@ -53,8 +40,7 @@ const Dashboard = ({ loggedIn, view }) => {
   );
 };
 
-const msp = ({ auth, ui }) => ({
-  loggedIn: auth.isAuthenticated,
+const msp = ({ ui }) => ({
   view: ui.view
 })
 

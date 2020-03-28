@@ -8,6 +8,7 @@ const Cell = ({ cell }) => {
   });
 
   const placeholder = () => {
+
     switch(cellData.type) {
       case('cash'):
         return 'Income source...';

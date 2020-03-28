@@ -1,13 +1,14 @@
 import { 
-  RECEIVE_CELL 
+  STAGE_CELL 
 } from '../actions/cell_actions';
 
-export default (state = {}, action) => {
+const initialState = {};
+export default (state = initialState, action) => {
   Object.freeze(state);
   let key = Math.random(2);
   switch (action.type) {
-    case RECEIVE_CELL: {
-      return Object.assign({}, state, { [key]: action.payload });
+    case STAGE_CELL: {
+      return Object.assign({}, state, { staged: { [action.payload.type]: action.payload }});
     }
     default:
       return state;

@@ -1,0 +1,21 @@
+import React from 'react';
+
+
+const Cash = ({ genreateCell }) => {
+  const cash = 2400;
+
+  const formatCash = cash => {
+    return new Intl.NumberFormat().format(cash);
+  };
+
+  return(
+    <div id="cash" onClick={() => genreateCell('cash')} className='module cash'>
+      <h1 className="cells-head-amount">
+        {formatCash(cash)}
+      </h1>
+      <h1 className="cells-head-lable cash"><i className="fas fa-arrow-down"></i></h1>
+    </div>
+  )
+} 
+
+export default Cash;

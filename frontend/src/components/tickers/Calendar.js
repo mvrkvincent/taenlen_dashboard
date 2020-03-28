@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { toggleView } from '../../actions/ui_actions';
 import { months } from './utils/months';
@@ -27,16 +27,6 @@ const Calendar = ({ view, toggleView }) => {
         setCalFields({ f1: wd, f2: dd });
     }
   };
-
-  useEffect(() => {
-    switch (view) {
-      case ('month'):
-        setCalFields({ f1: mm, f2: yyyy });
-        break;
-      default:
-        setCalFields({ f1: wd, f2: dd });
-    }
-  },[]);
 
   return(
     <div id="cal" onClick={() => handleView()} className='module cal'>
