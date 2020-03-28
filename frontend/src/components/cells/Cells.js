@@ -15,14 +15,13 @@ const Cells = ({ staged, cells, createCell}) => {
   };
   
   const displayStagedCell = () => {
-    const stagedCell = staged.map((cell, i) => <Cell key={i} cell={cell} />)
-    debugger
-    return stagedCell;
+    if (staged) return <Cell cell={staged} />
   };
 
   const displayAllCells = () => {
     return cells.map((cell, i) => <Cell key={i} cell={cell} />)
   };
+
 
   return (
     <>
@@ -48,7 +47,7 @@ const Cells = ({ staged, cells, createCell}) => {
 };
 
 const msp = ({ cells }) => ({
-  staged: cells.staged ? Object.values(cells.staged) : [],
+  staged: cells.staged,
   cells: cells.all ? Object.values(cells.all) : []
 });
 

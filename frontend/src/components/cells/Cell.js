@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const Cell = ({ cell }) => {
+
   const [cellData, setCellData] = useState({
     type: cell.type,
     title: cell.title || '',
@@ -9,7 +10,7 @@ const Cell = ({ cell }) => {
 
   const placeholder = () => {
 
-    switch(cellData.type) {
+    switch(cell.type) {
       case('cash'):
         return 'Income source...';
       case('expenses'):
@@ -66,7 +67,7 @@ const Cell = ({ cell }) => {
           placeholder="1,000"
           value={cellData.amount}
           onChange={handleChange}
-          className={cellData.type}
+          className={cell.type}
           />
       </div>
       <div className="column">
