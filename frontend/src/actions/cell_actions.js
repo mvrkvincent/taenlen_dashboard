@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 export const STAGE_CELL = 'STAGE_CELL';
 export const RECEIVE_CELL = 'RECEIVE_CELL';

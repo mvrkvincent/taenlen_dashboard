@@ -31,7 +31,7 @@ const Calendar = ({ view, toggleView }) => {
   return(
     <div id="cal" onClick={() => handleView()} className='module cal'>
       <h1 className="cal-field">{calFields.f1}&nbsp;{calFields.f2}</h1>
-      <h1 className="cal-lable cal"><i className="far fa-clock" /></h1>
+      <h1 className="cal-lable cal"><i className="far fa-calendar-alt" /></h1>
     </div>
   ) 
 };
