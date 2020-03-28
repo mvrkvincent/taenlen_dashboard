@@ -28,6 +28,13 @@ const Login = ({ errorList, toggleView, login }) => {
     e.preventDefault();
       login(formData);
   };
+
+  const handleDemo = e => {
+    e.preventDefault();
+    const user = 'DemoUser';
+    const pass = 'DemoUser2020';
+    login({ username: user, password: pass });
+  };
   
   return (
         <div id="auth" className="module">
@@ -49,12 +56,13 @@ const Login = ({ errorList, toggleView, login }) => {
             value={formData.password}
             onChange={handleChange}/>
           <div className="error">{passwordError}</div>
+          <div className="error">{generalError}</div>
           <div className="row submit-row">
             <button type="button" onClick={() => toggleView('register')} className="button" >Create Account</button>
-              <button className="button" onClick={handleSubmit} >Submit &rarr;</button>
+            <button className="button" onClick={handleSubmit} >Submit &rarr;</button>
           </div>
-          <div className="error">{generalError}</div>
           </form>
+          <button id="demo" className="button" onClick={handleDemo} >Demo</button>
         </div>
   );
 };

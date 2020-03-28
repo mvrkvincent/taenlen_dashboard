@@ -5,11 +5,13 @@ import { logout } from '../actions/auth_actions';
 const Nav = ({ firstName, loggedIn, logout }) => {
 
   const generateButtons = () => {
+    const welcome = (firstName === 'Demo') ? `${firstName}` : `${firstName}'s`;
+
     switch (loggedIn) {
       case true: 
         return( 
           <div className="row">
-            <div className="welcome">{`${firstName}'s`} Dashboard</div>
+            <div className="welcome">{welcome} Dashboard</div>
             <button className="llogout-button" onClick={logout}>Log Out</button>
           </div>
         )
@@ -20,6 +22,7 @@ const Nav = ({ firstName, loggedIn, logout }) => {
           </div>
         )
     }
+     
   }
 
   return (
@@ -36,8 +39,8 @@ const Nav = ({ firstName, loggedIn, logout }) => {
   );
 };
 
-const msp = ({ auth }) => ({
-  loggedIn: auth.isAuthenticated,
+const msp = ({ auth, ui }) => ({
+  loggedIn: ui.isAuthenticated,
   firstName: auth.user ? auth.user.first_name : ''
 })
 

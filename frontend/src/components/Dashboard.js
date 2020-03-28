@@ -7,19 +7,23 @@ import Register from './auth/Register';
 import Cells from './cells/Cells';
 import DevPlaceholder from './DevPlaceholder';
 
-const Dashboard = ({ view }) => {
+const Dashboard = ({ isLoading, view }) => {
   const dev = false;
 
   const Dashboard = dev ? <DevPlaceholder /> : <Cells />;
   
-  const generateView = () => {  
-    switch (view) {
-      case 'login':
-        return <Login />;
-      case 'register':
-        return <Register />
-      default:
-        return Dashboard;
+  const generateView = () => {
+    if (isLoading) {
+      return <h1 className="title">Loading...</h1>
+    } else {
+      switch (view) {
+        case 'login':
+          return <Login />;
+        case 'register':
+          return <Register />
+        default:
+          return Dashboard;
+      }
     }
   };
 
@@ -35,13 +39,15 @@ const Dashboard = ({ view }) => {
       <span className="footnote">1.  <i>noun, welsh [taen·llen]</i>: A spreadsheet.</span>
 
       <Footer />
+      
     </div>
 
   );
 };
 
 const msp = ({ ui }) => ({
-  view: ui.view
+  view: ui.view,
+  isLoading: ui.isLoading
 })
 
 
