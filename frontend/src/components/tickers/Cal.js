@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { toggleView } from '../../actions/ui_actions';
 import { months } from './utils/months';
+import { days } from './utils/days';
 
 const Cal = ({ view, toggleView }) => {
   const today = new Date();
-  const wd = today.toString().split(' ')[0];
+  const wd = days[today.toString().split(' ')[0]];
   const dd = today.getDate();
   const mm = months[today.getMonth()];
   const yyyy = today.getFullYear(); 
