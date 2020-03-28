@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
     case USER_RECEIVED: {
-      return Object.assign({}, state, { view: 'month' });
+      return Object.assign({}, state, { view: 'week' });
     }
     case LOGOUT_SUCCESS: {
       return initialState;

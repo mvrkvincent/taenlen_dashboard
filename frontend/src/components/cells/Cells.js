@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createCell } from '../../actions/cell_actions';
 import Cell from './Cell';
-import Cal from '../tickers/Cal';
+import Calendar from '../tickers/Calendar';
 
 const Cells = ({ cells, createCell}) => {
   let cash = 2400;
@@ -34,7 +34,7 @@ const Cells = ({ cells, createCell}) => {
           <h1 className="cells-head-lable cash"><i className="fas fa-arrow-down"></i></h1>
         </div>
         
-        <Cal />
+        <Calendar />
 
         <div id="expenses" onClick={() => generateCell('expenses')} className='module expenses'>
           <h1 className="cells-head-amount">

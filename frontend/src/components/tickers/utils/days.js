@@ -6,4 +6,3 @@ days["Wed"] = "Wednesday";
 days["Thu"] = "Thursday";
 days["Fri"] = "Friday";
 days["Sat"] = "Saturday";
-days["Sun"] = "Sunday";
