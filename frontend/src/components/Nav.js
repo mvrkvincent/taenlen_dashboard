@@ -12,7 +12,7 @@ const Nav = ({ firstName, loggedIn, logout }) => {
         return( 
           <div className="row">
             <div className="welcome">{welcome} Dashboard</div>
-            <button className="llogout-button" onClick={logout}>Log Out</button>
+            <button className="logout-button" onClick={logout}>Log Out</button>
           </div>
         )
       default: 
