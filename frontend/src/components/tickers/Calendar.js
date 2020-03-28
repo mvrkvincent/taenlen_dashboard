@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { toggleView } from '../../actions/ui_actions';
-import { days, months } from './calendar_utils';
+import { days, months } from './ticker_utils';
 
 const Calendar = ({ view, toggleView }) => {
   const today = new Date();

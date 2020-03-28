@@ -8,7 +8,7 @@ const Cell = ({ cell }) => {
     amount: cell.amount || ''
   });
 
-  const placeholder = () => {
+  const generatePlaceholder = () => {
 
     switch(cell.type) {
       case('cash'):
@@ -20,18 +20,17 @@ const Cell = ({ cell }) => {
     }
   };
 
-  const formatMoney = number => {
-    const num = Number(number);
-    return new Intl.NumberFormat().format(num);
+  const formatMoney = amount => {
+    return new Intl.NumberFormat().format(amount);
   }; 
 
-  const validateNumber = (name, number) => {
+  const validateNumber = (name, amount) => {
     const regex = /^[0-9]+$/;
-    if (number.match(regex)) {
-      const money = formatMoney(number);
+    if (amount.match(regex)) {
+      const cash = formatMoney(amount);
       setCellData({
         ...cellData,
-        [name]: money
+        [name]: cash
       });
     }
   };
@@ -39,16 +38,33 @@ const Cell = ({ cell }) => {
   const handleChange = e => {
     let name = e.target.name;
     let value = e.target.value;
-    const number = value.split(',').join('');
+    const amount = value.split(',').join('');
     
     if (name === 'amount' && value !== '') {
-      validateNumber(name, number);
+      validateNumber(name, amount);
     } else {
       setCellData({
         ...cellData,
         [name]: value
       });
     }
+  };
+
+  const generateButtons = () => {
+    let style = {};
+    if ((cellData.title !== '') && (cellData.amount !== '')) {
+      style = {
+        height: '2rem',
+        marginTop: '1.5rem'
+      };
+    }
+
+    return (
+      <div style={style} className="row cell-options">
+        <button className="button trash"><i className="fas fa-trash-alt" /></button>
+        <button className="button check"><i className="fas fa-check" /></button>
+      </div>
+    )
   };
   
   return (
@@ -57,10 +73,10 @@ const Cell = ({ cell }) => {
         <input className="cell-title"
           name="title"
           type="text"
-          placeholder={placeholder()}
+          placeholder={generatePlaceholder()}
           value={cellData.title}
           onChange={handleChange}
-        />
+          />
         <input
           name="amount"
           type="text"
@@ -70,9 +86,7 @@ const Cell = ({ cell }) => {
           className={cell.type}
           />
       </div>
-      <div className="column">
-        {/* <input /> */}
-      </div>
+        {generateButtons()}
     </div>
   );
 };
