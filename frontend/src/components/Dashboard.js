@@ -24,13 +24,13 @@ const Dashboard = ({ isLoading, view }) => {
   };
 
   return (
-    <div className="container">
+    <div id="dashboard" className="dashboard">
 
       <Nav />
 
-      <main>
-        {generateView()} 
-      </main>
+
+      {generateView()} 
+
 
       <span className="footnote">1.  <i>noun, welsh [taen·llen]</i>: A spreadsheet.</span>
 

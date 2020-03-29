@@ -36,7 +36,9 @@ const Register = ({ errorList, toggleView, register }) => {
   };
 
   return (
-        <div id="auth" className="module">
+
+      <div id="auth" className="column">
+        <div id="register" className="module">
           <h1 className="title">Register.</h1>
           <form className="column">
             <input
@@ -86,6 +88,7 @@ const Register = ({ errorList, toggleView, register }) => {
             </div>
           </form>
         </div>
+      </div>
   );
 };
 

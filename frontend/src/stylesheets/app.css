@@ -8,23 +8,13 @@ body {
   box-sizing: border-box;
 }
 
-.container {
-  min-height: 100vh;
+.dashboard {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-top: 3px solid #26C6DA ;
-}
-
-main {
-  width: 100vw;
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .grid {

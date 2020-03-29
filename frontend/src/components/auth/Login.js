@@ -37,7 +37,8 @@ const Login = ({ errorList, toggleView, login }) => {
   };
   
   return (
-        <div id="auth" className="module">
+      <div id="auth" className="column"> 
+        <div id="login" className="module">
           <h1 className="title">Log In.</h1>
           <form className="column">
           <input 
@@ -64,6 +65,7 @@ const Login = ({ errorList, toggleView, login }) => {
           </form>
           <button id="demo" className="button" onClick={handleDemo} >Demo</button>
         </div>
+      </div>
   );
 };
 

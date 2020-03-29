@@ -3,14 +3,19 @@ import { connect } from 'react-redux';
 import FinCell from './FinCell';
 import Tickers from '../tickers/Tickers';
 
-const Cells = ({ staged, cells, createCell}) => {
-
+const Cells = ({ staged, cells }) => {
   
+  const displayStaged = () => {
+    if (staged) return <FinCell cell={staged} />
+  };
   
   const displayAllCells = () => {
-    return cells.map((cell, i) => <FinCell key={i} cell={cell} />)
+    if (cells[0]) {
+      return cells.map((cell, i) => <FinCell key={i} cell={cell} />);
+    } else if (!staged) {
+      return <div className="no-cells">Add a Cell</div>
+    } 
   };
-
 
   return (
     <div id="cells">
@@ -18,7 +23,7 @@ const Cells = ({ staged, cells, createCell}) => {
       <Tickers />
 
       <div id="staged" className="grid">
-        {staged ? <FinCell cell={staged} /> : null}
+        {displayStaged()}
       </div>
 
       <div id="all" className="grid">
