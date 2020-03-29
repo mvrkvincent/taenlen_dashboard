@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CellButtons from './CellButtions';
 
 const FinCell = ({ cell }) => {
 
@@ -6,15 +7,15 @@ const FinCell = ({ cell }) => {
     type: cell.type,
     title: cell.title || '',
     amount: cell.amount || '',
-    frequency: cell.frequency || 'Frequency'
+    frequency: cell.frequency || 'One Time'
   });
 
   const generatePlaceholder = () => {
     switch(cell.type) {
       case('cash'):
-        return 'Income source...';
+        return 'Ex. Pay Check...';
       case('expenses'):
-        return 'Expense...';
+        return 'Ex. Rent, Netflix...';
       default:
         return '';
     }
@@ -50,87 +51,6 @@ const FinCell = ({ cell }) => {
     }
   };
 
-  const handleFrequency = e => {
-    e.preventDefault();
-    let toggle = '';
-
-    if (cell.type === 'cash') {
-      switch (cellData.frequency) {
-        case('Frequency'):
-          toggle = "Weekly";
-          break;
-        case('Weekly'):
-          toggle = "Bi-Weekly";
-          break;
-        case('Bi-Weekly'):
-          toggle ='Semi-Monthly';
-          break;
-        case('Semi-Monthly'):
-          toggle = 'Monthly';
-          break;
-        case('Monthly'):
-          toggle = 'Frequency';
-          break;
-        default: 
-          toggle = 'Frequency';
-      }
-    } else if (cell.type === 'expenses') {
-        switch (cellData.frequency) {
-          case ('Frequency'):
-            toggle = "Daily";
-            break;
-          case ('Daily'):
-            toggle = "Weekly";
-            break;
-          case ('Weekly'):
-            toggle = "Monthly";
-            break;
-          case ('Monthly'):
-            toggle = 'Yearly';
-            break;
-          case ('Yearly'):
-            toggle = 'Frequency';
-            break;
-          default:
-            toggle = 'Frequency';
-        }
-    } 
-
-    setCellData({
-      ...cellData,
-      [e.target.value]: toggle});
-
-  };
-
-  const generateButtons = () => {
-    let visible = {};
-    let selected = {};
-    if ((cellData.title !== '') && (cellData.amount !== '')) {
-      visible = {
-        height: '2rem',
-        marginTop: '1.5rem'
-      };
-
-    if (cellData.frequency === 'Frequency')
-      selected = {
-        borderColor:  '#eaeaea',
-        color: '#696969',
-      };
-    }
-
-    return (
-      <div style={visible} className="row cell-options">
-        <button className="trash"><i className="fas fa-trash-alt" /></button>
-        <button 
-          style={selected} 
-          onClick={handleFrequency} 
-          value="frequency" 
-          className="frequency">{cellData.frequency}</button>
-        <button className="check"><i className="fas fa-check" /></button>
-      </div>
-    )
-  };
-  
   return (
     <div id="cell" className="module">
       <div className="row">
@@ -149,8 +69,15 @@ const FinCell = ({ cell }) => {
           onChange={handleChange}
           className={cell.type}
           />
+
+        <button className="trash">
+          <i className="fas fa-trash-alt" />
+        </button>
+
       </div>
-        {generateButtons()}
+        <CellButtons 
+          cellData={cellData} 
+          setCellData={setCellData} />
     </div>
   );
 };
