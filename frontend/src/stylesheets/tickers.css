@@ -1,18 +1,22 @@
-.tickers {
+#tickers {
   width: 100%;
   justify-content: space-evenly;
 }
 
-.tickers h1 {
+#tickers h1 {
   margin: 0;
 }
 
-.tickers
+#tickers
 .module {
   cursor: pointer;
-  flex-basis: 30%;
   border: none;
   box-shadow: none;
+}
+
+#cash,
+#expenses {
+  flex-basis: 25%;
 }
 
 .ticker-value {

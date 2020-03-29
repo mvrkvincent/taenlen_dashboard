@@ -1,18 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createCell } from '../../actions/cell_actions';
 import FinCell from './FinCell';
-import Calendar from '../tickers/Calendar';
-import Cash from '../tickers/Cash';
-import Expenses from '../tickers/Expenses';
+import Tickers from '../tickers/Tickers';
 
 const Cells = ({ staged, cells, createCell}) => {
 
-  const generateCell = type => {
-    createCell({
-      type: type
-    });
-  };
+  
   
   const displayAllCells = () => {
     return cells.map((cell, i) => <FinCell key={i} cell={cell} />)
@@ -20,15 +13,9 @@ const Cells = ({ staged, cells, createCell}) => {
 
 
   return (
-    <>
+    <div id="cells">
 
-      <div className="tickers row">
-        <Cash genreateCell={generateCell}/>
-        
-        <Calendar />
-
-        <Expenses generateCell={generateCell}/>
-      </div>
+      <Tickers />
 
       <div id="staged" className="grid">
         {staged ? <FinCell cell={staged} /> : null}
@@ -38,7 +25,7 @@ const Cells = ({ staged, cells, createCell}) => {
         {displayAllCells()}
       </div>
 
-    </>
+    </div>
   );
 };
 
@@ -47,9 +34,5 @@ const msp = ({ cells }) => ({
   cells: cells.all ? Object.values(cells.all) : []
 });
 
-const mdp = dispatch => ({
-  createCell: cell => dispatch(createCell(cell))
-})
-
-export default connect(msp, mdp)(Cells);
+export default connect(msp, null)(Cells);
 
