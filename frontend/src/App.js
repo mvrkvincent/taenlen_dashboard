@@ -12,9 +12,9 @@ const App = ({ store }) => {
   });
 
   return (
-    <Provider store={store}>
-      <Dashboard />
-    </Provider>
+      <Provider store={store}>
+        <Dashboard />
+      </Provider>
   );
 };
 

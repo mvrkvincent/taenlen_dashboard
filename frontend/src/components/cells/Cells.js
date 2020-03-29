@@ -18,7 +18,7 @@ const Cells = ({ staged, cells }) => {
   };
 
   return (
-    <div id="cells">
+    <div id="cells" className="column">
 
       <Tickers />
 
