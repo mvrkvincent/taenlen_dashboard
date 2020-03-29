@@ -5,11 +5,11 @@ const Cell = ({ cell }) => {
   const [cellData, setCellData] = useState({
     type: cell.type,
     title: cell.title || '',
-    amount: cell.amount || ''
+    amount: cell.amount || '',
+    frequency: cell.frequency || 'Frequency'
   });
 
   const generatePlaceholder = () => {
-
     switch(cell.type) {
       case('cash'):
         return 'Income source...';
@@ -50,19 +50,83 @@ const Cell = ({ cell }) => {
     }
   };
 
+  const handleFrequency = e => {
+    e.preventDefault();
+    let toggle = '';
+
+    if (cell.type === 'cash') {
+      switch (cellData.frequency) {
+        case('Frequency'):
+          toggle = "Weekly";
+          break;
+        case('Weekly'):
+          toggle = "Bi-Weekly";
+          break;
+        case('Bi-Weekly'):
+          toggle ='Semi-Monthly';
+          break;
+        case('Semi-Monthly'):
+          toggle = 'Monthly';
+          break;
+        case('Monthly'):
+          toggle = 'Frequency';
+          break;
+        default: 
+          toggle = 'Frequency';
+      }
+    } else if (cell.type === 'expenses') {
+        switch (cellData.frequency) {
+          case ('Frequency'):
+            toggle = "Daily";
+            break;
+          case ('Daily'):
+            toggle = "Weekly";
+            break;
+          case ('Weekly'):
+            toggle = "Monthly";
+            break;
+          case ('Monthly'):
+            toggle = 'Yearly';
+            break;
+          case ('Yearly'):
+            toggle = 'Frequency';
+            break;
+          default:
+            toggle = 'Frequency';
+        }
+    } 
+
+    setCellData({
+      ...cellData,
+      [e.target.value]: toggle});
+
+  };
+
   const generateButtons = () => {
-    let style = {};
+    let visible = {};
+    let selected = {};
     if ((cellData.title !== '') && (cellData.amount !== '')) {
-      style = {
+      visible = {
         height: '2rem',
         marginTop: '1.5rem'
+      };
+
+    if (cellData.frequency === 'Frequency')
+      selected = {
+        borderColor:  '#eaeaea',
+        color: '#696969',
       };
     }
 
     return (
-      <div style={style} className="row cell-options">
-        <button className="button trash"><i className="fas fa-trash-alt" /></button>
-        <button className="button check"><i className="fas fa-check" /></button>
+      <div style={visible} className="row cell-options">
+        <button className="trash"><i className="fas fa-trash-alt" /></button>
+        <button 
+          style={selected} 
+          onClick={handleFrequency} 
+          value="frequency" 
+          className="frequency">{cellData.frequency}</button>
+        <button className="check"><i className="fas fa-check" /></button>
       </div>
     )
   };
