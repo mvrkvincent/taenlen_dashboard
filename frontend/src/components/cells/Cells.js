@@ -14,10 +14,6 @@ const Cells = ({ staged, cells, createCell}) => {
     });
   };
   
-  const displayStagedCell = () => {
-    if (staged) return <FinCell cell={staged} />
-  };
-
   const displayAllCells = () => {
     return cells.map((cell, i) => <FinCell key={i} cell={cell} />)
   };
@@ -26,7 +22,7 @@ const Cells = ({ staged, cells, createCell}) => {
   return (
     <>
 
-      <div className="row cells-head">
+      <div className="tickers row">
         <Cash genreateCell={generateCell}/>
         
         <Calendar />
@@ -35,7 +31,7 @@ const Cells = ({ staged, cells, createCell}) => {
       </div>
 
       <div id="staged" className="grid">
-        {displayStagedCell()}
+        {staged ? <FinCell cell={staged} /> : null}
       </div>
 
       <div id="all" className="grid">

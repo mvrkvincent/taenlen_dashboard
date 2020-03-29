@@ -10,7 +10,7 @@ const Calendar = ({ view, toggleView }) => {
   const mm = months[today.getMonth()];
   const yyyy = today.getFullYear(); 
   
-  const [calFields, setCalFields] = useState({
+  const [calValues, setCalValues] = useState({
     f1: wd,
     f2: dd,
   });
@@ -19,18 +19,18 @@ const Calendar = ({ view, toggleView }) => {
     switch (view) {
       case ('week'):
         toggleView('month');
-        setCalFields({ f1: mm, f2: yyyy });
+        setCalValues({ f1: mm, f2: yyyy });
         break;
       default:
         toggleView('week');
-        setCalFields({ f1: wd, f2: dd });
+        setCalValues({ f1: wd, f2: dd });
     }
   };
 
   return(
-    <div id="cal" onClick={() => handleView()} className='module cal'>
-      <h1 className="cal-field">{calFields.f1}&nbsp;{calFields.f2}</h1>
-      <h1 className="cal-lable cal"><i className="far fa-calendar-alt" /></h1>
+    <div id="cal" onClick={() => handleView()} className="module cal">
+      <h1 className="ticker-value">{calValues.f1}&nbsp;{calValues.f2}</h1>
+      <h1 className="ticker-lable cal"><i className="far fa-calendar-alt" /></h1>
     </div>
   ) 
 };
@@ -44,4 +44,3 @@ const mdp = dispatch => ({
 })
 
 export default connect(msp, mdp)(Calendar);
-

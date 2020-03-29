@@ -5,13 +5,9 @@ import Nav from './Nav';
 import Login from './auth/Login';
 import Register from './auth/Register';
 import Cells from './cells/Cells';
-import DevPlaceholder from './DevPlaceholder';
 
 const Dashboard = ({ isLoading, view }) => {
-  const dev = false;
 
-  const Dashboard = dev ? <DevPlaceholder /> : <Cells />;
-  
   const generateView = () => {
     if (isLoading) {
       return <h1 className="title">Loading...</h1>
@@ -22,7 +18,7 @@ const Dashboard = ({ isLoading, view }) => {
         case 'register':
           return <Register />
         default:
-          return Dashboard;
+          return <Cells />;
       }
     }
   };

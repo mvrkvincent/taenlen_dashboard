@@ -52,7 +52,8 @@ export const fetchUser = () => async (dispatch, getState) => {
     const res = await axios.get('http://localhost:8000/api/auth/user', tokenConfig(getState));
     dispatch(receiveUser(res.data));
   } catch (err) {
-    dispatch(userError(err.response.data));
+      const error = err.response ? err.response.data : err.message;
+      dispatch(userError(error));
   }
 
 };
@@ -63,7 +64,8 @@ export const register = user => async dispatch => {
     const res = await axios.post('http://localhost:8000/api/auth/register', user, config);
     dispatch(receiveRegister(res.data));
   } catch (err) {
-    dispatch(registerError(err.response.data));
+      const error = err.response ? err.response.data : err.message;
+      dispatch(registerError(error));
   }
 
 };
@@ -74,7 +76,8 @@ export const login = user => async dispatch => {
     const res = await axios.post('http://localhost:8000/api/auth/login', user, config);
     dispatch(receiveLogin(res.data));
   } catch (err) {
-    dispatch(loginError(err.response.data));
+      const error = err.response ? err.response.data : err.message;
+      dispatch(loginError(error));
   }
 
 };
