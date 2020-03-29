@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import CellButtons from './CellButtions';
+import { deleteCell } from '../../actions/cell_actions';
 
-const FinCell = ({ cell }) => {
+const FinCell = ({ cell, deleteCell }) => {
 
   const [cellData, setCellData] = useState({
     type: cell.type,
@@ -70,7 +72,7 @@ const FinCell = ({ cell }) => {
           className={cell.type}
           />
 
-        <button className="trash">
+        <button onClick={() => deleteCell()} className="trash">
           <i className="fas fa-trash-alt" />
         </button>
 
@@ -82,4 +84,8 @@ const FinCell = ({ cell }) => {
   );
 };
 
-export default FinCell;
+const mdp = dispatch => ({
+  deleteCell: cell => dispatch(deleteCell(cell))
+})
+
+export default connect(null, mdp)(FinCell);

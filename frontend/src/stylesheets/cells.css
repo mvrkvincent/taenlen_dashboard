@@ -100,6 +100,7 @@ input:focus {
   border-color:  #26C6DA;
   color: #26C6DA;
   font-weight: bold;
+  min-width: 6rem;
 }
 
 .check:hover,
