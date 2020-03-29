@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createCell } from '../../actions/cell_actions';
-import Cell from './Cell';
+import FinCell from './FinCell';
 import Calendar from '../tickers/Calendar';
 import Cash from '../tickers/Cash';
 import Expenses from '../tickers/Expenses';
@@ -15,11 +15,11 @@ const Cells = ({ staged, cells, createCell}) => {
   };
   
   const displayStagedCell = () => {
-    if (staged) return <Cell cell={staged} />
+    if (staged) return <FinCell cell={staged} />
   };
 
   const displayAllCells = () => {
-    return cells.map((cell, i) => <Cell key={i} cell={cell} />)
+    return cells.map((cell, i) => <FinCell key={i} cell={cell} />)
   };
 
 

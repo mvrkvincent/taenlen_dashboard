@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Cell = ({ cell }) => {
+const FinCell = ({ cell }) => {
 
   const [cellData, setCellData] = useState({
     type: cell.type,
@@ -155,4 +155,4 @@ const Cell = ({ cell }) => {
   );
 };
 
-export default Cell;
+export default FinCell;

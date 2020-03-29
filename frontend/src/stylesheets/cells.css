@@ -96,14 +96,8 @@ input:focus {
   font-weight: bold;
 }
 
-.frequency:hover {
-  border-color:  #26C6DA;
-  color: #26C6DA;
-}
-
 .check:hover,
 .trash:hover {
   color: #000000;
   border-color: #696969;
 }
-
