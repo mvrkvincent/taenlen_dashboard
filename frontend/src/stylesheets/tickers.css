@@ -32,25 +32,3 @@
   text-align: center;
   font-size: 2rem; 
 }
-
-.cal {
-  border-color: #26C6DA;
-}
-
-.cal i {
-  color: #26C6DA;
-}
-
-.cash {
-  border-color: #9CCC65;
-}
-.cash i {
-  color: #9CCC65;
-}
-
-.expenses {
-  border-color: #D32F2F;
-}
-.expenses i {
-  color: #D32F2F;
-}

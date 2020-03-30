@@ -82,7 +82,7 @@ const FinCell = ({ cell, deleteCell }) => {
           className={cell.type}
           />
 
-        <button onClick={handleDelete} className="trash">
+        <button onClick={handleDelete} className="action right">
           <i className="fas fa-trash-alt" />
         </button>
 

@@ -9,6 +9,7 @@ import './stylesheets/nav.css';
 import './stylesheets/auth.css';
 import './stylesheets/tickers.css';
 import './stylesheets/cells.css';
+import './stylesheets/styles.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   let token = localStorage.getItem('token');

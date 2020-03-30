@@ -6,13 +6,11 @@ import Tickers from '../tickers/Tickers';
 
 const Cells = ({ staged, cells, createCell }) => {
 
-  const generateCell = () => {
-    if (staged[0]) {
+  const generateCell = type => {
       createCell({
-        id: staged[staged.length - 1].id + 1,
-        type: staged[staged.length - 1].type
+        id: 'staged',
+        type: type
       });
-    }
   };
   
   const displayStaged = () => {
@@ -35,8 +33,11 @@ const Cells = ({ staged, cells, createCell }) => {
       <Tickers />
 
       <div id="staged" className="grid column">
+        <div className="add row">
+          <button onClick={() => generateCell('cash')} className="action cash-hover"><i className="fas fa-arrow-up" /></button>
+          <button onClick={() => generateCell('expenses')} className="action expenses-hover"><i className="fas fa-arrow-down"/></button>
+        </div>
         {displayStaged()}
-        {staged[0] ? <button onClick={() => generateCell()} className="add"><i className="fas fa-plus"/></button> : null}
       </div>
       
 

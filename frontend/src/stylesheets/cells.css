@@ -41,19 +41,14 @@
     transition: all 0.15s linear;
 }
 
-.add,
-.check,
-.trash,
+
+.action,
 .frequency {
   min-width: 3rem;
   cursor: pointer;
   color: #9E9E9E;
   font-size: 0.8rem;
     transition: all 0.15s linear;
-}
-
-.trash {
-  margin-left: 1.5rem;
 }
 
 .frequency {
@@ -63,10 +58,13 @@
   min-width: 6rem;
 }
 
-.check:hover,
-.trash:hover {
+.action:hover {
   color: #000000;
   border-color: #9E9E9E;
+}
+
+.add {
+  width: 7rem;
 }
 
 .no-cells {

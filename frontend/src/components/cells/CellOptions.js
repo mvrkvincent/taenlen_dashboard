@@ -48,7 +48,7 @@ const CellButtons = ({ cellData, setCellData}) => {
         {cellData.frequency}
       </button>
 
-      <button className="check">
+      <button className="action">
         <i className="fas fa-check"/>
       </button>
 
