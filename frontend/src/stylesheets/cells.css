@@ -27,6 +27,11 @@
   color: #9E9E9E;
 }
 
+.cash::placeholder,
+.expenses::placeholder {
+  color: #9E9E9E;
+}
+
 .cell-options {
   height: 0;
   overflow: hidden;
