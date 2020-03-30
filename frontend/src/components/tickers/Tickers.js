@@ -3,15 +3,15 @@ import Calendar from './Calendar';
 import Cash from './Cash';
 import Expenses from './Expenses';
 
-const Tickers = () => {
+const Tickers = ({ generateCell }) => {
 
   return(
     <div id="tickers" className="row">
-      <Cash />
+      <Cash generateCell={generateCell} />
 
       <Calendar />
 
-      <Expenses />
+      <Expenses generateCell={generateCell} />
     </div>
   )
 }

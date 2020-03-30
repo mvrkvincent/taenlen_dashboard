@@ -9,7 +9,7 @@ const FinCell = ({ cell, deleteCell }) => {
     type: '',
     title: '',
     amount: '',
-    frequency: ''
+    frequency: 'One Time'
   });
   
   const generatePlaceholder = () => {
@@ -60,7 +60,7 @@ const FinCell = ({ cell, deleteCell }) => {
 
   useEffect(() => {
     setCellData({
-      id: cell.id || cell.type,
+      id: cell.id || Math.round(Math.random() * 100),
       type: cell.type,
       title: cell.title || '',
       amount: cell.amount || '',

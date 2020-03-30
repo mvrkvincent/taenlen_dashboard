@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Expenses = () => {
+const Expenses = ({ generateCell }) => {
   const expenses = 1000;
 
   const formatExpenses = expenses => {
@@ -8,7 +8,7 @@ const Expenses = () => {
   };
 
   return (
-    <div id="expenses" className='module expenses'>
+    <div id="expenses" onClick={() => generateCell('expenses')} className='module expenses'>
       <h1 className="ticker-value">
         {formatExpenses(expenses)}
       </h1>

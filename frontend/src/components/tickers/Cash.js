@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Cash = () => {
+const Cash = ({ generateCell }) => {
   const cash = 2400;
 
   const formatCash = cash => {
@@ -9,7 +9,7 @@ const Cash = () => {
   };
 
   return(
-    <div id="cash" className='module cash'>
+    <div id="cash" onClick={() => generateCell('cash')} className='module cash'>
       <h1 className="ticker-value">
         {formatCash(cash)}
       </h1>

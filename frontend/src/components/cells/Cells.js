@@ -20,7 +20,7 @@ const Cells = ({ staged, cells, createCell }) => {
   
   const displayAllCells = () => {
     if (cells[0]) {
-      debugger
+      
       return cells.map((cell, i) => <FinCell key={i} cell={cell} />);
     } else if (!staged.type) {
       return <h1 className="no-cells">Your T&#230;nlen is Blank</h1>
@@ -30,7 +30,7 @@ const Cells = ({ staged, cells, createCell }) => {
   return (
     <div id="cells" className="column">
 
-      <Tickers />
+      <Tickers generateCell={generateCell}/>
 
       <div id="staged" className="grid column">
         <div className="add row">
