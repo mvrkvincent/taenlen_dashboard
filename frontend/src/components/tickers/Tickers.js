@@ -9,6 +9,7 @@ const Tickers = ({ createCell }) => {
 
   const generateCell = type => {
     createCell({
+      id: 1,
       type: type
     });
   };

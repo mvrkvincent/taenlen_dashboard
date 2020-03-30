@@ -6,6 +6,7 @@ import { deleteCell } from '../../actions/cell_actions';
 const FinCell = ({ cell, deleteCell }) => {
 
   const [cellData, setCellData] = useState({
+    id: cell.id,
     type: cell.type,
     title: cell.title || '',
     amount: cell.amount || '',
@@ -53,9 +54,17 @@ const FinCell = ({ cell, deleteCell }) => {
     }
   };
 
+  const handleDelete = e => {
+    debugger
+    e.preventDefault();
+    deleteCell(cellData.id);
+  };
+
   return (
     <div id="cell" className="module">
+
       <div className="row">
+
         <input
           name="title"
           type="text"
@@ -73,14 +82,17 @@ const FinCell = ({ cell, deleteCell }) => {
           className={cell.type}
           />
 
-        <button onClick={() => deleteCell()} className="trash">
+        <button onClick={handleDelete} className="trash">
           <i className="fas fa-trash-alt" />
         </button>
 
       </div>
-        <CellOptions 
-          cellData={cellData} 
-          setCellData={setCellData} />
+
+      <CellOptions 
+        cellData={cellData} 
+        setCellData={setCellData} 
+      />
+
     </div>
   );
 };

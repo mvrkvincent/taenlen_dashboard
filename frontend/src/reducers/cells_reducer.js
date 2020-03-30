@@ -5,19 +5,21 @@ import {
 } from '../actions/cell_actions';
 
 
-const initialState = {};
+const initialState = {
+  staged: {},
+  all: {},
+};
 
 export default (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case STAGE_CELL: {
-      return Object.assign({}, state, { staged:  action.payload });
+      return { ...state, staged: { ...state.staged, [action.payload.id]: action.payload } };
     }
     case REMOVE_CELL:
     case LOGOUT_SUCCESS: {
       const alteredState = Object.assign({}, state);
-      delete alteredState.staged;
-      // delete alteredState.all[action.cell];
+      delete alteredState.staged[action.cell];
       return alteredState;
     }
       

@@ -1,11 +1,12 @@
 #cells {
-  height: 80vh;
+  /* height: 80vh; */
   width: 100vw;
   padding: 4rem;
 }
 
 #staged {
   width: 100%;
+  padding-bottom: 4rem;
 }
 
 #all {
@@ -40,6 +41,7 @@
     transition: all 0.15s linear;
 }
 
+.add,
 .check,
 .trash,
 .frequency {

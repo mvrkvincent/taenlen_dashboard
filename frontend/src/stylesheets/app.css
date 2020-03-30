@@ -7,7 +7,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .row {
@@ -100,6 +99,9 @@ button:hover {
 footer {
   height: 10vh;
   width: 100vw;
+  background-color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
 }
 
 .footnote {

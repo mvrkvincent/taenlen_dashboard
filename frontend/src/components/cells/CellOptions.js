@@ -43,11 +43,15 @@ const CellButtons = ({ cellData, setCellData}) => {
 
   return (
     <div style={toggleView()} className="row cell-options">
-      <button
-        onClick={handleFrequency}
-        value="frequency"
-        className="frequency">{cellData.frequency}</button>
-      <button className="check"><i className="fas fa-check" /></button>
+
+      <button onClick={handleFrequency} value="frequency"className="frequency">
+        {cellData.frequency}
+      </button>
+
+      <button className="check">
+        <i className="fas fa-check"/>
+      </button>
+
     </div>
   )
 };

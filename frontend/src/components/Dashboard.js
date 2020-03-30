@@ -28,14 +28,11 @@ const Dashboard = ({ isLoading, view }) => {
 
       <Nav />
 
-
       {generateView()} 
-
 
       <Footer />
       
     </div>
-
   );
 };
 
