@@ -13,7 +13,7 @@ const Cells = ({ staged, cells }) => {
     if (cells[0]) {
       return cells.map((cell, i) => <FinCell key={i} cell={cell} />);
     } else if (!staged) {
-      return <h1 className="no-cells">Your T&#230;nlen is Empty</h1>
+      return <h1 className="no-cells">Your T&#230;nlen is Blank</h1>
     } 
   };
 

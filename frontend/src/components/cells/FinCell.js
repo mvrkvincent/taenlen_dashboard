@@ -56,12 +56,13 @@ const FinCell = ({ cell, deleteCell }) => {
   return (
     <div id="cell" className="module">
       <div className="row">
-        <input className="cell-title"
+        <input 
           name="title"
           type="text"
           placeholder={generatePlaceholder()}
           value={cellData.title}
           onChange={handleChange}
+          className="cell-title"
           />
         <input
           name="amount"

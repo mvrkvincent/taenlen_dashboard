@@ -33,8 +33,13 @@ nav a {
   padding-top: 1rem;
 }
 
+.logout-button {
+  color: #9E9E9E;
+}
+
 .logout-button:hover {
-  border-color: #D32F2F ;
+  color: #000000;
+  border-color: #BDBDBD;
 }
 
 .dash_button {
