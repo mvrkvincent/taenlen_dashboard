@@ -15,18 +15,22 @@ export default (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case STAGE_CELL: {
-      return { ...state, staged: { ...state.staged, 'staged': action.payload } };
+      return { ...state, staged: action.payload };
     }
     case RECEIVE_CELL: {
-      return { ...state, all: { ...state.all, [action.payload.id]: action.payload} };
+      return { ...state, 
+        all: { ...state.all, [action.payload.id]: action.payload },
+        staged: {} 
+      };
     }
     case REMOVE_CELL:
     case LOGOUT_SUCCESS: {
-      const alteredState = Object.assign({}, state);
-      delete alteredState.staged[action.cell];
-      return alteredState;
+      const alteredState = Object.assign(state, {});
+      delete alteredState.all[action.cell];
+      return {...alteredState,
+        staged: {}
+      };
     }
-      
     default:
       return state;
   }

@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import CellOptions from './CellOptions';
 import { deleteCell } from '../../actions/cell_actions';
 
 const FinCell = ({ cell, deleteCell }) => {
-
   const [cellData, setCellData] = useState({
-    id: cell.id,
-    type: cell.type,
-    title: cell.title || '',
-    amount: cell.amount || '',
-    frequency: cell.frequency || 'One Time'
+    id: '',
+    type: '',
+    title: '',
+    amount: '',
+    frequency: ''
   });
-
+  
   const generatePlaceholder = () => {
     switch(cell.type) {
       case('cash'):
@@ -58,6 +57,16 @@ const FinCell = ({ cell, deleteCell }) => {
     e.preventDefault();
     deleteCell(cellData.id);
   };
+
+  useEffect(() => {
+    setCellData({
+      id: cell.id || cell.type,
+      type: cell.type,
+      title: cell.title || '',
+      amount: cell.amount || '',
+      frequency: cell.frequency || 'One Time'
+    });
+  }, [cell]);
 
   return (
     <div id="cell" className="module">

@@ -7,23 +7,22 @@ import Tickers from '../tickers/Tickers';
 const Cells = ({ staged, cells, createCell }) => {
 
   const generateCell = type => {
-      createCell({
-        // do not submit this id
-        id: 'staged',
-        type: type
-      });
+    createCell({
+      type: type
+    });
   };
   
   const displayStaged = () => {
-    if (staged[0]) {
-      return <FinCell cell={staged[0]} />;
-    };
+    if (staged.type) {
+      return <FinCell cell={staged} />;
+    }
   };
   
   const displayAllCells = () => {
     if (cells[0]) {
+      debugger
       return cells.map((cell, i) => <FinCell key={i} cell={cell} />);
-    } else if (!staged[0]) {
+    } else if (!staged.type) {
       return <h1 className="no-cells">Your T&#230;nlen is Blank</h1>
     } 
   };
@@ -51,7 +50,7 @@ const Cells = ({ staged, cells, createCell }) => {
 };
 
 const msp = ({ cells }) => ({
-  staged: Object.values(cells.staged),
+  staged: cells.staged,
   cells: cells.all ? Object.values(cells.all) : []
 });
 
