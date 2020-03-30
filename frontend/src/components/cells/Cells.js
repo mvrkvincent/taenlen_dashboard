@@ -16,8 +16,8 @@ const Cells = ({ staged, cells, createCell }) => {
   
   const displayStaged = () => {
     if (staged[0]) {
-      return staged.map((cell, i) => <FinCell key={i} cell={cell} />);
-    }
+      return <FinCell cell={staged[0]} />;
+    };
   };
   
   const displayAllCells = () => {

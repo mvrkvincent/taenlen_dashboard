@@ -1,12 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { submitCell } from '../../actions/cell_actions';
 
-const CellButtons = ({ cellData, setCellData}) => {
-
+const CellButtons = ({cell, setCellData, submitCell}) => {
   const handleFrequency = e => {
     e.preventDefault();
     let toggle = '';
    
-      switch (cellData.frequency) {
+      switch (cell.frequency) {
         case ('One Time'):
           toggle = "Weekly";
           break;
@@ -24,7 +25,7 @@ const CellButtons = ({ cellData, setCellData}) => {
       }
     
     setCellData({
-      ...cellData,
+      ...cell,
       [e.target.value]: toggle
     });
 
@@ -32,7 +33,7 @@ const CellButtons = ({ cellData, setCellData}) => {
 
   const toggleView = () => {
     let visible = {};
-    if ((cellData.title !== '') && (cellData.amount !== '')) {
+    if ((cell.title !== '') && (cell.amount !== '')) {
       visible = {
         height: '2rem',
         marginTop: '1.5rem'
@@ -41,14 +42,19 @@ const CellButtons = ({ cellData, setCellData}) => {
     return visible;
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    submitCell(cell);
+  };
+
   return (
     <div style={toggleView()} className="row cell-options">
 
       <button onClick={handleFrequency} value="frequency"className="frequency">
-        {cellData.frequency}
+        {cell.frequency}
       </button>
 
-      <button className="action">
+      <button onClick={handleSubmit} className="action">
         <i className="fas fa-check"/>
       </button>
 
@@ -56,4 +62,8 @@ const CellButtons = ({ cellData, setCellData}) => {
   )
 };
 
-export default CellButtons;
+const mdp = dispatch => ({
+  submitCell: cell => dispatch(submitCell(cell))
+})
+
+export default connect(null, mdp)(CellButtons);

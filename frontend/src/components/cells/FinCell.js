@@ -55,7 +55,6 @@ const FinCell = ({ cell, deleteCell }) => {
   };
 
   const handleDelete = e => {
-    
     e.preventDefault();
     deleteCell(cellData.id);
   };
@@ -89,7 +88,7 @@ const FinCell = ({ cell, deleteCell }) => {
       </div>
 
       <CellOptions 
-        cellData={cellData} 
+        cell={cellData} 
         setCellData={setCellData} 
       />
 

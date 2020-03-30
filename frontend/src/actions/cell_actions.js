@@ -14,10 +14,10 @@ const removeCell = cell => ({
   cell
 });
 
-// const receiveCell = payload => ({
-//   type: RECEIVE_CELL,
-//   payload
-// });
+const receiveCell = payload => ({
+  type: RECEIVE_CELL,
+  payload
+});
 
 // const config = {
 //   headers: {
@@ -29,6 +29,16 @@ export const createCell = cell => async dispatch => {
   
   try {
     dispatch(stageCell(cell));
+  } catch (err) {
+    dispatch(console.log('This is broken, Everything is broken'));
+  }
+
+};
+
+export const submitCell = cell => async dispatch => {
+
+  try {
+    dispatch(receiveCell(cell));
   } catch (err) {
     dispatch(console.log('This is broken, Everything is broken'));
   }
