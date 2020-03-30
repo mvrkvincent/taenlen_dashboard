@@ -1,7 +1,9 @@
+import { LOGOUT_SUCCESS } from '../actions/auth_actions';
 import { 
   STAGE_CELL, 
   REMOVE_CELL
 } from '../actions/cell_actions';
+
 
 const initialState = {};
 
@@ -11,7 +13,8 @@ export default (state = initialState, action) => {
     case STAGE_CELL: {
       return Object.assign({}, state, { staged:  action.payload });
     }
-    case REMOVE_CELL: {
+    case REMOVE_CELL:
+    case LOGOUT_SUCCESS: {
       const alteredState = Object.assign({}, state);
       delete alteredState.staged;
       // delete alteredState.all[action.cell];

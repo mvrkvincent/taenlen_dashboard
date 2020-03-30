@@ -24,7 +24,7 @@ const Dashboard = ({ isLoading, view }) => {
   };
 
   return (
-    <div id="dashboard" className="dashboard">
+    <div id="dashboard">
 
       <Nav />
 

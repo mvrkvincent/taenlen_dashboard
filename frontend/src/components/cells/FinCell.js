@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import CellButtons from './CellButtions';
+import CellOptions from './CellOptions';
 import { deleteCell } from '../../actions/cell_actions';
 
 const FinCell = ({ cell, deleteCell }) => {
@@ -77,7 +77,7 @@ const FinCell = ({ cell, deleteCell }) => {
         </button>
 
       </div>
-        <CellButtons 
+        <CellOptions 
           cellData={cellData} 
           setCellData={setCellData} />
     </div>

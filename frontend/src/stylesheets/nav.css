@@ -1,9 +1,11 @@
 nav {
+  height: 10vh;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
   padding: 1rem 1rem;
+  border-top: 3px solid #26C6DA;
 }
 
 nav

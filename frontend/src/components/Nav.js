@@ -11,8 +11,8 @@ const Nav = ({ firstName, loggedIn, logout }) => {
       case true: 
         return( 
           <div className="row">
-            <div className="welcome">{welcome} Dashboard</div>
             <button className="logout-button" onClick={logout}>Log Out</button>
+            <button className="dash_button">{welcome} Dashboard</button>
           </div>
         )
       default: 
@@ -22,11 +22,9 @@ const Nav = ({ firstName, loggedIn, logout }) => {
           </div>
         )
     }
-     
   }
 
   return (
-
     <nav>
       <div className="row">
         <a href="https://taenlen.com/" className="logo">T&#230;nlen<sup>[1]</sup></a> 
