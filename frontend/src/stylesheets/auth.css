@@ -51,3 +51,7 @@ input:focus {
 .submit-row {
   margin-top: 1rem;
 }
+
+.auth-input::placeholder {
+  color: #9E9E9E;
+}

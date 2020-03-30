@@ -15,7 +15,8 @@
 
 .cell-title {
   padding: 0;
-  border: none;
+  border: 0;
+  border-radius: 0;
   line-height: 1.5;
   font-size: 1.5rem;
   font-weight: 700;

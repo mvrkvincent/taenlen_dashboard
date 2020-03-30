@@ -47,7 +47,8 @@ const Register = ({ errorList, toggleView, register }) => {
               placeholder="First Name"
               style={style.firstNameError}
               value={formData.first_name}
-              onChange={handleChange} />
+              onChange={handleChange} 
+              className="auth-input"/>
             < div className="error">{firstNameError}</div>
             <input
               name="last_name"
@@ -55,7 +56,8 @@ const Register = ({ errorList, toggleView, register }) => {
               placeholder="Last Name"
               style={style.lastNameError}
               value={formData.last_name}
-              onChange={handleChange} />
+              onChange={handleChange} 
+              className="auth-input"/>
             < div className="error">{lastNameError}</div>
             <input
               name="username"
@@ -63,7 +65,8 @@ const Register = ({ errorList, toggleView, register }) => {
               placeholder="Username"
               style={style.usernameError}
               value={formData.username}
-              onChange={handleChange} />
+              onChange={handleChange} 
+              className="auth-input"/>
             <div className="error">{usernameError}</div>
             <input
               name="email"
@@ -71,7 +74,8 @@ const Register = ({ errorList, toggleView, register }) => {
               placeholder="Email"
               style={style.emailError}
               value={formData.email}
-              onChange={handleChange} />
+              onChange={handleChange} 
+              className="auth-input"/>
             <div className="error">{emailError}</div>
             <input
               name="password"
@@ -79,7 +83,8 @@ const Register = ({ errorList, toggleView, register }) => {
               placeholder="Password"
               style={style.passwordError}
               value={formData.password}
-              onChange={handleChange} />
+              onChange={handleChange} 
+              className="auth-input"/>
             <div className="error">{passwordError}</div>
             <div className="error">{generalError}</div>
             <div className="row submit-row">

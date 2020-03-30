@@ -41,27 +41,29 @@ const Login = ({ errorList, toggleView, login }) => {
         <div id="login" className="module">
           <h1 className="title">Log In.</h1>
           <form className="column">
-          <input 
-            name="username"
-            type="text"
-            placeholder="Username"
-            style={style.usernameError}
-            value={formData.username}
-            onChange={handleChange} />
-          <div className="error">{usernameError}</div>
-          <input 
-            name="password"
-            type="password" 
-            placeholder="Password"
-            style={style.passwordError}
-            value={formData.password}
-            onChange={handleChange}/>
-          <div className="error">{passwordError}</div>
-          <div className="error">{generalError}</div>
-          <div className="row submit-row">
-            <button type="button" onClick={() => toggleView('register')} className="button" >Create Account</button>
-            <button className="button" onClick={handleSubmit} >Submit &rarr;</button>
-          </div>
+            <input 
+              name="username"
+              type="text"
+              placeholder="Username"
+              style={style.usernameError}
+              value={formData.username}
+              onChange={handleChange} 
+              className="auth-input"/>
+            <div className="error">{usernameError}</div>
+            <input 
+              name="password"
+              type="password" 
+              placeholder="Password"
+              style={style.passwordError}
+              value={formData.password}
+              onChange={handleChange}
+              className="auth-input"/>
+            <div className="error">{passwordError}</div>
+            <div className="error">{generalError}</div>
+            <div className="row submit-row">
+              <button type="button" onClick={() => toggleView('register')} className="button" >Create Account</button>
+              <button className="button" onClick={handleSubmit} >Submit &rarr;</button>
+            </div>
           </form>
           <button id="demo" className="button" onClick={handleDemo} >Demo</button>
         </div>

@@ -56,7 +56,7 @@ const FinCell = ({ cell, deleteCell }) => {
   return (
     <div id="cell" className="module">
       <div className="row">
-        <input 
+        <input
           name="title"
           type="text"
           placeholder={generatePlaceholder()}
