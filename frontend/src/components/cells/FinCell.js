@@ -55,7 +55,7 @@ const FinCell = ({ cell, deleteCell }) => {
   };
 
   const handleDelete = e => {
-    debugger
+    
     e.preventDefault();
     deleteCell(cellData.id);
   };

@@ -8,6 +8,7 @@ const Cells = ({ staged, cells, createCell }) => {
 
   const generateCell = type => {
       createCell({
+        // do not submit this id
         id: 'staged',
         type: type
       });

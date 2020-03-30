@@ -36,7 +36,7 @@ export const createCell = cell => async dispatch => {
 };
 
 export const deleteCell = id => async dispatch => {
-  debugger
+  
   try {
     dispatch(removeCell(id));
   } catch (err) {

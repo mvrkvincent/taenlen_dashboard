@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case STAGE_CELL: {
-      return { ...state, staged: { ...state.staged, [action.payload.id]: action.payload } };
+      return { ...state, staged: { 'staged': action.payload } };
     }
     case REMOVE_CELL:
     case LOGOUT_SUCCESS: {
