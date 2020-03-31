@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { submitCell } from '../../actions/cell_actions';
 
 const CellButtons = ({cell, setCellData, submitCell}) => {
+
   const handleFrequency = e => {
     e.preventDefault();
     let toggle = '';
@@ -48,11 +49,15 @@ const CellButtons = ({cell, setCellData, submitCell}) => {
   };
 
   return (
-    <div style={toggleView()} className="row cell-options">
-
-      <button onClick={handleFrequency} value="frequency"className="frequency">
-        {cell.frequency}
-      </button>
+    <div style={toggleView()} className="cell-options row">
+      <div className="row">
+        <button onClick={handleFrequency} className="frequency">
+          {cell.frequency}
+        </button>
+        <button className="right frequency">
+          "Category"
+        </button>
+      </div>
 
       <button onClick={handleSubmit} className="action">
         <i className="fas fa-check"/>

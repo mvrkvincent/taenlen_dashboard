@@ -8,6 +8,8 @@ const Cell = ({ cell }) => {
         return <i className="fas fa-arrow-up"/>;
       case ('expenses'):
         return <i className="fas fa-arrow-down"/>;
+      default:
+        return <i className="far fa-calendar-alt"/>;
     }
   };
 

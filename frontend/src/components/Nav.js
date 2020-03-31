@@ -11,7 +11,7 @@ const Nav = ({ firstName, loggedIn, logout }) => {
       case true: 
         return( 
           <div className="nav-buttons row">
-            <button onClick={logout} className="logout">Log Out</button>
+            <button onClick={logout} className="left logout">Log Out</button>
             <button className="dash-button">{welcome} Dashboard</button>
           </div>
         )

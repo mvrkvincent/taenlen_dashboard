@@ -14,10 +14,6 @@ nav a {
   font-weight: bold;
 }
 
-.nav-buttons {
-  width: 14rem;
-}
-
 .logout:hover {
   color: #000000;
   border-color: #BDBDBD;
