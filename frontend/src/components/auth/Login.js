@@ -38,7 +38,7 @@ const Login = ({ errorList, toggleView, login }) => {
   
   return (
       <div id="auth" className="column"> 
-        <div id="login" className="module">
+        <div className="auth module">
           <h1 className="title">Log In.</h1>
           <form className="column">
             <input 
@@ -60,12 +60,14 @@ const Login = ({ errorList, toggleView, login }) => {
               className="auth-input"/>
             <div className="error">{passwordError}</div>
             <div className="error">{generalError}</div>
-            <div className="row submit-row">
-              <button type="button" onClick={() => toggleView('register')} className="button" >Create Account</button>
-              <button className="button" onClick={handleSubmit} >Submit &rarr;</button>
+            <div className="row submit">
+              <button type="button" onClick={() => toggleView('register')} className="button">Create Account</button>
+              <button className="button" onClick={handleSubmit}>Submit &rarr;</button>
+            </div>
+            <div className="row submit">
+              <button className="demo button" onClick={handleDemo}>Demo</button>
             </div>
           </form>
-          <button id="demo" className="button" onClick={handleDemo} >Demo</button>
         </div>
       </div>
   );

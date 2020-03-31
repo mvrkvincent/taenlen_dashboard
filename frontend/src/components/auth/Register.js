@@ -38,7 +38,7 @@ const Register = ({ errorList, toggleView, register }) => {
   return (
 
       <div id="auth" className="column">
-        <div id="register" className="module">
+        <div className="auth module">
           <h1 className="title">Register.</h1>
           <form className="column">
             <input
@@ -87,7 +87,7 @@ const Register = ({ errorList, toggleView, register }) => {
               className="auth-input"/>
             <div className="error">{passwordError}</div>
             <div className="error">{generalError}</div>
-            <div className="row submit-row">
+            <div className="row submit">
               <button type="button" onClick={() => toggleView('login')} className="button" >Return to Log In</button>
               <button className="button" onClick={handleSubmit} >Register &rarr;</button>
             </div>

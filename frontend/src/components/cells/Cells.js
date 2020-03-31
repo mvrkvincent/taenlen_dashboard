@@ -33,10 +33,6 @@ const Cells = ({ staged, cells, createCell }) => {
       <Tickers generateCell={generateCell}/>
 
       <div id="staged" className="grid column">
-        <div className="add row">
-          <button onClick={() => generateCell('cash')} className="action cash-hover"><i className="fas fa-arrow-up" /></button>
-          <button onClick={() => generateCell('expenses')} className="action expenses-hover"><i className="fas fa-arrow-down"/></button>
-        </div>
         {displayStaged()}
       </div>
       

@@ -1,18 +1,23 @@
 nav {
-  height: 10vh;
+  /* height: 10vh; */
   width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1rem 1rem;
-  border-top: 3px solid #26C6DA;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-between; */
+  padding: 0.5rem 1rem;
+}
+
+nav a {
+  padding: 0.5rem;
+  /* padding-left: 1.5rem; */
+  /* padding-top: 1rem; */
 }
 
 nav
 .section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
 }
 
 .logo {
@@ -23,14 +28,8 @@ nav
 }
 
 nav button {
-  margin-left: 1.5rem;
-  margin-top: 1rem;
-}
-
-.welcome,
-nav a {
-  padding-left: 1.5rem;
-  padding-top: 1rem;
+  /* margin-left: 1.5rem; */
+  /* margin-top: 1rem; */
 }
 
 .logout-button:hover {
