@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CellOptions from './CellOptions';
 import { deleteCell } from '../../actions/cell_actions';
 
-const FinCell = ({ cell, deleteCell }) => {
+const StagedCell = ({ cell, deleteCell }) => {
   const [cellData, setCellData] = useState({
     id: '',
     type: '',
@@ -109,4 +109,4 @@ const mdp = dispatch => ({
   deleteCell: cell => dispatch(deleteCell(cell))
 })
 
-export default connect(null, mdp)(FinCell);
+export default connect(null, mdp)(StagedCell);

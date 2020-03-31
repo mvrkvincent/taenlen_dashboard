@@ -1,22 +1,29 @@
+.bold {
+  font-weight: bold;
+}
+
 .cal {
   border-color: #26C6DA;
 }
 
-.cal i {
+.cal i,
+.cal span {
   color: #26C6DA;
 }
 
 .cash {
   border-color: #9CCC65;
 }
-.cash i {
+.cash i,
+.cash span {
   color: #9CCC65;
 }
 
 .expenses {
   border-color: #D32F2F;
 }
-.expenses i {
+.expenses i,
+.expenses span {
   color: #D32F2F;
 }
 

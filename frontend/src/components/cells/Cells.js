@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createCell } from '../../actions/cell_actions';
-import FinCell from './FinCell';
+import Cell from './Cell';
+import StagedCell from './StagedCell';
 import Tickers from '../tickers/Tickers';
 
 const Cells = ({ staged, cells, createCell }) => {
@@ -17,14 +18,13 @@ const Cells = ({ staged, cells, createCell }) => {
   
   const displayStaged = () => {
     if (staged.type) {
-      return <FinCell cell={staged} />;
+      return <StagedCell cell={staged} />;
     }
   };
   
   const displayAllCells = () => {
     if (cells[0]) {
-      
-      return cells.map((cell, i) => <FinCell key={i} cell={cell} />);
+      return cells.map((cell, i) => <Cell key={i} cell={cell} />);
     } else if (!staged.type) {
       return <h1 className="no-cells title">Your T&#230;nlen is Blank</h1>
     } 
