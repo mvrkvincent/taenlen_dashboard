@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createCell } from '../../actions/cell_actions';
 import FinCell from './FinCell';
 import Tickers from '../tickers/Tickers';
 
 const Cells = ({ staged, cells, createCell }) => {
+  const [style, setStyle] = useState({
+    margin: null
+  });
 
   const generateCell = type => {
     createCell({
@@ -27,12 +30,18 @@ const Cells = ({ staged, cells, createCell }) => {
     } 
   };
 
+  useEffect(() => {
+    if (staged.type) {
+      setStyle({ marginBottom: '2rem' });
+    }
+  }, [staged]);
+
   return (
     <div id="cells" className="column">
 
       <Tickers generateCell={generateCell}/>
 
-      <div id="staged" className="column">
+      <div id="staged" style={style} className="column">
         {displayStaged()}
       </div>
       
