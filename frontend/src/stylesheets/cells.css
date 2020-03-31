@@ -1,16 +1,17 @@
 #cells {
-  /* height: 80vh;
-  width: 100vw;
-  padding: 4rem 4rem 2rem 4rem; */
+  height: 100%;
+  width: 100%;
+  margin: 4rem;
 }
 
 #staged {
-  /* width: 100%; */
+  width: 100%;
 }
 
 #all {
-  /* height: 100%;
-  width: 100%; */
+  height: 100%;
+  width: 100%;
+  justify-content: center;
 }
 
 .cell-title {
@@ -40,7 +41,6 @@
     transition: all 0.15s linear;
 }
 
-
 .action,
 .frequency {
   min-width: 3rem;
@@ -67,5 +67,6 @@
 }
 
 .no-cells {
+  font-size: 3rem;
   color: #E0E0E0;
 }

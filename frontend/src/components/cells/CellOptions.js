@@ -36,7 +36,7 @@ const CellButtons = ({cell, setCellData, submitCell}) => {
     if ((cell.title !== '') && (cell.amount !== '')) {
       visible = {
         height: '2rem',
-        marginTop: '1.5rem'
+        marginTop: '1rem'
       };
     }
     return visible;

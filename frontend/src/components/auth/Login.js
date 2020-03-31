@@ -48,7 +48,7 @@ const Login = ({ errorList, toggleView, login }) => {
               style={style.usernameError}
               value={formData.username}
               onChange={handleChange} 
-              className="auth-input"/>
+              />
             <div className="error">{usernameError}</div>
             <input 
               name="password"
@@ -57,15 +57,15 @@ const Login = ({ errorList, toggleView, login }) => {
               style={style.passwordError}
               value={formData.password}
               onChange={handleChange}
-              className="auth-input"/>
+              />
             <div className="error">{passwordError}</div>
             <div className="error">{generalError}</div>
             <div className="row submit">
-              <button type="button" onClick={() => toggleView('register')} className="button">Create Account</button>
-              <button className="button" onClick={handleSubmit}>Submit &rarr;</button>
+              <button onClick={() => toggleView('register')}>Create Account</button>
+              <button onClick={handleSubmit}>Submit &rarr;</button>
             </div>
             <div className="row submit">
-              <button className="demo button" onClick={handleDemo}>Demo</button>
+              <button className="demo" onClick={handleDemo}>Demo</button>
             </div>
           </form>
         </div>

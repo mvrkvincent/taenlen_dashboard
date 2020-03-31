@@ -1,6 +1,6 @@
 #tickers {
-  /* width: 100%;
-  justify-content: space-evenly; */
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 #tickers h1 {
@@ -12,6 +12,10 @@
   cursor: pointer;
   border: none;
   box-shadow: none;
+}
+
+#cal {
+  flex-basis: 30%;
 }
 
 #cash,

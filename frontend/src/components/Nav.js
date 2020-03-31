@@ -10,18 +10,19 @@ const Nav = ({ firstName, loggedIn, logout }) => {
     switch (loggedIn) {
       case true: 
         return( 
-          <div className="row">
-            <button className="logout-button" onClick={logout}>Log Out</button>
-            <button className="dash_button">{welcome} Dashboard</button>
+          <div className="nav-buttons row">
+            <button onClick={logout} className="logout">Log Out</button>
+            <button className="dash-button">{welcome} Dashboard</button>
           </div>
         )
       default: 
         return( 
           <div className="row">
-            <button className="dash_button">Dashboard</button>
+            <button className="dash-button">Dashboard</button>
           </div>
         )
     }
+    
   }
 
   return (

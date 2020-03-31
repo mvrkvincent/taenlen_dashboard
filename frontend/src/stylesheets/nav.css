@@ -1,23 +1,10 @@
 nav {
-  /* height: 10vh; */
   width: 100vw;
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* justify-content: space-between; */
   padding: 0.5rem 1rem;
 }
 
 nav a {
   padding: 0.5rem;
-  /* padding-left: 1.5rem; */
-  /* padding-top: 1rem; */
-}
-
-nav
-.section {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
 }
 
 .logo {
@@ -27,17 +14,16 @@ nav
   font-weight: bold;
 }
 
-nav button {
-  /* margin-left: 1.5rem; */
-  /* margin-top: 1rem; */
+.nav-buttons {
+  width: 14rem;
 }
 
-.logout-button:hover {
+.logout:hover {
   color: #000000;
   border-color: #BDBDBD;
 }
 
-.dash_button {
+.dash-button {
   border-color: #26C6DA ;
 }
 

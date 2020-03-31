@@ -48,7 +48,7 @@ const Register = ({ errorList, toggleView, register }) => {
               style={style.firstNameError}
               value={formData.first_name}
               onChange={handleChange} 
-              className="auth-input"/>
+            />
             < div className="error">{firstNameError}</div>
             <input
               name="last_name"
@@ -57,7 +57,7 @@ const Register = ({ errorList, toggleView, register }) => {
               style={style.lastNameError}
               value={formData.last_name}
               onChange={handleChange} 
-              className="auth-input"/>
+            />
             < div className="error">{lastNameError}</div>
             <input
               name="username"
@@ -66,7 +66,7 @@ const Register = ({ errorList, toggleView, register }) => {
               style={style.usernameError}
               value={formData.username}
               onChange={handleChange} 
-              className="auth-input"/>
+            />
             <div className="error">{usernameError}</div>
             <input
               name="email"
@@ -75,7 +75,7 @@ const Register = ({ errorList, toggleView, register }) => {
               style={style.emailError}
               value={formData.email}
               onChange={handleChange} 
-              className="auth-input"/>
+            />
             <div className="error">{emailError}</div>
             <input
               name="password"
@@ -84,12 +84,12 @@ const Register = ({ errorList, toggleView, register }) => {
               style={style.passwordError}
               value={formData.password}
               onChange={handleChange} 
-              className="auth-input"/>
+            />
             <div className="error">{passwordError}</div>
             <div className="error">{generalError}</div>
             <div className="row submit">
-              <button type="button" onClick={() => toggleView('login')} className="button" >Return to Log In</button>
-              <button className="button" onClick={handleSubmit} >Register &rarr;</button>
+              <button onClick={() => toggleView('login')}>Return to Log In</button>
+              <button onClick={handleSubmit} >Register &rarr;</button>
             </div>
           </form>
         </div>
