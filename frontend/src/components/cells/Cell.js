@@ -12,12 +12,12 @@ const Cell = ({ cell }) => {
   };
 
   return(
-    <div className={`${cell.type} cell module`}>
+    <div className={`${cell.type} cell module row`}>
       <div className="row">
         {generateSymbol()}
         <div className="bold">{cell.title}</div>
-        <span>{cell.amount}</span>
       </div>
+      <span>{cell.amount}</span>
     </div>
   )
 };

@@ -73,7 +73,12 @@
 
 .cell {
   cursor: pointer;
-  margin: 0.5rem;
+  margin: 0.2rem;
   padding: 0.5rem;
-  min-width: 12rem;
+  width: 15rem;
+  box-shadow: none;
+}
+
+.cell i {
+  margin-right: 0.5rem;
 }
