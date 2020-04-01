@@ -42,7 +42,7 @@
 }
 
 .action,
-.frequency {
+.option {
   min-width: 3rem;
   cursor: pointer;
   color: #9E9E9E;
@@ -50,7 +50,7 @@
     transition: all 0.15s linear;
 }
 
-.frequency {
+.option {
   border-color:  #26C6DA;
   color: #26C6DA;
   font-weight: bold;

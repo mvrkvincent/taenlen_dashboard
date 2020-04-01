@@ -13,7 +13,7 @@ const Cash = ({ generateCell }) => {
       <h1 className="ticker-value">
         {formatCash(cash)}
       </h1>
-      <h1 className="ticker-lable cash"><i className="fas fa-arrow-down"></i></h1>
+      <h1 className="ticker-lable cash"><i className="fas fa-arrow-up"></i></h1>
     </div>
   )
 } 

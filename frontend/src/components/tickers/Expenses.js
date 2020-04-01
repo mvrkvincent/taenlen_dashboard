@@ -12,7 +12,7 @@ const Expenses = ({ generateCell }) => {
       <h1 className="ticker-value">
         {formatExpenses(expenses)}
       </h1>
-      <h1 className="ticker-lable expenses"><i className="fas fa-arrow-up" /></h1>
+      <h1 className="ticker-lable expenses"><i className="fas fa-arrow-down" /></h1>
     </div>
   )
 }

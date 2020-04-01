@@ -51,10 +51,10 @@ const CellButtons = ({cell, setCellData, submitCell}) => {
   return (
     <div style={toggleView()} className="cell-options row">
       <div className="row">
-        <button onClick={handleFrequency} className="frequency">
+        <button onClick={handleFrequency} value="frequency" className="option">
           {cell.frequency}
         </button>
-        <button className="right frequency">
+        <button className="right option">
           "Category"
         </button>
       </div>
