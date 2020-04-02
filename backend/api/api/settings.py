@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'knox',
 
     'accounts',
+    'cell',
 ]
 
 

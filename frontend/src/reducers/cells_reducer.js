@@ -2,6 +2,7 @@ import { LOGOUT_SUCCESS } from '../actions/auth_actions';
 import { 
   STAGE_CELL,
   RECEIVE_CELL,
+  RECEIVE_CELLS,
   REMOVE_CELL
 } from '../actions/cell_actions';
 
@@ -23,6 +24,14 @@ export default (state = initialState, action) => {
       return { ...state, 
         all: { ...state.all, [action.payload.id]: action.payload },
         staged: {} 
+      };
+    }
+    case RECEIVE_CELLS: {
+      return { ...state, 
+        all: action.payload.reduce((cells, cell) => { 
+          cells[cell.id] = cell; 
+          return cells; 
+        }, {})
       };
     }
     case REMOVE_CELL:

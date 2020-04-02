@@ -1,8 +1,10 @@
-POST http://127.0.0.1:8000/api/auth/register
+POST http://127.0.0.1:8000/api/cells/
 Content-Type: application/json
 
 {
-    "username": "John",
-    "email": "john@example.com",
-    "password": "1234"
+    "label": "cash",
+    "title": "Test",
+    "amount": "283,748",
+    "frequency": "One Time",
+    "priority": "Low Priority"
 }

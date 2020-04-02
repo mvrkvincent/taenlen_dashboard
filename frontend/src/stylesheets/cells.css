@@ -16,7 +16,6 @@
 
 #all{
   width: 80%;
-  height: 80%;
 }
 
 #all-cash {
@@ -30,8 +29,10 @@
 #all-expenses {
   height: 100%;
   width: 80%;
+  display: flex;
   justify-content: center;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
+  padding-left: 1.5rem;
 }
 
 .cell-title {
@@ -113,6 +114,10 @@
   padding: 0.5rem;
   width: 12rem;
   box-shadow: none;
+}
+
+.cell-amount {
+  margin-right: 0.25rem;
 }
 
 

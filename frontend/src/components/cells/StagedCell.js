@@ -5,16 +5,16 @@ import { deleteCell } from '../../actions/cell_actions';
 
 const StagedCell = ({ cell, deleteCell }) => {
   const [cellData, setCellData] = useState({
-    id: '',
-    type: '',
+    id: cell.id,
+    label: '',
     title: '',
     amount: '',
     frequency: 'One Time',
     priority: 'Low Priority'
   });
   
-  const symbol = cell.type === 'cash' ? < i className="cash fas fa-arrow-up left"/> : <i className="expenses fas fa-arrow-down left"/>;
-  const placeholder = cell.type === 'cash' ? 'Ex. Pay Check...' : 'Ex. Rent, Netflix...';
+  const symbol = cell.label === 'cash' ? < i className="cash fas fa-arrow-up left"/> : <i className="expenses fas fa-arrow-down left"/>;
+  const placeholder = cell.label === 'cash' ? 'Ex. Pay Check...' : 'Ex. Rent, Netflix...';
 
   const formatMoney = amount => {
     return new Intl.NumberFormat().format(amount);
@@ -48,22 +48,22 @@ const StagedCell = ({ cell, deleteCell }) => {
 
   const handleDelete = e => {
     e.preventDefault();
-    deleteCell(cellData.id);
+    deleteCell(cell.id);
   };
 
   useEffect(() => {
     setCellData({
-      id: cell.id || Math.round(Math.random() * 100),
-      type: cell.type,
+      id: cell.id,
+      label: cell.label,
       title: cell.title || '',
-      amount: cell.amount || '',
+      amount: cell.amount ? formatMoney(cell.amount) : '',
       frequency: cell.frequency || 'One Time',
       priority: cell.priority || 'Low Priority'
     });
   }, [cell]);
 
   return (
-    <div id="staged-cell" className={`${cell.type} module`}>
+    <div id="staged-cell" className={`${cell.label} module`}>
 
       <div className="row">
         {symbol}
@@ -81,7 +81,7 @@ const StagedCell = ({ cell, deleteCell }) => {
           placeholder="1,000"
           value={cellData.amount}
           onChange={handleChange}
-          className={cell.type}
+          className={cell.label}
         />
         <button onClick={handleDelete} className="action right">
           <i className="fas fa-trash-alt" />

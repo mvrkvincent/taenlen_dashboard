@@ -1,3 +1,4 @@
+import { RECEIVE_ERROR } from '../actions/cell_actions';
 import {
   USER_ERROR,
   REGISTER_ERROR,
@@ -10,7 +11,8 @@ export default (state = [], action) => {
   switch (action.type) {
     case USER_ERROR: 
     case LOGIN_ERROR: 
-    case REGISTER_ERROR: {
+    case REGISTER_ERROR:
+    case RECEIVE_ERROR: {
       return action.payload;
     }
     default: 

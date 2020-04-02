@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { submitCell } from '../../actions/cell_actions';
+import { submitCell, updateCell } from '../../actions/cell_actions';
 
-const CellButtons = ({cell, setCellData, submitCell}) => {
+const CellButtons = ({ cell, setCellData, submitCell, updateCell }) => {
 
   const handleFrequency = e => {
     e.preventDefault();
@@ -70,7 +70,14 @@ const CellButtons = ({cell, setCellData, submitCell}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    submitCell(cell);
+    const formattedCell = { ...cell, amount: parseInt(cell.amount.split(',').join(''))};
+
+    if (cell.id) {
+      updateCell(formattedCell);  
+    } else {
+      submitCell(formattedCell);
+    }
+    
   };
 
   return (
@@ -97,7 +104,8 @@ const CellButtons = ({cell, setCellData, submitCell}) => {
 };
 
 const mdp = dispatch => ({
-  submitCell: cell => dispatch(submitCell(cell))
+  submitCell: cell => dispatch(submitCell(cell)),
+  updateCell: cell => dispatch(updateCell(cell))
 })
 
 export default connect(null, mdp)(CellButtons);

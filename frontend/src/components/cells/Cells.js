@@ -1,59 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { stageCell } from '../../actions/cell_actions';
-import Cell from './Cell';
+import { fetchCells, stageCell } from '../../actions/cell_actions';
 import StagedCell from './StagedCell';
 import Tickers from '../tickers/Tickers';
+import Grid from './Grid';
 
-const Cells = ({ staged, cells, stageCell }) => {
+const Cells = ({ staged, cells, fetchCells, stageCell }) => {
   const [style, setStyle] = useState({
     margin: null
   });
 
-  const generateCell = type => {
+  const generateCell = label => {
     stageCell({
-      type: type
+      label: label
     });
   };
   
   const displayStagedCell = () => {
-    if (staged.type) {
+    if (staged.label) {
       return <StagedCell cell={staged} />;
     }
   };
 
-  const displayAllCash = () => {
-    let allCash = [];
-    cells.forEach((cell, i) => {
-      if (cell.type === 'cash') {
-        allCash.push(<Cell key={i} cell={cell}/>);
-      }
-    });
-    return allCash;
-  };
-
-  const displayAllExpenses = () => {
-    let allExpenses = [];
-    cells.forEach((cell, i) => {
-      if (cell.type === 'expenses') {
-        allExpenses.push(<Cell key={i} cell={cell} />);
-      }
-    });
-    return allExpenses;
-  };
-  
   const displayGrid = () => {
     if (cells[0]) {
-      return(
-        <div id="all" className="module row">
-          <div id="all-cash" className="column">
-            {displayAllCash()}
-          </div>
-          <div id="all-expenses" className="column">
-            {displayAllExpenses()}
-          </div>
-        </div>
-      );
+      return <Grid cells={cells}/>
     } else if (!staged.type) {
       return <h1 className="no-cells title">Your T&#230;nlen is Blank</h1>
     } 
@@ -64,6 +35,10 @@ const Cells = ({ staged, cells, stageCell }) => {
       setStyle({ marginBottom: '2rem' });
     }
   }, [staged]);
+
+  useEffect(() => {
+    fetchCells();
+  }, [])
 
   return (
     <div id="cells" className="column">
@@ -89,6 +64,7 @@ const msp = ({ cells }) => ({
 });
 
 const mdp = dispatch => ({
+  fetchCells: () => dispatch(fetchCells()),
   stageCell: cell => dispatch(stageCell(cell))
 })
 
