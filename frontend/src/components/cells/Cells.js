@@ -21,10 +21,39 @@ const Cells = ({ staged, cells, stageCell }) => {
       return <StagedCell cell={staged} />;
     }
   };
+
+  const displayAllCash = () => {
+    let allCash = [];
+    cells.forEach((cell, i) => {
+      if (cell.type === 'cash') {
+        allCash.push(<Cell key={i} cell={cell}/>);
+      }
+    });
+    return allCash;
+  };
+
+  const displayAllExpenses = () => {
+    let allExpenses = [];
+    cells.forEach((cell, i) => {
+      if (cell.type === 'expenses') {
+        allExpenses.push(<Cell key={i} cell={cell} />);
+      }
+    });
+    return allExpenses;
+  };
   
-  const displayAllCells = () => {
+  const displayGrid = () => {
     if (cells[0]) {
-      return cells.map((cell, i) => <Cell key={i} cell={cell} />);
+      return(
+        <div id="all" className="module row">
+          <div id="all-cash" className="column">
+            {displayAllCash()}
+          </div>
+          <div id="all-expenses" className="column">
+            {displayAllExpenses()}
+          </div>
+        </div>
+      );
     } else if (!staged.type) {
       return <h1 className="no-cells title">Your T&#230;nlen is Blank</h1>
     } 
@@ -46,8 +75,8 @@ const Cells = ({ staged, cells, stageCell }) => {
       </div>
       
 
-      <div id="all" className="column">
-        {displayAllCells()}
+      <div id="grid" className="column">
+        {displayGrid()}
       </div>
 
     </div>

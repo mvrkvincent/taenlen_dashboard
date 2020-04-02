@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { toggleView } from '../../actions/ui_actions';
-import { days, months } from '../../utils/ticker_utils';
+import { months } from '../../utils/ticker_utils';
 
 const Calendar = ({ view, toggleView }) => {
   const today = new Date();
-  const wd = days[today.toString().split(' ')[0]];
+  // const wd = days[today.toString().split(' ')[0]];
+  const wd = today.toString().split(' ')[0];
   const dd = today.getDate();
   const mm = months[today.getMonth()];
   const yyyy = today.getFullYear(); 
@@ -29,8 +30,10 @@ const Calendar = ({ view, toggleView }) => {
 
   return(
     <div id="cal" onClick={() => handleView()} className="module cal">
-      <h1 className="ticker-value">{calValues.f1}&nbsp;{calValues.f2}</h1>
+
+      <h1 className="ticker-value row">{calValues.f1} {calValues.f2}</h1>
       <h1 className="ticker-lable cal"><i className="far fa-calendar-alt" /></h1>
+      
     </div>
   ) 
 };

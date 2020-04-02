@@ -7,11 +7,13 @@ const Tickers = ({ generateCell }) => {
 
   return(
     <div id="tickers" className="row">
+
       <Cash generateCell={generateCell} />
 
       <Calendar />
 
       <Expenses generateCell={generateCell} />
+      
     </div>
   )
 }

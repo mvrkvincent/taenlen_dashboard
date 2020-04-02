@@ -26,6 +26,7 @@
 .ticker-value {
   padding-bottom: 1rem;
   font-size: 2.5rem; 
+  justify-content: center;
   text-align: center;
   font-weight: bold;
 }
