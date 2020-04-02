@@ -1,27 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { stageCell } from '../../actions/cell_actions';
 
-const Cell = ({ cell }) => { 
+const Cell = ({ cell, stageCell }) => { 
 
-  const generateSymbol = () => {
-    switch(cell.type) {
-      case ('cash'):
-        return <i className="fas fa-arrow-up"/>;
-      case ('expenses'):
-        return <i className="fas fa-arrow-down"/>;
-      default:
-        return <i className="far fa-calendar-alt"/>;
-    }
-  };
+  const symbol = cell.type === 'cash' ? < i className="fas fa-arrow-up" /> : <i className="fas fa-arrow-down" />;
 
   return(
-    <div className={`${cell.type} cell module row`}>
+    <div onClick={() => stageCell(cell)} className={`${cell.type} cell module row`}>
+
       <div className="row">
-        {generateSymbol()}
-        <div className="bold">{cell.title}</div>
+
+        {symbol}
+        <span className="right">{cell.amount}</span>
+        
+
       </div>
-      <span>{cell.amount}</span>
+
+      <div className="bold">{cell.title}</div>
+
     </div>
   )
 };
 
-export default Cell;
+const mdp = dispatch => ({
+  stageCell: cell => dispatch(stageCell(cell))
+})
+
+export default connect(null, mdp)(Cell);

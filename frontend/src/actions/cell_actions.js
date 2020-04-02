@@ -4,7 +4,7 @@ export const STAGE_CELL = 'STAGE_CELL';
 export const RECEIVE_CELL = 'RECEIVE_CELL';
 export const REMOVE_CELL = 'REMOVE_CELL';
 
-const stageCell = payload => ({
+const receiveStagedCell = payload => ({
   type: STAGE_CELL,
   payload
 });
@@ -25,10 +25,10 @@ const receiveCell = payload => ({
 //   }
 // };
 
-export const createCell = cell => async dispatch => {
+export const stageCell = cell => async dispatch => {
   
   try {
-    dispatch(stageCell(cell));
+    dispatch(receiveStagedCell(cell));
   } catch (err) {
     dispatch(console.log('This is broken, Everything is broken'));
   }

@@ -32,6 +32,31 @@ const CellButtons = ({cell, setCellData, submitCell}) => {
 
   };
 
+  const handlePriority = e => {
+    e.preventDefault();
+    let toggle = '';
+
+    switch (cell.priority) {
+      case ('Low Priority'):
+        toggle = "Medium Priority";
+        break;
+      case ('Medium Priority'):
+        toggle = "High Priority";
+        break;
+      case ('High Priority'):
+        toggle = 'Low Priority';
+        break;
+      default:
+        toggle = 'Low Priority';
+    }
+
+    setCellData({
+      ...cell,
+      [e.target.value]: toggle
+    });
+
+  };
+
   const toggleView = () => {
     let visible = {};
     if ((cell.title !== '') && (cell.amount !== '')) {
@@ -49,14 +74,18 @@ const CellButtons = ({cell, setCellData, submitCell}) => {
   };
 
   return (
-    <div style={toggleView()} className="cell-options row">
+    <div id="cell-options" style={toggleView()} className="row">
+
       <div className="row">
+
         <button onClick={handleFrequency} value="frequency" className="option">
           {cell.frequency}
         </button>
-        <button className="right option">
-          "Category"
+
+        <button onClick={handlePriority} value="priority" className="right option">
+          {cell.priority}
         </button>
+
       </div>
 
       <button onClick={handleSubmit} className="action">

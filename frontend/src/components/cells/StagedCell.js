@@ -9,19 +9,12 @@ const StagedCell = ({ cell, deleteCell }) => {
     type: '',
     title: '',
     amount: '',
-    frequency: 'One Time'
+    frequency: 'One Time',
+    priority: 'Low Priority'
   });
   
-  const generatePlaceholder = () => {
-    switch(cell.type) {
-      case('cash'):
-        return 'Ex. Pay Check...';
-      case('expenses'):
-        return 'Ex. Rent, Netflix...';
-      default:
-        return '';
-    }
-  };
+  const symbol = cell.type === 'cash' ? < i className="cash fas fa-arrow-up left"/> : <i className="expenses fas fa-arrow-down left"/>;
+  const placeholder = cell.type === 'cash' ? 'Ex. Pay Check...' : 'Ex. Rent, Netflix...';
 
   const formatMoney = amount => {
     return new Intl.NumberFormat().format(amount);
@@ -64,19 +57,20 @@ const StagedCell = ({ cell, deleteCell }) => {
       type: cell.type,
       title: cell.title || '',
       amount: cell.amount || '',
-      frequency: cell.frequency || 'One Time'
+      frequency: cell.frequency || 'One Time',
+      priority: cell.priority || 'Low Priority'
     });
   }, [cell]);
 
   return (
-    <div id="cell" className="module">
+    <div id="staged-cell" className={`${cell.type} module`}>
 
       <div className="row">
-
+        {symbol}
         <input
           name="title"
           type="text"
-          placeholder={generatePlaceholder()}
+          placeholder={placeholder}
           value={cellData.title}
           onChange={handleChange}
           className="cell-title"
@@ -88,8 +82,7 @@ const StagedCell = ({ cell, deleteCell }) => {
           value={cellData.amount}
           onChange={handleChange}
           className={cell.type}
-          />
-
+        />
         <button onClick={handleDelete} className="action right">
           <i className="fas fa-trash-alt" />
         </button>

@@ -15,7 +15,9 @@ export default (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case STAGE_CELL: {
-      return { ...state, staged: action.payload };
+      const alteredState = Object.assign(state, {});
+      delete alteredState.all[action.payload.id];
+      return { ...alteredState, staged: action.payload };
     }
     case RECEIVE_CELL: {
       return { ...state, 

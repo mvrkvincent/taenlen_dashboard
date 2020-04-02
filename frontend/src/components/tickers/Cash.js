@@ -10,10 +10,13 @@ const Cash = ({ generateCell }) => {
 
   return(
     <div id="cash" onClick={() => generateCell('cash')} className='module cash'>
+
       <h1 className="ticker-value">
         {formatCash(cash)}
       </h1>
-      <h1 className="ticker-lable cash"><i className="fas fa-arrow-up"></i></h1>
+
+      <h1 className="ticker-lable cash"><i className="fas fa-arrow-up"/></h1>
+      
     </div>
   )
 } 

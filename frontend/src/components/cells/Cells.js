@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { createCell } from '../../actions/cell_actions';
+import { stageCell } from '../../actions/cell_actions';
 import Cell from './Cell';
 import StagedCell from './StagedCell';
 import Tickers from '../tickers/Tickers';
 
-const Cells = ({ staged, cells, createCell }) => {
+const Cells = ({ staged, cells, stageCell }) => {
   const [style, setStyle] = useState({
     margin: null
   });
 
   const generateCell = type => {
-    createCell({
+    stageCell({
       type: type
     });
   };
   
-  const displayStaged = () => {
+  const displayStagedCell = () => {
     if (staged.type) {
       return <StagedCell cell={staged} />;
     }
@@ -42,7 +42,7 @@ const Cells = ({ staged, cells, createCell }) => {
       <Tickers generateCell={generateCell}/>
 
       <div id="staged" style={style} className="column">
-        {displayStaged()}
+        {displayStagedCell()}
       </div>
       
 
@@ -60,7 +60,7 @@ const msp = ({ cells }) => ({
 });
 
 const mdp = dispatch => ({
-  createCell: cell => dispatch(createCell(cell))
+  stageCell: cell => dispatch(stageCell(cell))
 })
 
 export default connect(msp, mdp)(Cells);
