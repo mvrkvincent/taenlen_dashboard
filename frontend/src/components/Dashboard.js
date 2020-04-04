@@ -6,39 +6,43 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import Cells from './cells/Cells';
 
-const Dashboard = ({ isLoading, view }) => {
+const Dashboard = ({ isLoading, view, darkMode }) => {
 
-  const darkMode = {
-    dashboard: {
-      color: '#ffffff',
-      background: '#121212'
-    },
-    module: {
-      background: '#1c1c1c',
-      borderColor: '#1c1c1c',
-      boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
-    },
-    button: {
-      color: '#26C6DA',
-      background: '#2f2f2f',
-      borderColor: '#2f2f2f',
-      boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.2)'
-    },
-    input: {
-      color: '#FFFFFF'
-    },
-    dash: {
-      color: '#26C6DA',
-      background: '#2f2f2f',
-      borderColor: '#2f2f2f',
-      boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
-    },
-    logout: {
-      background: '#2f2f2f',
-      borderColor: '#2f2f2f',
-      boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
-    },
-  };
+  let darkStyle = {};
+
+  if (darkMode) {
+    darkStyle = {
+      dashboard: {
+        color: '#ffffff',
+        background: '#121212'
+      },
+      module: {
+        background: '#1c1c1c',
+        borderColor: '#1c1c1c',
+        boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
+      },
+      button: {
+        color: '#26C6DA',
+        background: '#2f2f2f',
+        borderColor: '#2f2f2f',
+        boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.2)'
+      },
+      input: {
+        color: '#FFFFFF'
+      },
+      dash: {
+        color: '#26C6DA',
+        background: '#2f2f2f',
+        borderColor: '#2f2f2f',
+        boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
+      },
+      logout: {
+        background: '#2f2f2f',
+        borderColor: '#2f2f2f',
+        boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
+      },
+    };
+  }
 
   const generateView = () => {
     if (isLoading) {
@@ -46,29 +50,30 @@ const Dashboard = ({ isLoading, view }) => {
     } else {
       switch (view) {
         case 'login':
-          return <Login darkMode={darkMode}/>;
+          return <Login darkStyle={darkStyle}/>;
         case 'register':
-          return <Register darkMode={darkMode}/>
+          return <Register darkStyle={darkStyle}/>
         default:
-          return <Cells darkMode={darkMode}/>;
+          return <Cells darkStyle={darkStyle}/>;
       }
     }
   };
 
   return (
-    <div id="dashboard" style={darkMode.dashboard} className="column">
+    <div id="dashboard" style={darkStyle.dashboard} className="column">
 
-      <Nav darkMode={darkMode}/>
+      <Nav darkStyle={darkStyle}/>
 
       {generateView()} 
 
-      <Footer />
+      <Footer darkStyle={darkStyle}/>
       
     </div>
   );
 };
 
 const msp = ({ ui }) => ({
+  darkMode: ui.darkMode,
   view: ui.view,
   isLoading: ui.isLoading
 })

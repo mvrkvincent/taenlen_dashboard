@@ -1,4 +1,8 @@
-import { SET_VIEW } from '../actions/ui_actions';
+import { 
+  SET_VIEW,
+  SET_DARK_MODE
+ } from '../actions/ui_actions';
+
 import {
   RECEIVING_USER,
   USER_RECEIVED,
@@ -11,6 +15,7 @@ import {
 } from '../actions/auth_actions';
 
 const initialState = {
+  darkMode: false,
   view: 'login',
   isLoading: false,
   isAuthenticated: false,
@@ -20,6 +25,12 @@ export default (state = initialState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
+
+    case SET_DARK_MODE: {
+      return{...state, 
+        darkMode: !state.darkMode
+      };
+    }
     
     case SET_VIEW: {
       return Object.assign({}, state, {

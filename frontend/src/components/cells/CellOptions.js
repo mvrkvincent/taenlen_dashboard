@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { submitCell, updateCell } from '../../actions/cell_actions';
 
-const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkMode }) => {
+const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) => {
 
   const handleFrequency = e => {
     e.preventDefault();
@@ -85,17 +85,17 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkMode }) =>
 
       <div className="row">
 
-        <button style={darkMode.button} onClick={handleFrequency} value="frequency" className="option">
+        <button style={darkStyle.button} onClick={handleFrequency} value="frequency" className="option">
           {cell.frequency}
         </button>
 
-        <button style={darkMode.button} onClick={handlePriority} value="priority" className="right option">
+        <button style={darkStyle.button} onClick={handlePriority} value="priority" className="right option">
           {cell.priority}
         </button>
 
       </div>
 
-      <button style={darkMode.button} onClick={handleSubmit} className="right action">
+      <button style={darkStyle.button} onClick={handleSubmit} className="right action">
         <i className="fas fa-check"/>
       </button>
 

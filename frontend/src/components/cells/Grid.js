@@ -1,13 +1,7 @@
 import React from 'react';
 import Cell from './Cell';
 
-const Grid = ({ cells }) => {
-
-  const darkMode = {
-    background: '#1c1c1c',
-    borderColor: '#1c1c1c',
-    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
-  };
+const Grid = ({ cells, darkStyle }) => {
 
   const displayAllCash = () => {
     let allCash = [];
@@ -38,7 +32,7 @@ const Grid = ({ cells }) => {
   };
 
   return(
-      <div id="all" style={darkMode} className="module row">
+      <div id="all" style={darkStyle} className="module row">
         <div id="all-cash" className="column">
           {displayAllCash()}
         </div>
