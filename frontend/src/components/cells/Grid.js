@@ -32,7 +32,7 @@ const Grid = ({ cells, darkStyle }) => {
   };
 
   return(
-      <div id="all" style={darkStyle} className="module row">
+      <div id="all" style={darkStyle.module} className="module row">
         <div id="all-cash" className="column">
           {displayAllCash()}
         </div>

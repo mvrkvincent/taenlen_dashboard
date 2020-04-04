@@ -3,6 +3,7 @@
   width: 100%;
   display: flex;
   border-top: 3px solid #26C6DA;
+    transition: all 0.15s linear;
 }
 
 .row {

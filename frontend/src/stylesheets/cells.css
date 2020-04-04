@@ -2,20 +2,24 @@
   height: 100%;
   width: 100%;
   margin: 4rem;
+    transition: background-color 0.15s linear;
 }
 
 #staged {
   width: 100%;
+    transition: background-color 0.15s linear;
 }
 
 #grid {
   height: 100%;
   width: 100%;
   justify-content: center;
+    transition: background-color 0.15s linear;
 }
 
 #all{
   max-width: 75%;
+    transition: background-color 0.15s linear;
 }
 
 #all-cash {
@@ -56,7 +60,7 @@
   height: 0;
   overflow: hidden;
   justify-content: space-between;
-  transition: all 0.15s linear;
+    transition: all 0.15s linear;
 }
 
 .action,
