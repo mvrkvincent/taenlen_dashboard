@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CellOptions from './CellOptions';
 import { deleteCell } from '../../actions/cell_actions';
 
-const StagedCell = ({ cell, deleteCell }) => {
+const StagedCell = ({ cell, deleteCell, darkMode }) => {
   const [cellData, setCellData] = useState({
     id: cell.id,
     label: '',
@@ -63,11 +63,12 @@ const StagedCell = ({ cell, deleteCell }) => {
   }, [cell]);
 
   return (
-    <div id="staged-cell" className={`${cell.label} module`}>
+    <div id="staged-cell" style={darkMode.module} className={`${cell.label} module`}>
 
       <div className="row">
         {symbol}
         <input
+          style={darkMode.input}
           name="title"
           type="text"
           placeholder={placeholder}
@@ -76,6 +77,7 @@ const StagedCell = ({ cell, deleteCell }) => {
           className="cell-title"
           />
         <input
+          style={darkMode.input}
           name="amount"
           type="text"
           placeholder="1,000"
@@ -83,7 +85,7 @@ const StagedCell = ({ cell, deleteCell }) => {
           onChange={handleChange}
           className={cell.label}
         />
-        <button onClick={handleDelete} className="action right">
+        <button style={darkMode.button} onClick={handleDelete} className="action right">
           <i className="fas fa-trash-alt" />
         </button>
 
@@ -91,7 +93,8 @@ const StagedCell = ({ cell, deleteCell }) => {
 
       <CellOptions 
         cell={cellData} 
-        setCellData={setCellData} 
+        setCellData={setCellData}
+        darkMode={darkMode} 
       />
 
     </div>

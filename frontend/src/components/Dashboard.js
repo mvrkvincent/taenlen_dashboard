@@ -8,25 +8,57 @@ import Cells from './cells/Cells';
 
 const Dashboard = ({ isLoading, view }) => {
 
+  const darkMode = {
+    dashboard: {
+      color: '#ffffff',
+      background: '#121212'
+    },
+    module: {
+      background: '#1c1c1c',
+      borderColor: '#1c1c1c',
+      boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
+    },
+    button: {
+      color: '#26C6DA',
+      background: '#2f2f2f',
+      borderColor: '#2f2f2f',
+      boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.2)'
+    },
+    input: {
+      color: '#FFFFFF'
+    },
+    dash: {
+      color: '#26C6DA',
+      background: '#2f2f2f',
+      borderColor: '#2f2f2f',
+      boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
+    },
+    logout: {
+      background: '#2f2f2f',
+      borderColor: '#2f2f2f',
+      boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
+    },
+  };
+
   const generateView = () => {
     if (isLoading) {
       return <h1 className="title">Loading...</h1>
     } else {
       switch (view) {
         case 'login':
-          return <Login />;
+          return <Login darkMode={darkMode}/>;
         case 'register':
-          return <Register />
+          return <Register darkMode={darkMode}/>
         default:
-          return <Cells />;
+          return <Cells darkMode={darkMode}/>;
       }
     }
   };
 
   return (
-    <div id="dashboard" className="column">
+    <div id="dashboard" style={darkMode.dashboard} className="column">
 
-      <Nav />
+      <Nav darkMode={darkMode}/>
 
       {generateView()} 
 

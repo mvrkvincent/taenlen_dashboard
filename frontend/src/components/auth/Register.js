@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { register } from '../../actions/auth_actions';
 import { toggleView } from '../../actions/ui_actions';
 
-const Register = ({ errorList, toggleView, register }) => {
+const Register = ({ errorList, toggleView, register, darkMode }) => {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -38,10 +38,11 @@ const Register = ({ errorList, toggleView, register }) => {
   return (
 
       <div id="auth" className="column">
-        <div className="auth module">
+        <div style={darkMode.module} className="auth module">
           <h1 className="title">Register.</h1>
           <form className="column">
             <input
+              style={darkMode.input}
               name="first_name"
               type="text"
               placeholder="First Name"
@@ -51,6 +52,7 @@ const Register = ({ errorList, toggleView, register }) => {
             />
             < div className="error">{firstNameError}</div>
             <input
+              style={darkMode.input}
               name="last_name"
               type="text"
               placeholder="Last Name"
@@ -60,6 +62,7 @@ const Register = ({ errorList, toggleView, register }) => {
             />
             < div className="error">{lastNameError}</div>
             <input
+              style={darkMode.input}
               name="username"
               type="text"
               placeholder="Username"
@@ -69,6 +72,7 @@ const Register = ({ errorList, toggleView, register }) => {
             />
             <div className="error">{usernameError}</div>
             <input
+              style={darkMode.input}
               name="email"
               type="email"
               placeholder="Email"
@@ -78,6 +82,7 @@ const Register = ({ errorList, toggleView, register }) => {
             />
             <div className="error">{emailError}</div>
             <input
+              style={darkMode.input}
               name="password"
               type="password"
               placeholder="Password"
@@ -88,8 +93,8 @@ const Register = ({ errorList, toggleView, register }) => {
             <div className="error">{passwordError}</div>
             <div className="error">{generalError}</div>
             <div className="row submit">
-              <button onClick={() => toggleView('login')}>Return to Log In</button>
-              <button onClick={handleSubmit} >Register &rarr;</button>
+              <button style={darkMode.button} onClick={() => toggleView('login')}>Return to Log In</button>
+              <button style={darkMode.button} onClick={handleSubmit} >Register &rarr;</button>
             </div>
           </form>
         </div>

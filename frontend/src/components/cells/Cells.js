@@ -5,7 +5,7 @@ import StagedCell from './StagedCell';
 import Tickers from '../tickers/Tickers';
 import Grid from './Grid';
 
-const Cells = ({ staged, cells, fetchCells, stageCell }) => {
+const Cells = ({ staged, cells, fetchCells, stageCell, darkMode }) => {
   const [style, setStyle] = useState({
     margin: null
   });
@@ -18,13 +18,13 @@ const Cells = ({ staged, cells, fetchCells, stageCell }) => {
   
   const displayStagedCell = () => {
     if (staged.label) {
-      return <StagedCell cell={staged} />;
+      return <StagedCell cell={staged} darkMode={darkMode} />;
     }
   };
 
   const displayGrid = () => {
     if (cells[0]) {
-      return <Grid cells={cells}/>
+      return <Grid cells={cells} darkMode={darkMode}/>
     } else if (!staged.type) {
       return <h1 className="no-cells title">Your T&#230;nlen is Blank</h1>
     } 

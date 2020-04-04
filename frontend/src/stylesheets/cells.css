@@ -15,12 +15,12 @@
 }
 
 #all{
-  width: 80%;
+  max-width: 75%;
 }
 
 #all-cash {
   height: 100%;
-  width: 20rem;
+  max-width: 20rem;
   justify-content: center;
   padding-right: 1.5rem;
   border-right: 1px solid #E0E0E0;
@@ -28,7 +28,7 @@
 
 #all-expenses {
   height: 100%;
-  width: 80%;
+  max-width: 80%;
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
@@ -104,7 +104,7 @@
 }
 
 .no-cells {
-  font-size: 3rem;
+  align-self: center;
   color: #E0E0E0;
 }
 

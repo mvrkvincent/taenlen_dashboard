@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/auth_actions';
 import { toggleView } from '../../actions/ui_actions';
 
-const Login = ({ errorList, toggleView, login }) => {
+const Login = ({ errorList, toggleView, login, darkMode }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -38,10 +38,11 @@ const Login = ({ errorList, toggleView, login }) => {
   
   return (
       <div id="auth" className="column"> 
-        <div className="auth module">
+        <div style={darkMode.module} className="auth module">
           <h1 className="title">Log In.</h1>
           <form className="column">
-            <input 
+            <input
+              style={darkMode.input}
               name="username"
               type="text"
               placeholder="Username"
@@ -50,7 +51,8 @@ const Login = ({ errorList, toggleView, login }) => {
               onChange={handleChange} 
               />
             <div className="error">{usernameError}</div>
-            <input 
+            <input
+              style={darkMode.input} 
               name="password"
               type="password" 
               placeholder="Password"
@@ -61,11 +63,11 @@ const Login = ({ errorList, toggleView, login }) => {
             <div className="error">{passwordError}</div>
             <div className="error">{generalError}</div>
             <div className="row submit">
-              <button onClick={() => toggleView('register')}>Create Account</button>
-              <button onClick={handleSubmit}>Submit &rarr;</button>
+              <button style={darkMode.button} onClick={() => toggleView('register')}>Create Account</button>
+              <button style={darkMode.button} onClick={handleSubmit}>Submit &rarr;</button>
             </div>
             <div className="row submit">
-              <button className="demo" onClick={handleDemo}>Demo</button>
+              <button style={darkMode.button} className="demo" onClick={handleDemo}>Demo</button>
             </div>
           </form>
         </div>

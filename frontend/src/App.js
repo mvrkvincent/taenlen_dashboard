@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import Dashboard from './components/Dashboard';
 import { fetchUser } from './actions/auth_actions';
 
-const App = ({ store }) => { 
+const App = ({ store }) => {
 
   useEffect(() => {
     if (localStorage.getItem('token')) {

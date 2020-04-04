@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth_actions';
 
-const Nav = ({ firstName, loggedIn, logout }) => {
+const Nav = ({ firstName, loggedIn, logout, darkMode }) => {
 
   const generateButtons = () => {
     const welcome = (firstName === 'Demo') ? `${firstName}` : `${firstName}'s`;
@@ -11,14 +11,19 @@ const Nav = ({ firstName, loggedIn, logout }) => {
       case true: 
         return( 
           <div className="nav-buttons row">
-            <button onClick={logout} className="left logout">Log Out</button>
-            <button className="dash-button">{welcome} Dashboard</button>
+            <button 
+              style={darkMode.logout} 
+              onClick={logout} 
+              className="left logout">Log Out</button>
+            <button 
+              style={darkMode.dash}
+              className="dash-button">{welcome} Dashboard</button>
           </div>
         )
       default: 
         return( 
           <div className="row">
-            <button className="dash-button">Dashboard</button>
+            <button style={darkMode.dash} className="dash-button">Dashboard</button>
           </div>
         )
     }

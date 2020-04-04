@@ -3,6 +3,12 @@ import Cell from './Cell';
 
 const Grid = ({ cells }) => {
 
+  const darkMode = {
+    background: '#1c1c1c',
+    borderColor: '#1c1c1c',
+    boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.5)'
+  };
+
   const displayAllCash = () => {
     let allCash = [];
     cells.forEach((cell, i) => {
@@ -10,7 +16,11 @@ const Grid = ({ cells }) => {
         allCash.push(<Cell key={i} cell={cell} />);
       }
     });
-    return allCash;
+    if (allCash[0]) {
+      return allCash;
+    } else {
+      return <span className="no-cells">Add Income</span>
+    }
   };
 
   const displayAllExpenses = () => {
@@ -20,11 +30,15 @@ const Grid = ({ cells }) => {
         allExpenses.push(<Cell key={i} cell={cell} />);
       }
     });
-    return allExpenses;
+    if (allExpenses[0]) {
+      return allExpenses;
+    } else {
+      return <span className="no-cells">Add Expenses</span>
+    }
   };
 
   return(
-      <div id="all" className="module row">
+      <div id="all" style={darkMode} className="module row">
         <div id="all-cash" className="column">
           {displayAllCash()}
         </div>
