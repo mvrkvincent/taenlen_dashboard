@@ -6,6 +6,10 @@ const Cell = ({ cell, staged, stageCell }) => {
 
   const symbol = cell.label === 'cash' ? < i className="fas fa-arrow-up" /> : <i className="fas fa-arrow-down" />;
 
+  const formatMoney = amount => {
+    return new Intl.NumberFormat().format(amount);
+  }; 
+
   const handleStage = e => {
     e.preventDefault();
     if (!staged[0]) {
@@ -19,7 +23,7 @@ const Cell = ({ cell, staged, stageCell }) => {
       <div className="bold">{cell.title}</div>
 
       <div className="row">
-        <span className="cell-amount">{cell.amount}</span>
+        <span className="cell-amount">{formatMoney(cell.amount)}</span>
         {symbol}
       </div>
 

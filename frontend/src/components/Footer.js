@@ -12,7 +12,12 @@ const Footer = ({ darkStyle, darkMode, toggleDarkMode }) => {
 
   return(
     <footer className="column">
-      <button style={darkStyle.button} onClick={() => toggleDarkMode()}>{darkButton}</button>
+      <div className="dark-mode">
+        <button 
+          style={darkStyle.button} 
+          onClick={() => toggleDarkMode()} 
+          className="logout">{darkButton}</button>
+      </div>
       <div className="footnote">1.  <i>noun, welsh [taen·llen]</i>: A spreadsheet.</div>
     </footer>
   );

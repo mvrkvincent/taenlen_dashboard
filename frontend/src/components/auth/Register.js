@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { register } from '../../actions/auth_actions';
 import { toggleView } from '../../actions/ui_actions';
 
-const Register = ({ errorList, toggleView, register, darkStyle }) => {
+const Register = ({ errors, toggleView, register, darkStyle }) => {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -12,16 +12,7 @@ const Register = ({ errorList, toggleView, register, darkStyle }) => {
     password: '', 
   });
 
-  const { firstNameError, lastNameError, emailError, usernameError, passwordError, generalError } = errorList;
   const error = { borderColor: '#EC407A' };
-
-  const errorStyle = {
-    fError: (firstNameError || generalError) ? error : null,
-    lErrr: (lastNameError || generalError) ? error : null,
-    eError: (emailError || generalError) ? error : null,
-    uError: (usernameError || generalError) ? error : null,
-    pError: (passwordError || generalError) ? error : null
-  };
 
   const handleChange = e => {
       setFormData({
@@ -42,56 +33,51 @@ const Register = ({ errorList, toggleView, register, darkStyle }) => {
           <h1 className="title">Register.</h1>
           <form className="column">
             <input
-              style={darkStyle.input}
               name="first_name"
               type="text"
               placeholder="First Name"
-              style={errorStyle.fError}
+              style={darkStyle.input}
               value={formData.first_name}
               onChange={handleChange} 
             />
-            < div className="error">{firstNameError}</div>
+            < div className="error">{errors.first_name}</div>
             <input
-              style={darkStyle.input}
               name="last_name"
               type="text"
               placeholder="Last Name"
-              style={errorStyle.lError}
+              style={darkStyle.input}
               value={formData.last_name}
               onChange={handleChange} 
             />
-            < div className="error">{lastNameError}</div>
+            < div className="error">{errors.last_name}</div>
             <input
-              style={darkStyle.input}
               name="username"
               type="text"
               placeholder="Username"
-              style={errorStyle.uError}
+              style={darkStyle.input}
               value={formData.username}
               onChange={handleChange} 
             />
-            <div className="error">{usernameError}</div>
+            <div className="error">{errors.username}</div>
             <input
-              style={darkStyle.input}
               name="email"
               type="email"
               placeholder="Email"
-              style={errorStyle.eError}
+              style={darkStyle.input}
               value={formData.email}
               onChange={handleChange} 
             />
-            <div className="error">{emailError}</div>
+            <div className="error">{errors.email}</div>
             <input
-              style={darkStyle.input}
               name="password"
               type="password"
               placeholder="Password"
-              style={errorStyle.pError}
+              style={darkStyle.input}
               value={formData.password}
               onChange={handleChange} 
             />
-            <div className="error">{passwordError}</div>
-            <div className="error">{generalError}</div>
+            <div className="error">{errors.password}</div>
+            <div className="error">{errors.non_field_errors}</div>
             <div className="row submit">
               <button style={darkStyle.button} onClick={() => toggleView('login')}>Return to Log In</button>
               <button style={darkStyle.button} onClick={handleSubmit} >Register &rarr;</button>
@@ -103,14 +89,7 @@ const Register = ({ errorList, toggleView, register, darkStyle }) => {
 };
 
 const msp = ({ errors }) => ({
-  errorList: {
-    firstNameError: errors.first_name,
-    lastNameError: errors.last_name,
-    emailError: errors.email,
-    usernameError: errors.username,
-    passwordError: errors.password,
-    generalError: errors.non_field_errors
-  }
+  errors: errors
 });
 
 const mdp = dispatch => ({

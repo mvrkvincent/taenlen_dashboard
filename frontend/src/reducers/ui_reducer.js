@@ -27,38 +27,47 @@ export default (state = initialState, action) => {
   switch (action.type) {
 
     case SET_DARK_MODE: {
-      return{...state, 
+      return {...state, 
         darkMode: !state.darkMode
       };
     }
     
     case SET_VIEW: {
-      return Object.assign({}, state, {
+      return {...state,
         view: action.payload
-      });
+      };
     }
 
     case RECEIVING_USER:
-      return Object.assign({}, state, { 
+      return {...state,
         isLoading: true 
-      });
+      };
 
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
     case USER_RECEIVED: {
-      return Object.assign({}, state, { 
+      return {...state,
         view: 'week',
         isLoading: false,
-        isAuthenticated: true,
-      });
+        isAuthenticated: true
+      };
     }
 
     case USER_ERROR:
     case LOGIN_ERROR:
     case REGISTER_ERROR:
+      return {...state,
+        isLoading: false,
+        isAuthenticated: false,
+        darkMode: state.darkMode
+      };
+
     case LOGOUT_SUCCESS: {
-      return initialState;
+      return {...initialState,
+        darkMode: state.darkMode
+      };
     }
+
     default:
       return state;
   }

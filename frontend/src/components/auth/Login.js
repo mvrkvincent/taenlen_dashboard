@@ -3,19 +3,13 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/auth_actions';
 import { toggleView } from '../../actions/ui_actions';
 
-const Login = ({ errorList, toggleView, login, darkStyle }) => {
+const Login = ({ errors, toggleView, login, darkStyle }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
 
-  const { usernameError, passwordError, generalError } = errorList;
-  const errorStyle = { borderColor: '#EC407A4' };
-
-  const style = {
-    usernameError: (usernameError || generalError) ? errorStyle : null,
-    passwordError: (passwordError || generalError) ? errorStyle : null
-  };
+  const error = { borderColor: '#EC407A4' };
 
   const handleChange = e => {
     setFormData({
@@ -42,26 +36,24 @@ const Login = ({ errorList, toggleView, login, darkStyle }) => {
           <h1 className="title">Log In.</h1>
           <form className="column">
             <input
-              style={darkStyle.input}
               name="username"
               type="text"
               placeholder="Username"
-              style={style.usernameError}
+              style={darkStyle.input}
               value={formData.username}
               onChange={handleChange} 
               />
-            <div className="error">{usernameError}</div>
+            <div className="error">{errors.username}</div>
             <input
-              style={darkStyle.input} 
               name="password"
               type="password" 
               placeholder="Password"
-              style={style.passwordError}
+              style={darkStyle.input}
               value={formData.password}
               onChange={handleChange}
               />
-            <div className="error">{passwordError}</div>
-            <div className="error">{generalError}</div>
+            <div className="error">{errors.password}</div>
+            <div className="error">{errors.non_field_errors}</div>
             <div className="row submit">
               <button style={darkStyle.button} onClick={() => toggleView('register')}>Create Account</button>
               <button style={darkStyle.button} onClick={handleSubmit}>Submit &rarr;</button>
@@ -76,11 +68,7 @@ const Login = ({ errorList, toggleView, login, darkStyle }) => {
 };
 
 const msp = ({ errors }) => ({
-  errorList: {
-    usernameError: errors.username,
-    passwordError: errors.password,
-    generalError: errors.non_field_errors
-  }
+  errors: errors
 });
 
 

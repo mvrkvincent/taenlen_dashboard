@@ -61,8 +61,8 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     let visible = {};
     if ((cell.title !== '') && (cell.amount !== '')) {
       visible = {
-        height: '2rem',
-        marginTop: '1rem'
+        height: '4rem',
+        paddingTop: '1rem'
       };
     }
     return visible;
@@ -85,7 +85,7 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
 
       <div className="row">
 
-        <button style={darkStyle.button} onClick={handleFrequency} value="frequency" className="option">
+        <button style={darkStyle.button} onClick={handleFrequency} value="frequency" className="left option">
           {cell.frequency}
         </button>
 

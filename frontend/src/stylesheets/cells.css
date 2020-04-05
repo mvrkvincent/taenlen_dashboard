@@ -7,6 +7,7 @@
 
 #staged {
   width: 100%;
+  transition: all 0.15s linear;
     transition: background-color 0.15s linear;
 }
 
@@ -90,6 +91,7 @@
 
 #staged-cell {
   border-color: #E0E0E0;
+  margin-bottom: 1.5rem;
 }
 
 #staged-cell i {
