@@ -14,7 +14,7 @@ const Footer = ({ darkStyle, darkMode, toggleDarkMode }) => {
     <footer className="column">
       <div className="dark-mode">
         <button 
-          style={darkStyle.button} 
+          style={darkStyle.logout} 
           onClick={() => toggleDarkMode()} 
           className="logout">{darkButton}</button>
       </div>

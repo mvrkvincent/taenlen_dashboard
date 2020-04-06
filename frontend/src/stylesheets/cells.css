@@ -64,6 +64,12 @@
     transition: all 0.15s linear;
 }
 
+#cell-options input {
+  font-size: 0.8rem;
+  width: 9rem;
+  padding: 0.45rem;
+}
+
 .action,
 .option {
   min-width: 3rem;
@@ -125,6 +131,8 @@
 .cell-amount {
   margin-right: 0.25rem;
 }
+
+
 
 
 

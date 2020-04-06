@@ -9,8 +9,6 @@ const Login = ({ errors, toggleView, login, darkStyle }) => {
     password: '',
   });
 
-  const error = { borderColor: '#EC407A4' };
-
   const handleChange = e => {
     setFormData({
       ...formData,

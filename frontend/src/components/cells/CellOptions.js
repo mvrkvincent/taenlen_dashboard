@@ -80,6 +80,11 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     
   };
 
+  const handleChange = e => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
+
   return (
     <div id="cell-options" style={toggleView()} className="row">
 
@@ -89,9 +94,14 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
           {cell.frequency}
         </button>
 
+        <select style={darkStyle.button} onChange={handleChange} value='' required="required" className="middle option">
+          <option>Select</option>
+        </select>
+
         <button style={darkStyle.button} onClick={handlePriority} value="priority" className="right option">
           {cell.priority}
         </button>
+
 
       </div>
 
