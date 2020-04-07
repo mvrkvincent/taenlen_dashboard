@@ -85,6 +85,7 @@
 }
 
 .option {
+  margin: 0.5rem;
   border-color:  #26C6DA;
   color: #26C6DA;
   font-weight: bold;

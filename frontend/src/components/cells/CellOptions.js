@@ -7,16 +7,12 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
   const handleFrequency = e => {
     e.preventDefault();
     let toggle = '';
-   
       switch (cell.frequency) {
         case ('One Time'):
           toggle = "Weekly";
           break;
         case ('Weekly'):
-          toggle = "Bi-Weekly";
-          break;
-        case ('Bi-Weekly'):
-          toggle = 'Monthly';
+          toggle = "Monthly";
           break;
         case ('Monthly'):
           toggle = 'Yearly';
@@ -32,22 +28,31 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
 
   };
 
+  const generatePriority = () => {
+    if (cell.label === 'expenses') {
+      return(
+        <button style={darkStyle.button} onClick={handlePriority} value="priority" className="option">
+          {cell.priority}
+        </button>
+      )
+    } else {
+      return null;
+    }
+  };
+
   const handlePriority = e => {
     e.preventDefault();
     let toggle = '';
 
     switch (cell.priority) {
-      case ('Low Priority'):
-        toggle = "Medium Priority";
+      case ('Low'):
+        toggle = "Medium";
         break;
-      case ('Medium Priority'):
-        toggle = "High Priority";
-        break;
-      case ('High Priority'):
-        toggle = 'Low Priority';
+      case ('Medium'):
+        toggle = "High";
         break;
       default:
-        toggle = 'Low Priority';
+        toggle = 'Low';
     }
 
     setCellData({
@@ -55,6 +60,35 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
       [e.target.value]: toggle
     });
 
+  };
+
+
+  const generateDatePicker = () => {
+    let picker = null;
+    let dayOptions = [<option>Mon</option>, <option>Tue</option>, <option>Wed</option>]
+    let dateOptions = [<option>1st</option>, <option>2nd</option>, <option>3rd</option>]
+    let monthOptions = [<option>Jan</option>, <option>Feb</option>, <option>Mar</option>]
+    let dayPicker = <select style={darkStyle.button} onChange={handleDate} value='Day' required="required" className="left option">{dayOptions}</select>
+    let datePicker = <select style={darkStyle.button} onChange={handleDate} value='Date' required="required" className="left option">{dateOptions}</select>
+    let monthPicker = <select style={darkStyle.button} onChange={handleDate} value='Month' required="required" className="left option">{monthOptions}</select>
+
+    switch(cell.frequency) {
+      case ('One Time'):
+        picker = null;
+        return picker;
+      case ('Weekly'):
+        picker = dayPicker;
+        return picker;
+      case ('Monthly'):
+        picker = datePicker;
+        return picker;
+      case ('Yearly'):
+        picker = [datePicker, monthPicker]
+        return picker
+      default:
+        picker = null;
+        return picker;
+    }
   };
 
   const toggleView = () => {
@@ -68,21 +102,21 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     return visible;
   };
 
+  const handleDate = e => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    const formattedCell = { ...cell, amount: parseInt(cell.amount.split(',').join(''))};
+    const formattedCell = { ...cell, amount: parseInt(cell.amount.split(',').join('')) };
 
     if (cell.id) {
-      updateCell(formattedCell);  
+      updateCell(formattedCell);
     } else {
       submitCell(formattedCell);
     }
-    
-  };
 
-  const handleChange = e => {
-    e.preventDefault();
-    console.log(e.target.value);
   };
 
   return (
@@ -94,14 +128,9 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
           {cell.frequency}
         </button>
 
-        <select style={darkStyle.button} onChange={handleChange} value='' required="required" className="middle option">
-          <option>Select</option>
-        </select>
+        {generateDatePicker()}
 
-        <button style={darkStyle.button} onClick={handlePriority} value="priority" className="right option">
-          {cell.priority}
-        </button>
-
+        {generatePriority()}
 
       </div>
 

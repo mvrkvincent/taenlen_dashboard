@@ -4,10 +4,10 @@ import { toggleDarkMode } from '../actions/ui_actions';
 
 const Footer = ({ darkStyle, darkMode, toggleDarkMode }) => {
 
-  let darkButton = <i className="far fa-moon" />;
+  let darkButton = <i className="far fa-moon"/>;
 
   if (darkMode) {
-    darkButton = <i className="fas fa-moon" />;
+    darkButton = <i className="fas fa-moon"/>;
   }
 
   return(
