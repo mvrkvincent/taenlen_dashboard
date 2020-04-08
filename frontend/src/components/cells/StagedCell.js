@@ -85,7 +85,7 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
           onChange={handleChange}
           className={cell.label}
         />
-        <button style={darkStyle.button} onClick={handleDelete} className="action right">
+        <button style={darkStyle.button} onClick={handleDelete} className="right action">
           <i className="fas fa-trash-alt" />
         </button>
 

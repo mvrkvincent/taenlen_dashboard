@@ -68,9 +68,9 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     let dayOptions = [<option>Mon</option>, <option>Tue</option>, <option>Wed</option>]
     let dateOptions = [<option>1st</option>, <option>2nd</option>, <option>3rd</option>]
     let monthOptions = [<option>Jan</option>, <option>Feb</option>, <option>Mar</option>]
-    let dayPicker = <select style={darkStyle.button} onChange={handleDate} value='Day' required="required" className="left option">{dayOptions}</select>
-    let datePicker = <select style={darkStyle.button} onChange={handleDate} value='Date' required="required" className="left option">{dateOptions}</select>
-    let monthPicker = <select style={darkStyle.button} onChange={handleDate} value='Month' required="required" className="left option">{monthOptions}</select>
+    let dayPicker = <select style={darkStyle.button} onChange={handleDate} value='Day' required="required" className="option">{dayOptions}</select>
+    let datePicker = <select style={darkStyle.button} onChange={handleDate} value='Date' required="required" className="option">{dateOptions}</select>
+    let monthPicker = <select style={darkStyle.button} onChange={handleDate} value='Month' required="required" className="option">{monthOptions}</select>
 
     switch(cell.frequency) {
       case ('One Time'):
@@ -83,7 +83,7 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
         picker = datePicker;
         return picker;
       case ('Yearly'):
-        picker = [datePicker, monthPicker]
+        picker = [monthPicker, datePicker]
         return picker
       default:
         picker = null;
@@ -124,7 +124,7 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
 
       <div className="row">
 
-        <button style={darkStyle.button} onClick={handleFrequency} value="frequency" className="left option">
+        <button style={darkStyle.button} onClick={handleFrequency} value="frequency" className="option">
           {cell.frequency}
         </button>
 
