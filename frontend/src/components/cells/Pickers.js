@@ -1,23 +1,23 @@
 import React from 'react';
 import { days, months } from '../../utils/cell_utils';
 
-export const DayPicker = ({ style, handleChange }) => {
-  let dayOptions = days.map((day, i) => <option key={i} value={day}>{day}</option>)
+export const DayPicker = ({ style, dueDate, handleChange }) => {
+  let dayOptions = days.map(day => <option key={day} value={day}>{day}</option>)
   return (
     <select
+      id='day'
       style={style}
       onChange={handleChange}
-      value='Day'
+      value={dueDate.day}
       required="required"
       className="option">{dayOptions}</select>
   )
 }
 
-export const DatePicker = ({ style, handleChange }) => {
+export const DatePicker = ({ style, dueDate, handleChange }) => {
   let dateOptions = [];
   let date = 1
   while (dateOptions.length < 31) {
-    debugger
     let formattedDate;
     if (date === 1 || date === 21 || date === 31) {
       formattedDate = date.toString() + 'st'
@@ -40,21 +40,23 @@ export const DatePicker = ({ style, handleChange }) => {
 
   return (
     <select
+      id='date'
       style={style}
       onChange={handleChange}
-      value='Date'
+      value={dueDate.date}
       required="required"
       className="option">{dateOptions}</select>
   )
 };
 
-export const MonthPicker = ({style, handleChange}) => {
-  let monthOptions = months.map((mon, i) => <option key={i} value={mon}>{mon}</option>)
+export const MonthPicker = ({style, dueDate, handleChange}) => {
+  let monthOptions = months.map(mon => <option key={mon} value={mon}>{mon}</option>)
   return(
     <select 
+      id="month"
       style={style} 
       onChange={handleChange} 
-      value='Month'
+      value={dueDate.month}
       required="required" 
       className="option">{monthOptions}</select>
   )

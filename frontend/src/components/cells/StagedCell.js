@@ -10,7 +10,7 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
     title: '',
     amount: '',
     frequency: 'One Time',
-    priority: 'Low Priority'
+    priority: 'Low'
   });
   
   const symbol = cell.label === 'cash' ? < i className="cash fas fa-arrow-up left"/> : <i className="expenses fas fa-arrow-down left"/>;
@@ -58,7 +58,7 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
       title: cell.title || '',
       amount: cell.amount ? formatMoney(cell.amount) : '',
       frequency: cell.frequency || 'One Time',
-      priority: cell.priority || 'Low Priority'
+      priority: cell.priority || 'Low'
     });
   }, [cell]);
 

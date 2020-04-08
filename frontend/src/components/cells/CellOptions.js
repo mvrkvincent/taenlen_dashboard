@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { submitCell, updateCell } from '../../actions/cell_actions';
 import { DayPicker, DatePicker, MonthPicker } from './Pickers';
 
 const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) => {
+  const [dueDate, setDueDate] = useState({
+    day: 'Mon',
+    date: '1st',
+    month: 'Jan'
+  });
 
   const handleFrequency = e => {
     e.preventDefault();
@@ -21,11 +26,12 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
         default:
           toggle = 'One Time';
       }
-    
+
     setCellData({
       ...cell,
       [e.target.value]: toggle
     });
+
 
   };
 
@@ -55,7 +61,6 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
       default:
         toggle = 'Low';
     }
-
     setCellData({
       ...cell,
       [e.target.value]: toggle
@@ -64,39 +69,43 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
   };
 
   const generateDatePicker = () => {
-    let picker = null;
-  
     switch(cell.frequency) {
       case ('One Time'):
-        picker = null;
-        return picker;
+        return null;
       case ('Weekly'):
-        picker = <DayPicker style={darkStyle.button} handleChange={handleDate}/>;
-        return picker;
+        return <DayPicker 
+                    style={darkStyle.button} 
+                    dueDate={dueDate} 
+                    chandleChange={handleDate}/>;
       case ('Monthly'):
-        picker = <DatePicker style={darkStyle.button} handleChange={handleDate} />;
-        return picker;
+        return <DatePicker 
+                    style={darkStyle.button} 
+                    dueDate={dueDate} 
+                    handleChange={handleDate} />;
       case ('Yearly'):
-        picker = [
+        return [
+          <DatePicker
+            style={darkStyle.button}
+            dueDate={dueDate}
+            handleChange={handleDate}
+          />,
           <MonthPicker
             style={darkStyle.button}
+            dueDate={dueDate}
             handleChange={handleDate}
-          />, 
-          <DatePicker 
-            style={darkStyle.button}
-            handleChange={handleDate} 
           />
         ]
-        return picker
       default:
-        picker = null;
-        return picker;
+        return null;
     }
   };
 
   const handleDate = e => {
     e.preventDefault();
-    console.log(e.target.value);
+    setDueDate({
+      ...dueDate,
+      [e.target.id]: e.target.value
+    });
   };
 
   const toggleView = () => {
@@ -110,11 +119,12 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     return visible;
   };
 
-
-
   const handleSubmit = e => {
     e.preventDefault();
-    const formattedCell = { ...cell, amount: parseInt(cell.amount.split(',').join('')) };
+    debugger
+    const formattedCell = { ...cell, 
+      amount: parseInt(cell.amount.split(',').join(''))
+    };
 
     if (cell.id) {
       updateCell(formattedCell);
