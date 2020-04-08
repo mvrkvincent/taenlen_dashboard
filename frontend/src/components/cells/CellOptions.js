@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { submitCell, updateCell } from '../../actions/cell_actions';
+import { DayPicker, DatePicker, MonthPicker } from './Pickers';
 
 const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) => {
 
@@ -62,33 +63,40 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
 
   };
 
-
   const generateDatePicker = () => {
     let picker = null;
-    let dayOptions = [<option>Mon</option>, <option>Tue</option>, <option>Wed</option>]
-    let dateOptions = [<option>1st</option>, <option>2nd</option>, <option>3rd</option>]
-    let monthOptions = [<option>Jan</option>, <option>Feb</option>, <option>Mar</option>]
-    let dayPicker = <select style={darkStyle.button} onChange={handleDate} value='Day' required="required" className="option">{dayOptions}</select>
-    let datePicker = <select style={darkStyle.button} onChange={handleDate} value='Date' required="required" className="option">{dateOptions}</select>
-    let monthPicker = <select style={darkStyle.button} onChange={handleDate} value='Month' required="required" className="option">{monthOptions}</select>
-
+  
     switch(cell.frequency) {
       case ('One Time'):
         picker = null;
         return picker;
       case ('Weekly'):
-        picker = dayPicker;
+        picker = <DayPicker style={darkStyle.button} handleChange={handleDate}/>;
         return picker;
       case ('Monthly'):
-        picker = datePicker;
+        picker = <DatePicker style={darkStyle.button} handleChange={handleDate} />;
         return picker;
       case ('Yearly'):
-        picker = [monthPicker, datePicker]
+        picker = [
+          <MonthPicker
+            style={darkStyle.button}
+            handleChange={handleDate}
+          />, 
+          <DatePicker 
+            style={darkStyle.button}
+            handleChange={handleDate} 
+          />
+        ]
         return picker
       default:
         picker = null;
         return picker;
     }
+  };
+
+  const handleDate = e => {
+    e.preventDefault();
+    console.log(e.target.value);
   };
 
   const toggleView = () => {
@@ -102,10 +110,7 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     return visible;
   };
 
-  const handleDate = e => {
-    e.preventDefault();
-    console.log(e.target.value);
-  };
+
 
   const handleSubmit = e => {
     e.preventDefault();
