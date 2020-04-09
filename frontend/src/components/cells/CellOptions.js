@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { submitCell, updateCell } from '../../actions/cell_actions';
 import { DayPicker, DatePicker, MonthPicker } from './Pickers';
 
 const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) => {
-  const [dueDate, setDueDate] = useState({
-    day: 'Mon',
-    date: '1st',
-    month: 'Jan'
-  });
 
   const handleFrequency = e => {
     e.preventDefault();
@@ -31,8 +26,6 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
       ...cell,
       [e.target.value]: toggle
     });
-
-
   };
 
   const generatePriority = () => {
@@ -65,7 +58,6 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
       ...cell,
       [e.target.value]: toggle
     });
-
   };
 
   const generateDatePicker = () => {
@@ -74,26 +66,26 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
         return null;
       case ('Weekly'):
         return <DayPicker 
-                    style={darkStyle.button} 
-                    dueDate={dueDate} 
-                    chandleChange={handleDate}/>;
+                  style={darkStyle.button} 
+                  cell={cell} 
+                  handleChange={handleDate}/>;
       case ('Monthly'):
         return <DatePicker 
-                    style={darkStyle.button} 
-                    dueDate={dueDate} 
-                    handleChange={handleDate} />;
+                  style={darkStyle.button} 
+                  cell={cell} 
+                  handleChange={handleDate} />;
       case ('Yearly'):
         return [
-          <DatePicker
-            style={darkStyle.button}
-            dueDate={dueDate}
-            handleChange={handleDate}
-          />,
           <MonthPicker
             style={darkStyle.button}
-            dueDate={dueDate}
+            cell={cell}
             handleChange={handleDate}
-          />
+          />, 
+          <DatePicker
+            style={darkStyle.button}
+            cell={cell}
+            handleChange={handleDate}
+          />,
         ]
       default:
         return null;
@@ -102,8 +94,9 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
 
   const handleDate = e => {
     e.preventDefault();
-    setDueDate({
-      ...dueDate,
+    debugger
+    setCellData({
+      ...cell,
       [e.target.id]: e.target.value
     });
   };
@@ -121,7 +114,7 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
 
   const handleSubmit = e => {
     e.preventDefault();
-    debugger
+    
     const formattedCell = { ...cell, 
       amount: parseInt(cell.amount.split(',').join(''))
     };

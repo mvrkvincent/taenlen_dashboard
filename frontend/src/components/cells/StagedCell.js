@@ -2,16 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import CellOptions from './CellOptions';
 import { deleteCell } from '../../actions/cell_actions';
+import { days, months } from '../../utils/cell_utils';
 
 const StagedCell = ({ cell, deleteCell, darkStyle }) => {
-  const [cellData, setCellData] = useState({
-    id: cell.id,
-    label: '',
-    title: '',
-    amount: '',
-    frequency: 'One Time',
-    priority: 'Low'
-  });
+  const [cellData, setCellData] = useState({});
+
+  const today = new Date();
   
   const symbol = cell.label === 'cash' ? < i className="cash fas fa-arrow-up left"/> : <i className="expenses fas fa-arrow-down left"/>;
   const placeholder = cell.label === 'cash' ? 'Ex. Pay Check...' : 'Ex. Rent, Netflix...';
@@ -58,6 +54,9 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
       title: cell.title || '',
       amount: cell.amount ? formatMoney(cell.amount) : '',
       frequency: cell.frequency || 'One Time',
+      day: cell.day || days[today.getDay()],
+      date: cell.date || today.getDate(),
+      month: cell.month || months[today.getMonth()],
       priority: cell.priority || 'Low'
     });
   }, [cell]);
