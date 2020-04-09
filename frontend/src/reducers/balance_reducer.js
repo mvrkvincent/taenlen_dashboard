@@ -2,10 +2,7 @@ import {
   RECEIVE_BALANCE
 } from '../actions/balance_actions';
 
-const initialState = {
-  income: 0,
-  expenses: 0
-};
+const initialState = {};
 
 export default (state = initialState, action) => {
   Object.freeze(state);
@@ -13,13 +10,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
 
     case RECEIVE_BALANCE: {
-      return {
-        ...state,
-        income: action.payload.income,
-        expenses: action.payload.expenses
-      };
+      return action.payload;
     }
-
     default:
       return state;
   }

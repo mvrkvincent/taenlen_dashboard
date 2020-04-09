@@ -5,30 +5,35 @@ const Grid = ({ cells, darkStyle }) => {
 
   const displayAllCash = () => {
     let allCash = [];
-    cells.forEach((cell, i) => {
+
+    cells.forEach(cell => {
       if (cell.label === 'cash') {
-        allCash.push(<Cell key={i} cell={cell} />);
+        allCash.push(<Cell key={cell.id} cell={cell} />);
       }
     });
+
     if (allCash[0]) {
       return allCash;
     } else {
       return <span className="no-cells">Add Income</span>
-    }
+    };
   };
 
   const displayAllExpenses = () => {
     let allExpenses = [];
-    cells.forEach((cell, i) => {
+
+    cells.forEach(cell => {
       if (cell.label === 'expenses') {
-        allExpenses.push(<Cell key={i} cell={cell} />);
+        allExpenses.push(<Cell key={cell.id} cell={cell} />);
       }
     });
+
     if (allExpenses[0]) {
       return allExpenses;
     } else {
       return <span className="no-cells">Add Expenses</span>
     }
+
   };
 
   return(
@@ -42,6 +47,5 @@ const Grid = ({ cells, darkStyle }) => {
       </div>
   )
 };
-
 
 export default Grid;

@@ -5,7 +5,7 @@ const receiveBalance = payload => ({
   payload
 }); 
 
-export const submitCell = balance => async dispatch => {
+export const setBalance = balance => async dispatch => {
 
   try {
     dispatch(receiveBalance(balance));

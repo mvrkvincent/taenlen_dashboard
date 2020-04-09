@@ -32,7 +32,6 @@
 }
 
 #all-expenses {
-  height: 100%;
   max-width: 80%;
   display: flex;
   justify-content: center;
