@@ -9,13 +9,13 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     e.preventDefault();
     let toggle = '';
       switch (cell.frequency) {
-        case ('One Time'):
+        case 'One Time':
           toggle = "Weekly";
           break;
-        case ('Weekly'):
+        case 'Weekly':
           toggle = "Monthly";
           break;
-        case ('Monthly'):
+        case 'Monthly':
           toggle = 'Yearly';
           break;
         default:
@@ -45,10 +45,10 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     let toggle = '';
 
     switch (cell.priority) {
-      case ('Low'):
+      case 'Low':
         toggle = "Medium";
         break;
-      case ('Medium'):
+      case 'Medium':
         toggle = "High";
         break;
       default:
@@ -62,19 +62,19 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
 
   const generateDatePicker = () => {
     switch(cell.frequency) {
-      case ('One Time'):
+      case 'One Time':
         return null;
-      case ('Weekly'):
+      case 'Weekly':
         return <DayPicker 
                   style={darkStyle.button} 
                   cell={cell} 
                   handleChange={handleDate}/>;
-      case ('Monthly'):
+      case 'Monthly':
         return <DatePicker 
                   style={darkStyle.button} 
                   cell={cell} 
                   handleChange={handleDate} />;
-      case ('Yearly'):
+      case 'Yearly':
         return [
           <MonthPicker
             style={darkStyle.button}
