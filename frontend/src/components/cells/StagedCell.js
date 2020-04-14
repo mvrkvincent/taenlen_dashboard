@@ -5,7 +5,17 @@ import { deleteCell } from '../../actions/cell_actions';
 import { days, months } from '../../utils/cell_utils';
 
 const StagedCell = ({ cell, deleteCell, darkStyle }) => {
-  const [cellData, setCellData] = useState({});
+  const [cellData, setCellData] = useState({
+    id: cell.id,
+    label: cell.label,
+    title: cell.title || '',
+    amount: cell.amount || '',
+    frequency: cell.frequency || '', 
+    day: cell.day || '',
+    date: cell.date || '', 
+    month: cell.month || '', 
+    priority: cell.priority || ''
+  });
 
   const today = new Date();
   
@@ -16,24 +26,21 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
     return new Intl.NumberFormat().format(amount);
   }; 
 
-  const validateNumber = (name, amount) => {
-    const regex = /^[0-9]+$/;
-    if (amount.match(regex)) {
-      const cash = formatMoney(amount);
-      setCellData({
-        ...cellData,
-        [name]: cash
-      });
-    }
-  };
   
   const handleChange = e => {
+    const regex = /^[0-9]+$/;
     let name = e.target.name;
     let value = e.target.value;
     const amount = value.split(',').join('');
     
     if (name === 'amount' && value !== '') {
-      validateNumber(name, amount);
+      if (amount.match(regex)) {
+        const cash = formatMoney(amount);
+        setCellData({
+          ...cellData,
+          [name]: cash
+        });
+      }
     } else {
       setCellData({
         ...cellData,

@@ -94,7 +94,7 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
 
   const handleDate = e => {
     e.preventDefault();
-    debugger
+    
     setCellData({
       ...cell,
       [e.target.id]: e.target.value
