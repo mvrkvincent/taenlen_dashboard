@@ -61,7 +61,7 @@ export const stageCell = cell => async dispatch => {
 export const submitCell = cell => async dispatch => {
 
   try {
-    const res = await axios.post('http://localhost:8000/api/cells/', cell, config);
+    const res = await axios.post('https://taenlen.herokuapp.com/api/cells/', cell, config);
     dispatch(receiveCell(res.data));
   } catch (err) {
     dispatch(receiveError(err.response.data));
@@ -72,7 +72,7 @@ export const submitCell = cell => async dispatch => {
 export const updateCell = cell => async dispatch => {
 
   try {
-    const res = await axios.patch(`http://localhost:8000/api/cells/${cell.id}/`, cell, config);
+    const res = await axios.patch(`https://taenlen.herokuapp.com/api/cells/${cell.id}/`, cell, config);
     dispatch(receiveCell(res.data));
   } catch (err) {
     dispatch(receiveError(err.response.data));
@@ -86,7 +86,7 @@ export const deleteCell = id => async dispatch => {
     dispatch(removeCell(id));
   } else {
     try {
-      const res = await axios.delete(`http://localhost:8000/api/cells/${id}`, config);
+      const res = await axios.delete(`https://taenlen.herokuapp.com/api/cells/${id}`, config);
       console.log(res);
       dispatch(removeCell(id));
     } catch (err) {
