@@ -61,7 +61,7 @@ export const fetchUser = () => async (dispatch, getState) => {
 export const register = user => async dispatch => {
 
   try {
-    const res = await axios.post('http://localhost:8000/api/auth/register', user, config);
+    const res = await axios.post('http://taenlen.herokuapp.com/api/auth/register', user, config);
     dispatch(receiveRegister(res.data));
   } catch (err) {
       const error = err.response ? err.response.data : err.message;
