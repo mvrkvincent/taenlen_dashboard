@@ -23,8 +23,8 @@ const Login = ({ errors, toggleView, login, darkStyle }) => {
 
   const handleDemo = e => {
     e.preventDefault();
-    const user = 'DemoUser';
-    const pass = 'DemoUser2020';
+    const user = 'NumberOne';
+    const pass = 'SmittyNumber1';
     login({ username: user, password: pass });
   };
   

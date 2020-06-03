@@ -147,7 +147,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://dashboard.taenlen.com'
 ]
 
 django_heroku.settings(locals())
