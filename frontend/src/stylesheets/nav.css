@@ -49,4 +49,8 @@ nav a {
   nav .row {
     flex-direction: row-reverse;
   }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
 }
