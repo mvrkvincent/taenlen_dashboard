@@ -41,13 +41,23 @@
 
 @media (max-width: 800px) {
 
+  #tickers .module {
+    padding: 0;
+  }
+
   #tickers {
     display: flex;
     flex-direction: column;
   }
+
   #tickers {
     flex-direction: row;
   }
+
+  #tickers .ticker-value {
+    font-size: 1.25rem;
+  } 
+
   .ticker-value {
     font-size: 1.5rem;
   }

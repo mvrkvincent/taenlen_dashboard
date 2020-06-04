@@ -135,6 +135,10 @@
 
 @media (max-width: 800px) {
 
+  #cells {
+    margin: 2rem;
+  }
+
   #staged .module {
     padding: 1rem;
   }
