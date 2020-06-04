@@ -135,6 +135,18 @@
 
 @media (max-width: 800px) {
 
+  #staged .module {
+    padding: 1rem;
+  }
+
+  .cell-title {
+    font-size: 0.8rem;
+  }
+
+  #staged {
+    width: 20rem;
+  }
+
   #all-cash {
     padding: 0 0 1.5rem 0;
     border: 0;

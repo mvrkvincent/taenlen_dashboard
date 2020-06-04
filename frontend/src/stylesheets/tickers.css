@@ -43,10 +43,12 @@
 
   #tickers {
     display: flex;
-    /* flex-direction: column; */
-    height: 30%;
+    flex-direction: column;
   }
-  #cal .ticker-value {
+  #tickers {
+    flex-direction: row;
+  }
+  .ticker-value {
     font-size: 1.5rem;
   }
 

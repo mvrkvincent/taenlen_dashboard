@@ -100,5 +100,9 @@ button:hover {
 }
 
 @media (max-width: 800px) {
-
+  input {
+    margin: 0;
+    font-size: 0.8rem;
+    padding: 0.36rem;
+  }
 }
