@@ -124,7 +124,7 @@
   cursor: pointer;
   margin: 0.2rem;
   padding: 0.5rem;
-  width: 12rem;
+  min-width: 12rem;
   box-shadow: none;
 }
 
@@ -133,7 +133,19 @@
 }
 
 
+@media (max-width: 800px) {
 
+  #all-cash {
+    padding: 0 0 1.5rem 0;
+    border: 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  #all-expenses {
+    padding: 1.5rem 0 0 0;
+  }
+
+}
 
 
 

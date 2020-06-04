@@ -38,3 +38,29 @@
   text-align: center;
   font-size: 2rem; 
 }
+
+@media (max-width: 800px) {
+
+  #tickers {
+    display: flex;
+    /* flex-direction: column; */
+    height: 30%;
+  }
+  #cal .ticker-value {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  #all-cash {
+    padding-right: 0rem;
+    border-right: none;
+  }
+
+  #all {
+    flex-direction: column;
+  }
+
+}

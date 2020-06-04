@@ -31,7 +31,7 @@ const Nav = ({ firstName, loggedIn, logout, darkStyle }) => {
   }
 
   return (
-    <nav className="row">
+    <nav>
       <div className="row">
         <a href="https://taenlen.com/" className="logo">T&#230;nlen<sup>[1]</sup></a> 
         {/* <a href="https://taenlen.com/cells">Cells</a> */}
