@@ -2,19 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setBalance } from '../../actions/balance_actions';
 
-const Cash = ({ cells, generateCell, setBalance }) => {
-  let cash = 0;
+const Cash = ({ cash, cells, generateCell, setBalance }) => {
 
   const format = cash => {
     return new Intl.NumberFormat().format(cash);
   };
 
-  const calculateCash = () => {
-    cells.forEach(cell => {
-      if (cell.label === 'cash') {
-        cash += cell.amount;
-      }
-    });
+  const displayCash = () => {
     if (cash > 0) {
       return <h1 className="ticker-value">{format(cash)}</h1>;
     } else {
@@ -25,7 +19,7 @@ const Cash = ({ cells, generateCell, setBalance }) => {
   return(
     <div id="cash" onClick={() => generateCell('cash')} className='module cash'>
 
-      {calculateCash()}
+      {displayCash()}
 
       <h1 className="ticker-lable cash"><i className="fas fa-arrow-up"/></h1>
       
