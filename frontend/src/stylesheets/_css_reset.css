@@ -67,6 +67,11 @@ select {
   appearance: none;
 }
 
+button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
 select:focus, 
 textarea:focus, 
 input:focus,
