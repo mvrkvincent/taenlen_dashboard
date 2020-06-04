@@ -100,7 +100,7 @@ button:hover {
 }
 
 @media (max-width: 800px) {
-  input {
+  #staged-cell input {
     margin: 0;
     font-size: 0.8rem;
     padding: 0.36rem;
