@@ -49,14 +49,15 @@ const Cells = ({ staged, cells, fetchCells, stageCell, darkStyle }) => {
         {displayStagedCell()}
       </div>
       
-      <h1>Budget</h1>
+      {/* <h1>Budget</h1> */}
       <div id="grid" className="column">
         {displayGrid()}
       </div>
-      This Month
+      
+      {/* This Month
       <div id="grid" className="column">
         {displayGrid()}
-      </div>
+      </div> */}
 
 
     </div>
