@@ -2,6 +2,7 @@ import React from 'react';
 import Calendar from './Calendar';
 import Cash from './Cash';
 import Expenses from './Expenses';
+import Balance from './Balance';
 
 const Tickers = ({ generateCell }) => {
 
@@ -10,7 +11,7 @@ const Tickers = ({ generateCell }) => {
 
       <Cash generateCell={generateCell} />
 
-      <Calendar />
+      <Balance />
 
       <Expenses generateCell={generateCell} />
       

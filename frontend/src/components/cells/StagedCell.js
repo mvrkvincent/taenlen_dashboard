@@ -60,7 +60,7 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
       label: cell.label,
       title: cell.title || '',
       amount: cell.amount ? formatMoney(cell.amount) : '',
-      frequency: cell.frequency || 'One Time',
+      frequency: cell.frequency || 'Once',
       day: cell.day || days[today.getDay()],
       date: cell.date || today.getDate(),
       month: cell.month || months[today.getMonth()],

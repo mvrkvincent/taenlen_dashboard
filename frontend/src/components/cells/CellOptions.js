@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { submitCell, updateCell } from '../../actions/cell_actions';
-import { DayPicker, DatePicker, MonthPicker } from './Pickers';
+// import { DayPicker, DatePicker, MonthPicker } from './Pickers';
 
 const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) => {
 
@@ -9,17 +9,20 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     e.preventDefault();
     let toggle = '';
       switch (cell.frequency) {
-        case 'One Time':
+        case 'Once':
           toggle = "Weekly";
           break;
         case 'Weekly':
-          toggle = "Monthly";
+          toggle = "Bi-Monthly";
+          break;
+        case 'Bi-Monthly':
+          toggle = 'Monthly';
           break;
         case 'Monthly':
           toggle = 'Yearly';
           break;
         default:
-          toggle = 'One Time';
+          toggle = 'Once';
       }
 
     setCellData({
@@ -60,46 +63,46 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     });
   };
 
-  const generateDatePicker = () => {
-    switch(cell.frequency) {
-      case 'One Time':
-        return null;
-      case 'Weekly':
-        return <DayPicker 
-                  style={darkStyle.button} 
-                  cell={cell} 
-                  handleChange={handleDate}/>;
-      case 'Monthly':
-        return <DatePicker 
-                  style={darkStyle.button} 
-                  cell={cell} 
-                  handleChange={handleDate} />;
-      case 'Yearly':
-        return [
-          <MonthPicker
-            style={darkStyle.button}
-            cell={cell}
-            handleChange={handleDate}
-          />, 
-          <DatePicker
-            style={darkStyle.button}
-            cell={cell}
-            handleChange={handleDate}
-          />,
-        ]
-      default:
-        return null;
-    }
-  };
+  // const generateDatePicker = () => {
+  //   switch(cell.frequency) {
+  //     case 'Once':
+  //       return null;
+  //     case 'Weekly':
+  //       return <DayPicker 
+  //                 style={darkStyle.button} 
+  //                 cell={cell} 
+  //                 handleChange={handleDate}/>;
+  //     case 'Monthly':
+  //       return <DatePicker 
+  //                 style={darkStyle.button} 
+  //                 cell={cell} 
+  //                 handleChange={handleDate} />;
+  //     case 'Yearly':
+  //       return [
+  //         <MonthPicker
+  //           style={darkStyle.button}
+  //           cell={cell}
+  //           handleChange={handleDate}
+  //         />, 
+  //         <DatePicker
+  //           style={darkStyle.button}
+  //           cell={cell}
+  //           handleChange={handleDate}
+  //         />,
+  //       ]
+  //     default:
+  //       return null;
+  //   }
+  // };
 
-  const handleDate = e => {
-    e.preventDefault();
+  // const handleDate = e => {
+  //   e.preventDefault();
     
-    setCellData({
-      ...cell,
-      [e.target.id]: e.target.value
-    });
-  };
+  //   setCellData({
+  //     ...cell,
+  //     [e.target.id]: e.target.value
+  //   });
+  // };
 
   const toggleView = () => {
     let visible = {};
@@ -136,7 +139,7 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
           {cell.frequency}
         </button>
 
-        {generateDatePicker()}
+        {/* {generateDatePicker()} */}
 
         {generatePriority()}
 

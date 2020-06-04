@@ -47,7 +47,7 @@ export default (state = initialState, action) => {
     case REGISTER_SUCCESS:
     case USER_RECEIVED: {
       return {...state,
-        view: 'week',
+        view: 'spending',
         isLoading: false,
         isAuthenticated: true
       };

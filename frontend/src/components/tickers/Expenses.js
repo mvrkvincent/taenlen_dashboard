@@ -5,7 +5,7 @@ import { setBalance } from '../../actions/balance_actions';
 const Expenses = ({ cells, generateCell, setBalance }) => {
   let expenses = 0;
 
-  const formatExpenses = expenses => {
+  const format = expenses => {
     return new Intl.NumberFormat().format(expenses);
   };
 
@@ -17,7 +17,7 @@ const Expenses = ({ cells, generateCell, setBalance }) => {
     });
 
     if (expenses > 0) {
-      return <h1 className="ticker-value">{formatExpenses(expenses)}</h1>;
+      return <h1 className="ticker-value">{format(expenses)}</h1>;
     } else {
       return <h1 className="ticker-value no-cells">0</h1>
     }
