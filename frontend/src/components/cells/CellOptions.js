@@ -13,9 +13,9 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
           toggle = "Weekly";
           break;
         case 'Weekly':
-          toggle = "Bi-Monthly";
+          toggle = "Bi-Weekly";
           break;
-        case 'Bi-Monthly':
+        case 'Bi-Weekly':
           toggle = 'Monthly';
           break;
         case 'Monthly':
