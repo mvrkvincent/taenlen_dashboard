@@ -78,6 +78,7 @@ textarea:focus,
 input:focus,
 button:focus {
 	outline: none;
+	-webkit-appearance: none;
 }
 
 * {
