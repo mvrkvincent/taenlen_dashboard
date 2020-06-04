@@ -40,7 +40,7 @@ const config = {
 export const fetchCells = () => async dispatch => {
 
   try {
-    const res = await axios.get('http://localhost:8000/api/cells/');
+    const res = await axios.get('https://taenlen.herokuapp.com/api/cells/');
     dispatch(receiveCells(res.data));
   } catch (err) {
     dispatch(receiveError(err.response.data));
