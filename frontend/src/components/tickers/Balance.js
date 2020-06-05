@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { toggleView } from '../../actions/ui_actions';
+import { deleteCell } from '../../actions/cell_actions';
 
-const Balance = ({ balance, view, toggleView }) => {
+const Balance = ({ balance, staged, view, toggleView, generateCell, deleteCell }) => {
 
   const format = amount => {
     return new Intl.NumberFormat().format(amount);
@@ -22,6 +23,7 @@ const Balance = ({ balance, view, toggleView }) => {
     switch (view) {
       case ('spending'):
         toggleView('savings');
+        generateCell({ label: 'savings' })
         break;
       default:
         toggleView('spending');
@@ -37,12 +39,14 @@ const Balance = ({ balance, view, toggleView }) => {
   )
 };
 
-const msp = ({ ui }) => ({
+const msp = ({ cells, ui }) => ({
+  staged: cells.staged,
   view: ui.view
 })
 
 const mdp = dispatch => ({
-  toggleView: view => dispatch(toggleView(view))
+  toggleView: view => dispatch(toggleView(view)),
+  deleteCell: cell => dispatch(deleteCell(cell))
 })
 
 export default connect(msp, mdp)(Balance);

@@ -1,38 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import CellOptions from './CellOptions';
+import SavingsOptions from './SavingsOptions';
 import { deleteCell } from '../../actions/cell_actions';
-import { days, months } from '../../utils/cell_utils';
 
-const StagedCell = ({ cell, deleteCell, darkStyle }) => {
+const SavingsCell = ({ cell, deleteCell, darkStyle }) => {
   const [cellData, setCellData] = useState({
     id: cell.id,
     label: cell.label,
-    title: cell.title || '',
-    amount: cell.amount || '',
-    frequency: cell.frequency || '', 
-    // day: cell.day || '',
-    // date: cell.date || '', 
-    // month: cell.month || '', 
-    priority: cell.priority || ''
+    title: 'savings',
+    amount: '',
   });
 
   const today = new Date();
-  
-  const symbol = cell.label === 'cash' ? < i className="cash fas fa-arrow-up left"/> : <i className="expenses fas fa-arrow-down left"/>;
+
+  const symbol = cell.label === 'cash' ? < i className="cash fas fa-arrow-up left" /> : <i className="expenses fas fa-arrow-down left" />;
   const placeholder = cell.label === 'cash' ? 'Ex. Pay Check...' : 'Ex. Rent, Netflix...';
 
   const formatMoney = amount => {
     return new Intl.NumberFormat().format(amount);
-  }; 
+  };
 
-  
+
   const handleChange = e => {
     const regex = /^[0-9]+$/;
     let name = e.target.name;
     let value = e.target.value;
     const amount = value.split(',').join('');
-    
+
     if (name === 'amount' && value !== '') {
       if (amount.match(regex)) {
         const cash = formatMoney(amount);
@@ -54,34 +48,18 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
     deleteCell(cell.id);
   };
 
-  useEffect(() => {
-    setCellData({
-      id: cell.id,
-      label: cell.label,
-      title: cell.title || '',
-      amount: cell.amount ? formatMoney(cell.amount) : '',
-      frequency: cell.frequency || 'Once',
-      // day: cell.day || days[today.getDay()],
-      // date: cell.date || today.getDate(),
-      // month: cell.month || months[today.getMonth()],
-      priority: cell.priority || 'Low'
-    });
-  }, [cell]);
+  // useEffect(() => {
+  //   setCellData({
+  //     id: cell.id,
+  //     label: cell.label,
+  //     title: 'savings',
+  //     amount: cell.amount ? formatMoney(cell.amount) : '',
+  //   });
+  // }, [cell]);
 
   return (
     <div id="staged-cell" style={darkStyle.module} className={`${cell.label} module`}>
-
       <div className="row">
-        {symbol}
-        <input
-          style={darkStyle.input}
-          name="title"
-          type="text"
-          placeholder={placeholder}
-          value={cellData.title}
-          onChange={handleChange}
-          className="cell-title"
-          />
         <input
           style={darkStyle.input}
           name="amount"
@@ -89,7 +67,7 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
           placeholder="1,000"
           value={cellData.amount}
           onChange={handleChange}
-          className={cell.label}
+          className='cal'
         />
         <button style={darkStyle.button} onClick={handleDelete} className="right action">
           <i className="fas fa-trash-alt" />
@@ -97,10 +75,10 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
 
       </div>
 
-      <CellOptions 
-        cell={cellData} 
+      <SavingsOptions
+        cell={cellData}
         setCellData={setCellData}
-        darkStyle={darkStyle} 
+        darkStyle={darkStyle}
       />
 
     </div>
@@ -111,4 +89,4 @@ const mdp = dispatch => ({
   deleteCell: cell => dispatch(deleteCell(cell))
 })
 
-export default connect(null, mdp)(StagedCell);
+export default connect(null, mdp)(SavingsCell);

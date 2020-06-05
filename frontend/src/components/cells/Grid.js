@@ -37,6 +37,8 @@ const Grid = ({ cells, darkStyle }) => {
   };
 
   return(
+    <>
+
       <div id="all" style={darkStyle.module} className="module row">
         <div id="all-cash" className="column">
           {displayAllCash()}
@@ -45,6 +47,8 @@ const Grid = ({ cells, darkStyle }) => {
           {displayAllExpenses()}
         </div>
       </div>
+
+    </>
   )
 };
 

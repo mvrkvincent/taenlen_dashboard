@@ -79,7 +79,9 @@
     transition: all 0.15s linear;
 }
 
-.action:hover {
+.action:hover,
+.add:hover,
+.remove:hover {
   color: #000000;
   border-color: #9E9E9E;
 }
@@ -95,6 +97,23 @@
 .option-input {
   padding: 0.4rem;
 }
+
+.add {
+  margin: 0 0.5rem;
+  border-color:  #9CCC65;
+  color: #9CCC65;
+  font-weight: bold;
+  min-width: 6rem;
+}
+
+.remove {
+  margin: 0 0.5rem;
+  border-color:  #D32F2F;
+  color: #D32F2F;
+  font-weight: bold;
+  min-width: 6rem;
+}
+
 
 #staged-cell {
   border-color: #E0E0E0;

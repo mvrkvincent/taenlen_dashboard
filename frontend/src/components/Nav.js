@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth_actions';
+import Calendar from '../components/tickers/Calendar';
 
 const Nav = ({ firstName, loggedIn, logout, darkStyle }) => {
 
@@ -12,12 +13,13 @@ const Nav = ({ firstName, loggedIn, logout, darkStyle }) => {
         return( 
           <div className="nav-buttons row">
             <button 
+              style={darkStyle.dash}
+              className="left dash-button">{welcome} Dashboard</button>
+            <Calendar darkStyle={darkStyle} />
+            <button 
               style={darkStyle.logout} 
               onClick={logout} 
-              className="left logout">Log Out</button>
-            <button 
-              style={darkStyle.dash}
-              className="dash-button">{welcome} Dashboard</button>
+              className="right logout">Log Out</button>
           </div>
         )
       default: 

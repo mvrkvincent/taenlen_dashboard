@@ -41,7 +41,7 @@ const Tickers = ({ cells, setBalance, generateCell }) => {
 
       <Cash cash={total.cash} generateCell={generateCell} />
 
-      <Balance balance={total.balance}/>
+      <Balance balance={total.balance} generateCell={generateCell}/>
 
       <Expenses expenses={total.expenses} generateCell={generateCell} />
       

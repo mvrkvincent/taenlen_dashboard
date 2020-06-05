@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchCells, stageCell } from '../../actions/cell_actions';
 import StagedCell from './StagedCell';
+import SavingsCell from './SavingsCell';
 import Tickers from '../tickers/Tickers';
 import Grid from './Grid';
 
-const Cells = ({ staged, cells, fetchCells, stageCell, darkStyle }) => {
+const Cells = ({ staged, cells, view, fetchCells, stageCell, darkStyle }) => {
   const [style, setStyle] = useState({
     margin: null
   });
@@ -17,8 +18,10 @@ const Cells = ({ staged, cells, fetchCells, stageCell, darkStyle }) => {
   };
   
   const displayStagedCell = () => {
-    if (staged.label) {
+    if (staged.label === 'cash' || staged.label === 'expenses') {
       return <StagedCell cell={staged} darkStyle={darkStyle} />;
+    } else if (staged.label) {
+      return <SavingsCell cell={staged} darkStyle={darkStyle} />;
     }
   };
 
@@ -29,12 +32,6 @@ const Cells = ({ staged, cells, fetchCells, stageCell, darkStyle }) => {
       return <h1 className="no-cells title">Your T&#230;nlen is Blank</h1>
     } 
   };
-
-  useEffect(() => {
-    if (staged.type) {
-      setStyle({ marginBottom: '2rem' });
-    }
-  }, [staged]);
 
   useEffect(() => {
     fetchCells();
@@ -64,9 +61,10 @@ const Cells = ({ staged, cells, fetchCells, stageCell, darkStyle }) => {
   );
 };
 
-const msp = ({ cells }) => ({
+const msp = ({ cells, ui }) => ({
   staged: cells.staged,
-  cells: cells.all ? Object.values(cells.all) : []
+  cells: cells.all ? Object.values(cells.all) : [],
+  view: ui.view
 });
 
 const mdp = dispatch => ({
