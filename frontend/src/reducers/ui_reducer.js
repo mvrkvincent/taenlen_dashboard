@@ -1,6 +1,7 @@
 import { 
   SET_VIEW,
-  SET_DARK_MODE
+  SET_DARK_MODE,
+  SET_EDIT
  } from '../actions/ui_actions';
 
 import {
@@ -17,6 +18,7 @@ import {
 const initialState = {
   darkMode: false,
   view: 'login',
+  edit: false,
   isLoading: false,
   isAuthenticated: false,
 };
@@ -35,6 +37,12 @@ export default (state = initialState, action) => {
     case SET_VIEW: {
       return {...state,
         view: action.payload
+      };
+    }
+
+    case SET_EDIT: {
+      return {...state,
+        edit: !state.edit
       };
     }
 

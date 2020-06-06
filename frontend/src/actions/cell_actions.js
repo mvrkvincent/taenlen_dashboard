@@ -81,7 +81,6 @@ export const updateCell = cell => async dispatch => {
 };
 
 export const deleteCell = id => async dispatch => {
-
   if (!id) {
     dispatch(removeCell(id));
   } else {

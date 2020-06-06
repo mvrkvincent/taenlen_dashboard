@@ -27,6 +27,7 @@ const Balance = ({ balance, staged, view, toggleView, generateCell, deleteCell }
         break;
       default:
         toggleView('spending');
+        deleteCell(staged.id)
     }
   };
 

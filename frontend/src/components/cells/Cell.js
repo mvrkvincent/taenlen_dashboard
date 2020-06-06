@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { stageCell } from '../../actions/cell_actions';
 
-const Cell = ({ cell, staged, stageCell }) => { 
+const Cell = ({ edit, cell, staged, stageCell }) => { 
 
   const symbol = cell.label === 'cash' ? < i className="fas fa-arrow-up" /> : <i className="fas fa-arrow-down" />;
 
@@ -12,8 +12,10 @@ const Cell = ({ cell, staged, stageCell }) => {
 
   const handleStage = e => {
     e.preventDefault();
-    if (!staged[0]) {
+    if (!staged[0] && edit) {
       stageCell(cell);
+    } else {
+      console.log(cell.amount);
     }
   };
 
@@ -31,7 +33,8 @@ const Cell = ({ cell, staged, stageCell }) => {
   )
 };
 
-const msp = ({ cells }) => ({
+const msp = ({ ui, cells }) => ({
+  edit: ui.edit,
   staged: Object.values(cells.staged)
 })
 

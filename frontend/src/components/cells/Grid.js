@@ -1,7 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { toggleEdit } from '../../actions/ui_actions';
 import Cell from './Cell';
 
-const Grid = ({ cells, darkStyle }) => {
+const Grid = ({ edit, cells, toggleEdit, darkStyle }) => {
+
+  const style = edit ? { borderColor: '#26C6DA' } : { borderColor: 'transparent' };
+
+  const editText = edit ? 'Save Taenlen' : 'Edit Taenlen';
 
   const displayAllCash = () => {
     let allCash = [];
@@ -47,9 +53,18 @@ const Grid = ({ cells, darkStyle }) => {
           {displayAllExpenses()}
         </div>
       </div>
+      <button style={style}className='action' onClick={() => toggleEdit()}>{editText}</button>
 
     </>
   )
 };
 
-export default Grid;
+const msp = ({ ui }) => ({
+  edit: ui.edit
+})
+
+const mdp = dispatch => ({
+  toggleEdit: () => dispatch(toggleEdit())
+})
+
+export default connect(msp, mdp)(Grid);
