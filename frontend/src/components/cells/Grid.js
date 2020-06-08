@@ -5,9 +5,9 @@ import Cell from './Cell';
 
 const Grid = ({ edit, cells, toggleEdit, darkStyle }) => {
 
-  const style = edit ? { borderColor: '#26C6DA' } : { borderColor: 'transparent' };
+  const style = edit ? { ...darkStyle.toggle, borderColor: '#26C6DA', color: '#26C6DA' } : { ...darkStyle.toggle, borderColor: 'transparent' };
 
-  const editText = edit ? 'Save Taenlen' : 'Edit Taenlen';
+  const editText = edit ? 'Save Cells' : 'Edit Cells';
 
   const displayAllCash = () => {
     let allCash = [];
@@ -53,7 +53,7 @@ const Grid = ({ edit, cells, toggleEdit, darkStyle }) => {
           {displayAllExpenses()}
         </div>
       </div>
-      <button style={style}className='action' onClick={() => toggleEdit()}>{editText}</button>
+      <button style={style} className="edit" onClick={() => toggleEdit()}>{editText}</button>
 
     </>
   )

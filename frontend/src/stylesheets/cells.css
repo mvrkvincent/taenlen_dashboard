@@ -151,6 +151,14 @@
   margin-right: 0.25rem;
 }
 
+.edit {
+  color: #9E9E9E;
+}
+
+.edit:hover {
+  border-color: #26C6DA;
+}
+
 
 @media (max-width: 800px) {
 
