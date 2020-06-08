@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { submitCell, updateCell } from '../../actions/cell_actions';
-// import { DayPicker, DatePicker, MonthPicker } from './Pickers';
+import { setSavings } from '../../actions/balance_actions';
 
-const SavingsOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) => {
+const SavingsOptions = ({ savings, cell, setSavings, darkStyle }) => {
 
   const toggleView = () => {
     let visible = {};
-    if ((cell.title !== '') && (cell.amount !== '')) {
+    if (cell.amount !== '') {
       visible = {
         height: '4rem',
         paddingTop: '1rem'
@@ -16,18 +16,17 @@ const SavingsOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }
     return visible;
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = (action) => {
 
     const formattedCell = {
       ...cell,
       amount: parseInt(cell.amount.split(',').join(''))
     };
 
-    if (cell.id) {
-      updateCell(formattedCell);
+    if (action === 'add') {
+      setSavings({savings: savings + formattedCell.amount});
     } else {
-      submitCell(formattedCell);
+      setSavings({savings: savings - formattedCell.amount});
     }
 
   };
@@ -37,13 +36,13 @@ const SavingsOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }
 
       <div className="row">
 
-        <button style={darkStyle.button} className="left add">
+        <button style={darkStyle.button} className="left add" onClick={() => handleSubmit('add')}>
           <i className="fas fa-arrow-up" />
         </button>
 
       </div>
 
-      <button style={darkStyle.button} className="right remove">
+      <button style={darkStyle.button} className="right remove" onClick={() => handleSubmit('remove')}>
         <i className="fas fa-arrow-down" />
       </button>
 
@@ -52,8 +51,13 @@ const SavingsOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }
 };
 
 const mdp = dispatch => ({
+  setSavings: savings => dispatch(setSavings(savings)),
   submitCell: cell => dispatch(submitCell(cell)),
   updateCell: cell => dispatch(updateCell(cell))
 })
 
-export default connect(null, mdp)(SavingsOptions);
+const msp = ({ balance }) => ({
+  savings: balance.savings
+}
+)
+export default connect(msp, mdp)(SavingsOptions);

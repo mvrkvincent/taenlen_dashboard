@@ -1,4 +1,5 @@
 import { LOGOUT_SUCCESS } from '../actions/auth_actions';
+import { RECEIVE_SAVINGS } from '../actions/balance_actions';
 import { 
   STAGE_CELL,
   RECEIVE_CELL,
@@ -32,6 +33,11 @@ export default (state = initialState, action) => {
           cells[cell.id] = cell; 
           return cells; 
         }, {})
+      };
+    }
+    case RECEIVE_SAVINGS: {
+      return {...state, 
+        staged: {},
       };
     }
     case REMOVE_CELL:

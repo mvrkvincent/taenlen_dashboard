@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setBalance } from '../../actions/balance_actions';
+import { setSavings } from '../../actions/balance_actions';
 import Cash from './Cash';
 import Expenses from './Expenses';
 import Balance from './Balance';
@@ -54,7 +54,7 @@ const msp = ({ cells }) => ({
 })
 
 const mdp = dispatch => ({
-  setBalance: balance => dispatch(setBalance(balance))
+  setSavings: balance => dispatch(setSavings(balance))
 })
 
 export default connect(msp, mdp)(Tickers);

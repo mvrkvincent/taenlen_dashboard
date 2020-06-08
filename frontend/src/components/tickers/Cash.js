@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setBalance } from '../../actions/balance_actions';
 
-const Cash = ({ cash, cells, generateCell, setBalance }) => {
+const Cash = ({ cash, cells, generateCell }) => {
 
   const format = cash => {
     return new Intl.NumberFormat().format(cash);
@@ -32,7 +31,7 @@ const msp = ({ cells }) => ({
 })
 
 const mdp = dispatch => ({
-  setBalance: balance => dispatch(setBalance(balance))
+  // setBalance: balance => dispatch(setBalance(balance))
 })
 
 export default connect(msp, mdp)(Cash);

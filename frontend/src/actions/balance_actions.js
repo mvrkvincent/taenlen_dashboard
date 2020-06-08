@@ -1,16 +1,16 @@
-export const RECEIVE_BALANCE = 'RECEIVE_BALANCE';
+export const RECEIVE_SAVINGS = 'RECEIVE_SAVINGS';
 
-const receiveBalance = payload => ({
-  type: RECEIVE_BALANCE,
+const receiveSavings = payload => ({
+  type: RECEIVE_SAVINGS,
   payload
 }); 
 
-export const setBalance = balance => async dispatch => {
+export const setSavings = balance => async dispatch => {
 
   try {
-    dispatch(receiveBalance(balance));
+    dispatch(receiveSavings(balance));
   } catch (err) {
-    console.log('Balance is broken');
+    console.log('Savings is broken');
   }
 
 };

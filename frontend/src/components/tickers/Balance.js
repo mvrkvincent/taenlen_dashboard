@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { toggleView } from '../../actions/ui_actions';
 import { deleteCell } from '../../actions/cell_actions';
 
-const Balance = ({ balance, staged, view, toggleView, generateCell, deleteCell }) => {
+const Balance = ({ balance, savings, staged, view, toggleView, generateCell, deleteCell }) => {
 
   const format = amount => {
     return new Intl.NumberFormat().format(amount);
@@ -15,7 +15,7 @@ const Balance = ({ balance, staged, view, toggleView, generateCell, deleteCell }
   </div>
 
   const savingsModule = <div>
-    <h1 className="ticker-value row">{format(0)}</h1>
+    <h1 className="ticker-value row">{format(savings)}</h1>
     <h1 className="ticker-lable cal"><i className="fas fa-piggy-bank" /></h1>
   </div>
 
@@ -40,9 +40,10 @@ const Balance = ({ balance, staged, view, toggleView, generateCell, deleteCell }
   )
 };
 
-const msp = ({ cells, ui }) => ({
+const msp = ({ balance, cells, ui }) => ({
   staged: cells.staged,
-  view: ui.view
+  view: ui.view,
+  savings: balance.savings
 })
 
 const mdp = dispatch => ({
