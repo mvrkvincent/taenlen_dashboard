@@ -58,6 +58,6 @@ const mdp = dispatch => ({
 
 const msp = ({ balance }) => ({
   savings: balance.savings
-}
-)
+})
+
 export default connect(msp, mdp)(SavingsOptions);

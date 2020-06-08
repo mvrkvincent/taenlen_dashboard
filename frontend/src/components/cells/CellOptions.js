@@ -63,47 +63,6 @@ const CellOptions = ({ cell, setCellData, submitCell, updateCell, darkStyle }) =
     });
   };
 
-  // const generateDatePicker = () => {
-  //   switch(cell.frequency) {
-  //     case 'Once':
-  //       return null;
-  //     case 'Weekly':
-  //       return <DayPicker 
-  //                 style={darkStyle.button} 
-  //                 cell={cell} 
-  //                 handleChange={handleDate}/>;
-  //     case 'Monthly':
-  //       return <DatePicker 
-  //                 style={darkStyle.button} 
-  //                 cell={cell} 
-  //                 handleChange={handleDate} />;
-  //     case 'Yearly':
-  //       return [
-  //         <MonthPicker
-  //           style={darkStyle.button}
-  //           cell={cell}
-  //           handleChange={handleDate}
-  //         />, 
-  //         <DatePicker
-  //           style={darkStyle.button}
-  //           cell={cell}
-  //           handleChange={handleDate}
-  //         />,
-  //       ]
-  //     default:
-  //       return null;
-  //   }
-  // };
-
-  // const handleDate = e => {
-  //   e.preventDefault();
-    
-  //   setCellData({
-  //     ...cell,
-  //     [e.target.id]: e.target.value
-  //   });
-  // };
-
   const toggleView = () => {
     let visible = {};
     if ((cell.title !== '') && (cell.amount !== '')) {

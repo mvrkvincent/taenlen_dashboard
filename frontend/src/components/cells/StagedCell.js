@@ -10,13 +10,8 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
     title: cell.title || '',
     amount: cell.amount || '',
     frequency: cell.frequency || '', 
-    // day: cell.day || '',
-    // date: cell.date || '', 
-    // month: cell.month || '', 
     priority: cell.priority || ''
   });
-
-  // const today = new Date();
   
   const symbol = cell.label === 'cash' ? < i className="cash fas fa-arrow-up left"/> : <i className="expenses fas fa-arrow-down left"/>;
   const placeholder = cell.label === 'cash' ? 'Ex. Pay Check...' : 'Ex. Rent, Netflix...';
@@ -60,9 +55,6 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
       title: cell.title || '',
       amount: cell.amount ? formatMoney(cell.amount) : '',
       frequency: cell.frequency || 'Once',
-      // day: cell.day || days[today.getDay()],
-      // date: cell.date || today.getDate(),
-      // month: cell.month || months[today.getMonth()],
       priority: cell.priority || 'Low'
     });
   }, [cell]);

@@ -1,5 +1,6 @@
 import {
-  RECEIVE_SAVINGS
+  RECEIVE_SAVINGS,
+  RECEIVE_SPENDING
 } from '../actions/balance_actions';
 
 const initialState = {
@@ -15,6 +16,12 @@ export default (state = initialState, action) => {
     case RECEIVE_SAVINGS: {
       return {...state,
         savings: action.payload.savings
+      };
+    }
+    case RECEIVE_SPENDING: {
+      return {
+        ...state,
+        spending: action.payload.spending
       };
     }
     default:

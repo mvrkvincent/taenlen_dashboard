@@ -46,9 +46,9 @@ nav a {
     align-items: center;
   }
 
-  nav .row {
+  /* nav .row {
     flex-direction: row-reverse;
-  }
+  } */
 
   .logo {
     margin-bottom: 1rem;

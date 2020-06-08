@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { stageCell } from '../../actions/cell_actions';
+import { setSpending } from '../../actions/balance_actions';
 
-const Cell = ({ edit, cell, staged, stageCell }) => { 
+const Cell = ({ spending, setSpending, edit, cell, staged, stageCell }) => { 
 
   const symbol = cell.label === 'cash' ? < i className="fas fa-arrow-up" /> : <i className="fas fa-arrow-down" />;
 
@@ -15,7 +16,11 @@ const Cell = ({ edit, cell, staged, stageCell }) => {
     if (!staged[0] && edit) {
       stageCell(cell);
     } else {
-      console.log(cell.amount);
+      if (cell.label === 'cash') {
+        setSpending({ spending: spending + cell.amount });
+      } else {
+        setSpending({ spending: spending - cell.amount });
+      }
     }
   };
 
@@ -33,13 +38,15 @@ const Cell = ({ edit, cell, staged, stageCell }) => {
   )
 };
 
-const msp = ({ ui, cells }) => ({
+const msp = ({ balance, ui, cells }) => ({
+  spending: balance.spending,
   edit: ui.edit,
   staged: Object.values(cells.staged)
 })
 
 const mdp = dispatch => ({
-  stageCell: cell => dispatch(stageCell(cell))
+  stageCell: cell => dispatch(stageCell(cell)),
+  setSpending: balance => dispatch(setSpending(balance))
 })
 
 export default connect(msp, mdp)(Cell);

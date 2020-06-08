@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { toggleEdit } from '../../actions/ui_actions';
 import Cell from './Cell';
@@ -23,6 +23,7 @@ const Grid = ({ edit, cells, toggleEdit, darkStyle }) => {
     } else {
       return <span className="no-cells">Add Income</span>
     };
+
   };
 
   const displayAllExpenses = () => {
