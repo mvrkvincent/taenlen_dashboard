@@ -12,7 +12,7 @@ const Register = ({ errors, toggleView, register, darkStyle }) => {
     password: '', 
   });
 
-  const error = { borderColor: '#EC407A' };
+  // const error = { borderColor: '#EC407A' };
 
   const handleChange = e => {
       setFormData({

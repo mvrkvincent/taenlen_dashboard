@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { setSavings } from '../../actions/balance_actions';
 import Cash from './Cash';
 import Expenses from './Expenses';
 import Balance from './Balance';
 
-const Tickers = ({ cells, setBalance, generateCell }) => {
+const Tickers = ({ cells, generateCell }) => {
   const [total, setTotal] = useState({
     cash: 0,
     expenses: 0,
-    balance: 0
   });
 
   const calculateValues = () => {
     let cash = 0;
     let expenses = 0;
-    let balance = cash - expenses;
 
     cells.forEach(cell => {
       if (cell.label === 'cash') {
@@ -28,7 +25,6 @@ const Tickers = ({ cells, setBalance, generateCell }) => {
     setTotal({
       cash: cash,
       expenses: expenses,
-      balance: cash - expenses
     });
   };
 
@@ -41,7 +37,7 @@ const Tickers = ({ cells, setBalance, generateCell }) => {
 
       <Cash cash={total.cash} generateCell={generateCell} />
 
-      <Balance balance={total.balance} generateCell={generateCell}/>
+      <Balance generateCell={generateCell}/>
 
       <Expenses expenses={total.expenses} generateCell={generateCell} />
       
@@ -53,8 +49,4 @@ const msp = ({ cells }) => ({
   cells: cells.all ? Object.values(cells.all) : []
 })
 
-const mdp = dispatch => ({
-  setSavings: balance => dispatch(setSavings(balance))
-})
-
-export default connect(msp, mdp)(Tickers);
+export default connect(msp, null)(Tickers);

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import CellOptions from './CellOptions';
 import { deleteCell } from '../../actions/cell_actions';
-import { days, months } from '../../utils/cell_utils';
 
 const StagedCell = ({ cell, deleteCell, darkStyle }) => {
   const [cellData, setCellData] = useState({
@@ -17,7 +16,7 @@ const StagedCell = ({ cell, deleteCell, darkStyle }) => {
     priority: cell.priority || ''
   });
 
-  const today = new Date();
+  // const today = new Date();
   
   const symbol = cell.label === 'cash' ? < i className="cash fas fa-arrow-up left"/> : <i className="expenses fas fa-arrow-down left"/>;
   const placeholder = cell.label === 'cash' ? 'Ex. Pay Check...' : 'Ex. Rent, Netflix...';

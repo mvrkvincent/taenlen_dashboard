@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import SavingsOptions from './SavingsOptions';
 import { deleteCell } from '../../actions/cell_actions';
@@ -11,15 +11,9 @@ const SavingsCell = ({ cell, deleteCell, darkStyle }) => {
     amount: '',
   });
 
-  const today = new Date();
-
-  const symbol = cell.label === 'cash' ? < i className="cash fas fa-arrow-up left" /> : <i className="expenses fas fa-arrow-down left" />;
-  const placeholder = cell.label === 'cash' ? 'Ex. Pay Check...' : 'Ex. Rent, Netflix...';
-
   const formatMoney = amount => {
     return new Intl.NumberFormat().format(amount);
   };
-
 
   const handleChange = e => {
     const regex = /^[0-9]+$/;

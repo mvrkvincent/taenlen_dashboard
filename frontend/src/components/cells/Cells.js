@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchCells, stageCell } from '../../actions/cell_actions';
 import StagedCell from './StagedCell';
@@ -6,10 +6,7 @@ import SavingsCell from './SavingsCell';
 import Tickers from '../tickers/Tickers';
 import Grid from './Grid';
 
-const Cells = ({ staged, cells, view, fetchCells, stageCell, darkStyle }) => {
-  const [style, setStyle] = useState({
-    margin: null
-  });
+const Cells = ({ staged, cells, fetchCells, stageCell, darkStyle }) => {
 
   const generateCell = label => {
     stageCell({
@@ -42,7 +39,7 @@ const Cells = ({ staged, cells, view, fetchCells, stageCell, darkStyle }) => {
 
       <Tickers generateCell={generateCell}/>
 
-      <div id="staged" style={style} className="column">
+      <div id="staged" className="column">
         {displayStagedCell()}
       </div>
       
@@ -55,10 +52,9 @@ const Cells = ({ staged, cells, view, fetchCells, stageCell, darkStyle }) => {
   );
 };
 
-const msp = ({ cells, ui }) => ({
+const msp = ({ cells }) => ({
   staged: cells.staged,
   cells: cells.all ? Object.values(cells.all) : [],
-  view: ui.view
 });
 
 const mdp = dispatch => ({
