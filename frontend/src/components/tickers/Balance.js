@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { toggleView } from '../../actions/ui_actions';
 import { deleteCell } from '../../actions/cell_actions';
 
-const Balance = ({ balance, staged, view, toggleView, generateCell, deleteCell }) => {
+const Balance = ({ balance, edit, staged, view, toggleView, generateCell, deleteCell }) => {
 
   const format = amount => {
     return new Intl.NumberFormat().format(amount);
@@ -43,6 +43,7 @@ const Balance = ({ balance, staged, view, toggleView, generateCell, deleteCell }
 const msp = ({ balance, cells, ui }) => ({
   staged: cells.staged,
   view: ui.view,
+  edit: ui.edit,
   balance: balance
 })
 

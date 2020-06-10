@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Expenses = ({ expenses, generateCell }) => {
+const Expenses = ({ edit, expenses, generateCell }) => {
 
   const format = expenses => {
     return new Intl.NumberFormat().format(expenses);
@@ -15,8 +15,14 @@ const Expenses = ({ expenses, generateCell }) => {
     }
   };
 
+  const stageCell = () => {
+    if (edit) {
+      generateCell('expenses')
+    }
+  }
+
   return (
-    <div id="expenses" onClick={() => generateCell('expenses')} className='module expenses'>
+    <div id="expenses" onClick={() => stageCell()} className='module expenses'>
 
       {displayExpenses()}
 
@@ -26,7 +32,8 @@ const Expenses = ({ expenses, generateCell }) => {
   )
 }
 
-const msp = ({ cells }) => ({
+const msp = ({ ui, cells }) => ({
+  edit: ui.edit,
   cells: cells.all ? Object.values(cells.all) : []
 })
 
