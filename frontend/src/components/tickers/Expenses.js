@@ -16,7 +16,7 @@ const Expenses = ({ edit, expenses, generateCell }) => {
   };
 
   const stageCell = () => {
-    if (edit) {
+    if (edit || !expenses[0]) {
       generateCell('expenses')
     }
   }
