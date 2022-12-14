@@ -49,7 +49,7 @@ export const fetchUser = () => async (dispatch, getState) => {
   dispatch({ type: RECEIVING_USER });
 
   try {
-    const res = await axios.get('https://taenlen.herokuapp.com/api/auth/user', tokenConfig(getState));
+    const res = await axios.get('https://taenlen-backend.herokuapp.com/api/auth/user', tokenConfig(getState));
     dispatch(receiveUser(res.data));
   } catch (err) {
       const error = err.response ? err.response.data : err.message;
@@ -61,7 +61,7 @@ export const fetchUser = () => async (dispatch, getState) => {
 export const register = user => async dispatch => {
 
   try {
-    const res = await axios.post('https://taenlen.herokuapp.com/api/auth/register', user, config);
+    const res = await axios.post('https://taenlen-backend.herokuapp.com/api/auth/register', user, config);
     dispatch(receiveRegister(res.data));
   } catch (err) {
       const error = err.response ? err.response.data : err.message;
@@ -73,7 +73,7 @@ export const register = user => async dispatch => {
 export const login = user => async dispatch => {
 
   try {
-    const res = await axios.post('https://taenlen.herokuapp.com/api/auth/login', user, config);
+    const res = await axios.post('https://taenlen-backend.herokuapp.com/api/auth/login', user, config);
     dispatch(receiveLogin(res.data));
   } catch (err) {
       const error = err.response ? err.response.data : err.message;
@@ -83,7 +83,7 @@ export const login = user => async dispatch => {
 };
 
 export const logout = () => async (dispatch, getState) => {
-  await axios.post('https://taenlen.herokuapp.com/api/auth/logout', null, tokenConfig(getState));
+  await axios.post('https://taenlen-backend.herokuapp.com/api/auth/logout', null, tokenConfig(getState));
   dispatch({
     type: LOGOUT_SUCCESS
   });
