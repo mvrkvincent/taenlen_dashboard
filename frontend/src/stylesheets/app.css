@@ -1,8 +1,18 @@
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 #dashboard {
   min-height: 100vh;
   width: 100%;
-  border-top: 3px solid #26C6DA;
-    transition: all 0.15s linear;
+  border-top: 3px solid #26c6da;
+  transition: all 0.15s linear;
 }
 
 .row {
@@ -21,9 +31,9 @@
 
 .module {
   padding: 1.5rem;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   border-radius: 0.4rem;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .module h3 {
@@ -42,12 +52,12 @@ input {
   font: inherit;
   margin: 0.5rem;
   padding: 0.5rem;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   background-color: transparent;
   border-radius: 0.4rem;
-    transition: all 0.15s linear;
+  transition: all 0.15s linear;
   -webkit-appearance: none;
-	-moz-appearance: none;
+  -moz-appearance: none;
 }
 
 select,
@@ -58,13 +68,13 @@ button {
   cursor: pointer;
   margin: 0.5rem 0;
   padding: 0.5rem;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   border-radius: 0.4rem;
-    transition: all 0.15s linear;
+  transition: all 0.15s linear;
 }
 
 button:hover {
-  border-color: #26C6DA ;
+  border-color: #26c6da;
 }
 
 .title {
@@ -83,25 +93,24 @@ button:hover {
   border-radius: 5px;
   padding: 0.5rem;
   font-size: 1.4rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
 .code:hover {
-  color: #26C6DA ;
+  color: #26c6da;
 }
 
 .error {
   width: 100%;
   padding-right: 0.5rem;
   font-size: 0.75rem;
-  color: #D32F2F;
+  color: #d32f2f;
   text-align: right;
 }
 
 @media (max-width: 800px) {
-
   #staged-cell input {
     margin: 0;
     font-size: 0.8rem;
