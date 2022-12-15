@@ -1,92 +1,77 @@
-import axios from 'axios';
+import axios from "axios";
+import { URI, CONFIG } from "./utils.js";
+export const STAGE_CELL = "STAGE_CELL";
+export const RECEIVE_CELL = "RECEIVE_CELL";
+export const RECEIVE_CELLS = "RECEIVE_CELLS";
+export const REMOVE_CELL = "REMOVE_CELL";
+export const RECEIVE_ERROR = "RECEIVE_ERROR";
 
-export const STAGE_CELL = 'STAGE_CELL';
-export const RECEIVE_CELL = 'RECEIVE_CELL';
-export const RECEIVE_CELLS = 'RECEIVE_CELLS';
-export const REMOVE_CELL = 'REMOVE_CELL';
-export const RECEIVE_ERROR = 'RECEIVE_ERROR';
-
-const receiveStagedCell = payload => ({
+const receiveStagedCell = (payload) => ({
   type: STAGE_CELL,
-  payload
+  payload,
 });
 
-const removeCell = cell => ({
+const removeCell = (cell) => ({
   type: REMOVE_CELL,
-  cell
+  cell,
 });
 
-const receiveCell = payload => ({
+const receiveCell = (payload) => ({
   type: RECEIVE_CELL,
-  payload
+  payload,
 });
 
-const receiveCells = payload => ({
+const receiveCells = (payload) => ({
   type: RECEIVE_CELLS,
-  payload
+  payload,
 });
 
-const receiveError = payload => ({
+const receiveError = (payload) => ({
   type: RECEIVE_ERROR,
-  payload
+  payload,
 });
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json'
-  }
-};
-
-export const fetchCells = () => async dispatch => {
-
+export const fetchCells = () => async (dispatch) => {
   try {
-    const res = await axios.get('https://taenlen-backend.herokuapp.com/api/cells/');
+    const res = await axios.get(`${URI}/cells/`);
     dispatch(receiveCells(res.data));
   } catch (err) {
     dispatch(receiveError(err.response.data));
   }
-
 };
 
-export const stageCell = cell => async dispatch => {
-  
+export const stageCell = (cell) => async (dispatch) => {
   try {
     dispatch(receiveStagedCell(cell));
   } catch (err) {
-    dispatch(console.log('This is broken, Everything is broken'));
+    dispatch(console.log("This is broken, Everything is broken"));
   }
-
 };
 
-export const submitCell = cell => async dispatch => {
-
+export const submitCell = (cell) => async (dispatch) => {
   try {
-    const res = await axios.post('https://taenlen-backend.herokuapp.com/api/cells/', cell, config);
+    const res = await axios.post(`${URI}/cells/`, cell, CONFIG);
     dispatch(receiveCell(res.data));
   } catch (err) {
     dispatch(receiveError(err.response.data));
   }
-
 };
 
-export const updateCell = cell => async dispatch => {
-
+export const updateCell = (cell) => async (dispatch) => {
   try {
-    const res = await axios.patch(`https://taenlen-backend.herokuapp.com/api/cells/${cell.id}/`, cell, config);
+    const res = await axios.patch(`${URI}/cells/${cell.id}/`, cell, CONFIG);
     dispatch(receiveCell(res.data));
   } catch (err) {
     dispatch(receiveError(err.response.data));
   }
-
 };
 
-export const deleteCell = id => async dispatch => {
+export const deleteCell = (id) => async (dispatch) => {
   if (!id) {
     dispatch(removeCell(id));
   } else {
     try {
-      const res = await axios.delete(`https://taenlen-backend.herokuapp.com/api/cells/${id}`, config);
-      console.log(res);
+      const res = await axios.delete(`${URI}/cells/${id}`, CONFIG);
       dispatch(removeCell(id));
     } catch (err) {
       dispatch(receiveError(err.response.data));
